@@ -10,9 +10,11 @@ class Solution {
             reverse=reverse*10 + temp;
             x=x/10;
         }
-        return (reverse==real_no);
-         
+        if(reverse==real_no){
+            return true;
+        }else{
+            return false;
+        }
         
     }
 }
-// Title: Palindrome Number
