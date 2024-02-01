@@ -3,8 +3,8 @@ class Solution {
         if(x<0){
             return false;
         }
-        int reverse=0,real_no=x;
-        //int real_no=x;
+        int reverse=0;
+        int real_no=x;
         while(x!=0){
             int temp=x%10;
             reverse=reverse*10 + temp;
@@ -15,4 +15,3 @@ class Solution {
         
     }
 }
-// Title: Palindrome Number
