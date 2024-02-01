@@ -1,20 +1,17 @@
+import java.util.*;
+
 class Solution {
     public int reverse(int x) {
-        long reversed = 0;
-
-        while (x != 0) {
-            int digit = x % 10;
-            reversed = reversed * 10 + digit;
-            x = x / 10;
-        }
-
-        // Check if reversed fits within 32-bit integer range
-        if (reversed < Integer.MIN_VALUE || reversed > Integer.MAX_VALUE) {
+        int sum = 0;
+        if (Integer.MIN_VALUE <= x && x <= Integer.MAX_VALUE) {
+            while (x != 0) {
+                int temp = x % 10;
+                sum = sum * 10 + temp;
+                x = x / 10;
+            }
+            return sum;
+        } else {
             return 0;
         }
-
-        return (int) reversed;
     }
 }
-
-// Title: Reverse Integer
