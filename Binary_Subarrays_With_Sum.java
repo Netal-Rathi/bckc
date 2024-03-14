@@ -30,3 +30,5 @@ class Solution {
         return count; // Return the count of subarrays
     }
 }
+
+// Title: Binary Subarrays With Sum
