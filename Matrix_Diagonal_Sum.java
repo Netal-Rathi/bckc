@@ -18,10 +18,9 @@ class Solution {
             }
         }
         if(x!=0){
-        sum-=mat[n/2][n/2];
+        sum-=mat[x][x];
         }
         return sum;
         
     }
 }
-// Title: Matrix Diagonal Sum
