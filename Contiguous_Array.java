@@ -22,3 +22,5 @@ class Solution {
         return Arrays.stream(ans).max().getAsInt();
     }
 }
+
+// Title: Contiguous Array
