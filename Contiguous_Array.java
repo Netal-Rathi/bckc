@@ -1,23 +1,24 @@
 class Solution {
     public int findMaxLength(int[] nums) {
-        int n=nums.length;
-        int maxlength=0;
-        int count=0;
-        HashMap<Integer,Integer> map=new HashMap<>();
-        map.put(0,-1);
-        for(int i=0;i<n;i++){
-            if(nums[i]==0){
-                count--;
-            }else{
-                count++;
-            }
-            if(map.containsKey(count)){
-                maxlength=Math.max(maxlength,i-map.get(count));
-            }else{
-                map.put(count,i);
+        int n = nums.length;
+        int c = 0;
+        int ans[] = new int[n];
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
+                int zero = 0, one = 0;
+                for (int k = i; k <= j; k++) { // Fixed range issue
+                    if (nums[k] == 0) {
+                        zero++;
+                    } else {
+                        one++;
+                    }
+                }
+                if (zero == one) {
+                    ans[c] = zero + one;
+                    c++;
+                }
             }
         }
-        return maxlength;
+        return Arrays.stream(ans).max().getAsInt();
     }
 }
-// Title: Contiguous Array
