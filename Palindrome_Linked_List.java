@@ -9,38 +9,39 @@
  * }
  */
 class Solution {
-    public ListNode reverse(ListNode head) {
+    public ListNode isReverse(ListNode head){
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode previous = head;
-        ListNode current = head.next;
-        while (current != null) {
-            ListNode nextNode = current.next;
-            current.next = previous;
+        ListNode previous=head;
+        ListNode current=head.next;
+        while (current != null){
+            ListNode NextNode=current.next;
+            current.next=previous;
             //updating
-            previous = current;
-            current = nextNode;
+            previous=current;
+            current=NextNode;
+            //return head;
         }
-        head.next = null;
-        head = previous;
+        head.next=null;
+        head=previous;
         return head;
-    }
 
+    }
     public boolean isPalindrome(ListNode head) {
-        if (head == null) {
+        if(head==null ){
             return true;
         }
-        ListNode reversed = reverse(head);
-        while (head != null && reversed != null) {
-            if (head.val != reversed.val) {
-                return false;
+            ListNode  reversed=isReverse(head);
+                while(head!=null && reversed!=null){
+                if(head.val!=reversed.val){
+                    return false;
+                }
+                head=head.next;
+                reversed=reversed.next;
+                }
+                return true;
             }
-            head = head.next;
-            reversed = reversed.next;
-        }
-        return true;
+        
+        
     }
-}
-
-// Title: Palindrome Linked List
