@@ -10,7 +10,7 @@
  */
 class Solution {
     public ListNode isReverse(ListNode head){
-        if (head == null || head.next == null) {
+        if(head.next==null || head==null){
             return head;
         }
         ListNode previous=head;
@@ -45,5 +45,3 @@ class Solution {
         
         
     }
-
-// Title: Palindrome Linked List
