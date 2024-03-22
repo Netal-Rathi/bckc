@@ -15,9 +15,8 @@ class Solution {
         }
         ListNode previous = head;
         ListNode current = head.next;
-        ListNode nextNode = current.next;
         while (current != null) {
-            
+            ListNode nextNode = current.next;
             current.next = previous;
             //updating
             previous = current;
@@ -43,5 +42,3 @@ class Solution {
         return true;
     }
 }
-
-// Title: Palindrome Linked List
