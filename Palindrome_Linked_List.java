@@ -9,45 +9,49 @@
  * }
  */
 class Solution {
-    public boolean isPalindrome(ListNode head) {
-        if(head==null || head.next==null){
-            return true;
+    public ListNode reverse(ListNode head) {
+       // ListNode temp=head;
+        if (head == null || head.next == null) {
+            return head;
         }
-          ListNode head1=head;
-        ListNode head2;
-        ListNode slow=head;
-        ListNode fast=head;
-        while(fast!=null && fast.next!=null ){
-            slow=slow.next;
-            fast=fast.next.next;
-        }
-        //head2=slow.next;
-      // head2=prev;
-       // slow.next=null;
-
-        ListNode prev=null;
-        ListNode current=slow;
-        ListNode Next=null;
-        while(current!=null){
-            Next=current.next;
-            current.next=prev;
-            prev=current;
-            current=Next;
-        }
-      
-        head2=prev;
-
-        while( head2!=null){
-            if(head1.val!=head2.val){
-            return false;
-            }
-             head1=head1.next;
-            head2=head2.next;
-            
-        }
-       return true;
+        ListNode previous = head;
+        ListNode current = head.next;
         
-        
+        while (current != null) {
+            ListNode nextNode = current.next;
+            current.next = previous;
+            //updating
+            previous = current;
+            current = nextNode;
+        }
+        head.next = null;
+        head = previous;
+        return head;
     }
+
+    public boolean isPalindrome(ListNode head) {
+    if (head == null || head.next == null) {
+        return true;
+    }
+    // Find the middle of the list using slow and fast pointers
+    ListNode slow = head;
+    ListNode fast = head;
+    while (fast.next != null && fast.next.next != null) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    // Reverse the second half of the list
+    ListNode secondHalf = reverse(slow.next);
+    ListNode firstHalf = head;
+    // Compare the first half with the reversed second half
+    while (secondHalf != null) {
+        if (firstHalf.val != secondHalf.val) {
+            return false;
+        }
+        firstHalf = firstHalf.next;
+        secondHalf = secondHalf.next;
+    }
+    return true;
 }
-// Title: Palindrome Linked List
+
+}
