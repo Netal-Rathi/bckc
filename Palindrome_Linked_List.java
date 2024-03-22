@@ -10,15 +10,14 @@
  */
 class Solution {
     public ListNode reverse(ListNode head) {
-       // ListNode temp=head;
         if (head == null || head.next == null) {
             return head;
         }
         ListNode previous = head;
         ListNode current = head.next;
-        
+        ListNode nextNode = current.next;
         while (current != null) {
-            ListNode nextNode = current.next;
+            
             current.next = previous;
             //updating
             previous = current;
@@ -34,17 +33,13 @@ class Solution {
             return true;
         }
         ListNode reversed = reverse(head);
-        ListNode Normal=reverse(reversed);
-        ListNode temp=Normal;
-        while (temp != null && reversed != null) {
-            if (temp.val != reversed.val) {
+        while (head != null && reversed != null) {
+            if (head.val != reversed.val) {
                 return false;
             }
-            temp= temp.next;
+            head = head.next;
             reversed = reversed.next;
         }
         return true;
     }
 }
-
-// Title: Palindrome Linked List
