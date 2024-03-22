@@ -28,7 +28,7 @@ class Solution {
     }
 
     public boolean isPalindrome(ListNode head) {
-        if (head == null|| head.next==null) {
+        if (head == null) {
             return true;
         }
         ListNode reversed = reverse(head);
@@ -42,5 +42,3 @@ class Solution {
         return true;
     }
 }
-
-// Title: Palindrome Linked List
