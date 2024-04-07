@@ -1,38 +1,33 @@
 import java.util.Stack;
+
 class Solution {
     public boolean checkValidString(String s) {
-        int n=s.length();
-        Stack <Integer> left=new Stack<>();
-       // Stack <String> right=new Stack<>();
-        Stack <Integer> any=new Stack<>();
-        for(int i=0;i<n;i++){
-            char c= s.charAt(i);
-                
-            if(c=='('){
-                left.push(i);
-            }
-            else if(c=='*'){
-                any.push(i);
-            }else//c==)
-            {
-                if(!left.isEmpty()){
-                    left.pop();
-                }else if(!any.isEmpty()){
-                    any.pop();
-                }else{
-                    return false;
-                }
+        Stack<Integer> leftParentheses = new Stack<>();
+        Stack<Integer> asterisks = new Stack<>();
 
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '(') {
+                leftParentheses.push(i);
+            } else if (c == '*') {
+                asterisks.push(i);
+            } else { // c == ')'
+                if (!leftParentheses.isEmpty()) {
+                    leftParentheses.pop();
+                } else if (!asterisks.isEmpty()) {
+                    asterisks.pop();
+                } else {
+                    return false; // Unmatched right parenthesis
+                }
             }
         }
-        while (!left.isEmpty() && !any.isEmpty()){
-            if(left.pop()<any.pop()){
-                return false;
+
+        while (!leftParentheses.isEmpty() && !asterisks.isEmpty()) {
+            if (leftParentheses.pop() > asterisks.pop()) {
+                return false; // Unmatched left parenthesis
             }
         }
-        return true;
-        
-        
+
+        return leftParentheses.isEmpty();
     }
 }
-// Title: Valid Parenthesis String
