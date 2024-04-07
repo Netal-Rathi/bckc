@@ -1,35 +1,26 @@
-import java.util.Stack;
-
 class Solution {
     public boolean checkValidString(String s) {
-        Stack<Integer> leftParentheses = new Stack<>();
-        Stack<Integer> asterisks = new Stack<>();
+        int n=s.length();
+        int left=0,right=0,any=0;
+        for(int i=0;i<n;i++){
 
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if (c == '(') {
-                leftParentheses.push(i);
-            } else if (c == '*') {
-                asterisks.push(i);
-            } else { // c == ')'
-                if (!leftParentheses.isEmpty()) {
-                    leftParentheses.pop();
-                } else if (!asterisks.isEmpty()) {
-                    asterisks.pop();
-                } else {
-                    return false; // Unmatched right parenthesis
-                }
+            if(s.charAt(i)=='('){
+                left++;
+            }else if(s.charAt(i)==')'){
+                right++;
+            }else{
+                any++;
             }
         }
-
-        while (!leftParentheses.isEmpty() && !asterisks.isEmpty()) {
-            if (leftParentheses.pop() > asterisks.pop()) {
-                return false; // Unmatched left parenthesis
-            }
+        if(left==right){
+            return true ;
+        }else if (left>right && right+any>=left){
+            return true ;
+        }else if(right>left && left+any>=right){
+            return true;
+        }else{
+            return false;
         }
-
-        return leftParentheses.isEmpty();
+        
     }
 }
-
-// Title: Valid Parenthesis String
