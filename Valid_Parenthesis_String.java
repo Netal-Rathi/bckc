@@ -30,9 +30,8 @@ class Solution {
                 return false;
             }
         }
-        return left.isEmpty();
+        return true;
         
         
     }
 }
-// Title: Valid Parenthesis String
