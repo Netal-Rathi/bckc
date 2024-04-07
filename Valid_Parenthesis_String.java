@@ -26,7 +26,7 @@ class Solution {
             }
         }
         while (!left.isEmpty() && !any.isEmpty()){
-            if(left.pop()>any.pop()){
+            if(left.pop()<any.pop()){
                 return false;
             }
         }
@@ -35,4 +35,3 @@ class Solution {
         
     }
 }
-// Title: Valid Parenthesis String
