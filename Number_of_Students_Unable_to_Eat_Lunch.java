@@ -6,10 +6,10 @@ class Solution {
        ArrayList stud=new ArrayList<>();
        ArrayList sand =new ArrayList<>();
 
-       for(int s : students){
+       for(int s in students){
         stud.add(s);
        }
-       for (int s : sandwiches){
+       for (int s in sandwiches){
         sand.add(s);
        }
 
@@ -28,5 +28,3 @@ class Solution {
         return stud.size();
     }
 }
-
-// Title: Number of Students Unable to Eat Lunch
