@@ -3,15 +3,8 @@ import java.util.Arrays;
 
 class Solution {
     public int countStudents(int[] students, int[] sandwiches) {
-       ArrayList stud=new ArrayList<>();
-       ArrayList sand =new ArrayList<>();
-
-       for(int s in students){
-        stud.add(s);
-       }
-       for (int s in sandwiches){
-        sand.add(s);
-       }
+        ArrayList<Integer> stud = new ArrayList<>(Arrays.asList(Arrays.stream(students).boxed().toArray(Integer[]::new)));
+        ArrayList<Integer> sand = new ArrayList<>(Arrays.asList(Arrays.stream(sandwiches).boxed().toArray(Integer[]::new)));
 
         int count = 0;
         while (count < stud.size()) {
@@ -28,5 +21,3 @@ class Solution {
         return stud.size();
     }
 }
-
-// Title: Number of Students Unable to Eat Lunch
