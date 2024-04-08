@@ -11,8 +11,6 @@ class Solution {
             if(tickets[i]!=0){
                 tickets[i]=tickets[i]-1;
                 time ++;
-            }else{
-                continue;
             }
         
   }
@@ -21,4 +19,3 @@ class Solution {
         
     }
 }
-// Title: Time Needed to Buy Tickets
