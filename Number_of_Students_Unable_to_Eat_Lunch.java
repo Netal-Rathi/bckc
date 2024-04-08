@@ -6,7 +6,7 @@ class Solution {
         ArrayList<Integer> stud = new ArrayList<>();
         ArrayList<Integer> sand = new ArrayList<>();
 
-        
+        // Convert arrays to ArrayLists
         for (int s : students) {
             stud.add(s);
         }
@@ -16,18 +16,16 @@ class Solution {
 
         int count = 0;
         while (count < stud.size()) {
-            if (stud.get(0) == sand.get(0)) { 
+            if (stud.get(0) == sand.get(0)) { // Use == for primitive comparison
                 stud.remove(0);
                 sand.remove(0);
-                count = 0; 
+                count = 0; // Reset count to 0 if a student gets a sandwich
             } else {
                 int first = stud.remove(0);
-                stud.add(first); 
-                count++; 
+                stud.add(first); // Move student to the end of the queue
+                count++; // Increment count if a student can't get a sandwich
             }
         }
         return stud.size();
     }
 }
-
-// Title: Number of Students Unable to Eat Lunch
