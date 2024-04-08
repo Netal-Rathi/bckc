@@ -3,20 +3,19 @@ import java.util.Arrays;
 
 class Solution {
     public int countStudents(int[] students, int[] sandwiches) {
-        ArrayList<Integer> stud = new ArrayList<>();
-        ArrayList<Integer> sand = new ArrayList<>();
+       ArrayList stud=new ArrayList<>();
+       ArrayList sand =new ArrayList<>();
 
-        // Convert arrays to ArrayLists
-        for (int s : students) {
-            stud.add(s);
-        }
-        for (int s : sandwiches) {
-            sand.add(s);
-        }
+       for(int s : students){
+        stud.add(s);
+       }
+       for (int s : sandwiches){
+        sand.add(s);
+       }
 
         int count = 0;
         while (count < stud.size()) {
-            if (stud.get(0) == sand.get(0)) { // Use == for primitive comparison
+            if (stud.get(0).equals(sand.get(0))) {
                 stud.remove(0);
                 sand.remove(0);
                 count = 0; // Reset count to 0 if a student gets a sandwich
@@ -29,5 +28,3 @@ class Solution {
         return stud.size();
     }
 }
-
-// Title: Number of Students Unable to Eat Lunch
