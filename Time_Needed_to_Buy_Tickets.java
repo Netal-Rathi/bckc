@@ -5,7 +5,7 @@ class Solution {
         for(int t : tickets ){
             tic.add(t);
         } */
-        while(tickets[k]>=0){
+        while(tickets[k]!=0){
   for(int i=0;i<tickets.length;i++){
         
             if(tickets[i]!=0){
@@ -21,4 +21,3 @@ class Solution {
         
     }
 }
-// Title: Time Needed to Buy Tickets
