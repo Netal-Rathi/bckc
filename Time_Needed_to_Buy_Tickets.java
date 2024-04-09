@@ -21,3 +21,4 @@ class Solution {
         
     }
 }
+// Title: Time Needed to Buy Tickets
