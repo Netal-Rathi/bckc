@@ -5,18 +5,15 @@ class Solution {
         for(int t : tickets ){
             tic.add(t);
         } */
-        while(tickets[k]>0){
+        while(tickets[k]!=0){
   for(int i=0;i<tickets.length;i++){
-    if(tickets[i]==0){
-        return time;
-    }else{
-        if(tickets[i]>0){
+        
+            if(tickets[i]>0){
                 tickets[i]=tickets[i]-1;
                 time ++;
             }else{
                 continue;
             }
-    }
         
   }
         }
@@ -24,4 +21,3 @@ class Solution {
         
     }
 }
-// Title: Time Needed to Buy Tickets
