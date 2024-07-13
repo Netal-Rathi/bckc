@@ -46,8 +46,6 @@ public class Solution {
                     }
                     i++;
 
-                }else{
-                    continue;
                 }
 
 
@@ -75,5 +73,3 @@ public class Solution {
         return true;
     }
 }
-
-// Title: Robot Collisions
