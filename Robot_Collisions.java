@@ -16,8 +16,6 @@ public class Solution {
                     if(positions[i]<positions[i+1] && directions.charAt(i)!='R'  && directions.charAt(i+1)!='L'){
                         continue;
                                         
-                    }else if (positions[i]>positions[i+1] && directions.charAt(i)!='R'  && directions.charAt(i+1)!='L'){
-                            continue;
                     } else if (healths[i] == healths[i + 1]) {
                         healths[i] = 0;
                         healths[i + 1] = 0;
@@ -52,5 +50,3 @@ public class Solution {
         return true;
     }
 }
-
-// Title: Robot Collisions
