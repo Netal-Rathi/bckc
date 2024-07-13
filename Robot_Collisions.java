@@ -21,7 +21,7 @@ public class Solution {
                         healths[i] = 0;
                         healths[i + 1] -= 1;
                     }
-                   // i++;
+                    i++;
                 }
             }
 
@@ -45,5 +45,3 @@ public class Solution {
         return true;
     }
 }
-
-// Title: Robot Collisions
