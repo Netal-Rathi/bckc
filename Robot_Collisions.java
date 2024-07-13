@@ -18,7 +18,7 @@ public class Solution {
                                         
                     
                  //   } else 
-                    if(healths[i] == healths[i + 1]) {
+                    if (healths[i] == healths[i + 1]) {
                         healths[i] = 0;
                         healths[i + 1] = 0;
                     } else if (healths[i] > healths[i + 1]) {
@@ -52,5 +52,3 @@ public class Solution {
         return true;
     }
 }
-
-// Title: Robot Collisions
