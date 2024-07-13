@@ -4,41 +4,68 @@ import java.util.List;
 
 public class Solution {
     public List<Integer> survivedRobotsHealths(int[] positions, int[] healths, String directions) {
+        int[] health = healths;
+
+        // Moved the static method outside the method and inside the class
         if (issame(directions)) {
-            return Arrays.asList(Arrays.stream(healths).boxed().toArray(Integer[]::new));
-        }
+            return Arrays.asList(Arrays.stream(health).boxed().toArray(Integer[]::new));
+        } else {
+            for (int i = 0; i < positions.length - 1; i++) {
+                if (directions.charAt(i) != directions.charAt(i + 1)) {
+                    // Original commented out logic
+                    // if(positions[i]<positions[i+1] && directions.charAt(i)!='R'  && directions.charAt(i+1)!='L'){
+                    // continue;
+            
+                 //   }else if(position[i]>position[j] && directions.charAt(i)='R'){
 
-        List<Integer> survivingRobots = new ArrayList<>();
-        int n = positions.length;
 
-        for (int i = 0; i < n; i++) {
-            boolean collided = false;
-            for (int j = i + 1; j < n; j++) {
-                if (directions.charAt(i) == 'R' && directions.charAt(j) == 'L') {
-                    collided = true;
-                    if (positions[i] < positions[j]) {
-                        if (healths[i] == healths[j]) {
-                            healths[i] = 0;
-                            healths[j] = 0;
-                        } else if (healths[i] > healths[j]) {
-                            healths[i] -= 1;
-                            healths[j] = 0;
-                        } else {
-                            healths[j] -= 1;
-                            healths[i] = 0;
-                        }
+                    if(positions[i]<positions[i+1] && directions.charAt(i)=='R' && directions.charAt(i+1)=='L'){
+
+                     if (healths[i] == healths[i + 1]) {
+                        healths[i] = 0;
+                        healths[i + 1] = 0;
+                    } else if (healths[i] > healths[i + 1]) {
+                        healths[i + 1] = 0;
+                        healths[i] = healths[i] - 1;
+                    } else {
+                        healths[i] = 0;
+                        healths[i + 1] = healths[i + 1] - 1;
                     }
-                    break;
+                    i++;
+                }else if((directions.charAt(i)!='L' && directions.charAt(i+1)!='R') || (directions.charAt(i)!='R' && directions.charAt(i+1)!='L')){
+
+                    if (healths[i] == healths[i + 1]) {
+                        healths[i] = 0;
+                        healths[i + 1] = 0;
+                    } else if (healths[i] > healths[i + 1]) {
+                        healths[i + 1] = 0;
+                        healths[i] = healths[i] - 1;
+                    } else {
+                        healths[i] = 0;
+                        healths[i + 1] = healths[i + 1] - 1;
+                    }
+                    i++;
+
+                }else{
+                    continue;
+                }
+
+
+                
                 }
             }
-            if (!collided || healths[i] > 0) {
-                survivingRobots.add(healths[i]);
-            }
-        }
 
-        return survivingRobots;
+            List<Integer> finalans = new ArrayList<>();
+            for (int i = 0; i < healths.length; i++) {
+                if (healths[i] != 0) {
+                    finalans.add(healths[i]);
+                }
+            }
+            return finalans;
+        }
     }
 
+    // Static helper method moved outside
     public static boolean issame(String directions) {
         for (int i = 1; i < directions.length(); i++) {
             if (directions.charAt(0) != directions.charAt(i)) {
@@ -48,5 +75,3 @@ public class Solution {
         return true;
     }
 }
-
-// Title: Robot Collisions
