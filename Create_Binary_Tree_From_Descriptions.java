@@ -9,61 +9,47 @@
  *     TreeNode(int val, TreeNode left, TreeNode right) {
  *         this.val = val;
  *         this.left = left;
- *         this.right = right; 
+ *         this.right = right;
  *     }
  * }
  */
+ import java.util.*;
 class Solution {
-    public String getDirections(TreeNode root, int startValue, int destValue) {
-        // Find paths from root to startValue and destValue
-        List<Character> startPath = new ArrayList<>();
-        List<Character> destPath = new ArrayList<>();
-        
-        findPath(root, startValue, startPath);
-        findPath(root, destValue, destPath);
-        
-        // Find the common prefix length
-        int i = 0;
-        while (i < startPath.size() && i < destPath.size() && startPath.get(i) == destPath.get(i)) {
-            i++;
+    public TreeNode createBinaryTree(int[][] descriptions) {
+        Map<Integer,TreeNode> Nodes=new HashMap<>();
+       
+        Set <Integer> children =new HashSet<>();
+
+        for(int[] i: descriptions){
+            int parentval=i[0];
+            int childval=i[1];
+            boolean isleftchild =i[2]==1;
+
+            TreeNode parent=Nodes.getOrDefault(parentval,new TreeNode(parentval));
+            TreeNode child=Nodes.getOrDefault(childval,new TreeNode(childval));
+
+            if(isleftchild){
+                parent.left=child;
+            }else{
+                parent.right=child;
+            }
+
+            Nodes.put(parentval,parent);
+            Nodes.put(childval,child);
+            children.add(childval);
+
+           
+
         }
-        
-        // Move up to the common ancestor
-        StringBuilder result = new StringBuilder();
-        for (int j = i; j < startPath.size(); j++) {
-            result.append('U');
-        }
-        
-        // Move down to the destination
-        for (int j = i; j < destPath.size(); j++) {
-            result.append(destPath.get(j));
-        }
-        
-        return result.toString();
-    }
+         TreeNode root=null;
+
+           for (int key : Nodes.keySet()){
+                if(!children.contains(key)){
+                    root=Nodes.get(key);
+                    break;
+                }
+            }
+        return root;
     
-    private boolean findPath(TreeNode root, int value, List<Character> path) {
-        if (root == null) {
-            return false;
-        }
-        if (root.val == value) {
-            return true;
-        }
-        
-        path.add('L');
-        if (findPath(root.left, value, path)) {
-            return true;
-        }
-        path.remove(path.size() - 1);
-        
-        path.add('R');
-        if (findPath(root.right, value, path)) {
-            return true;
-        }
-        path.remove(path.size() - 1);
-        
-        return false;
     }
 }
-
-// Title: Create Binary Tree From Descriptions
