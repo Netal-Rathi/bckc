@@ -9,7 +9,7 @@ class Solution {
         idx=0;
 
      
-        coinChangeHelper(coins, amount,idx);
+        coinChangeHelper(coins, amount);
 
   
         return minCount == Integer.MAX_VALUE ? -1 : minCount;
@@ -35,4 +35,3 @@ class Solution {
         }
     }
 }
-// Title: Coin Change
