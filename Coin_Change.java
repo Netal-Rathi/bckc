@@ -1,12 +1,10 @@
 class Solution {
     private int count;
     private int minCount = Integer.MAX_VALUE;
-    private int idx;
 
     public int coinChange(int[] coins, int amount) {
        
         count = 0;
-        idx=0;
 
      
         coinChangeHelper(coins, amount);
@@ -15,7 +13,7 @@ class Solution {
         return minCount == Integer.MAX_VALUE ? -1 : minCount;
     }
 
-    private void coinChangeHelper(int[] coins, int amount,int idx) {
+    private void coinChangeHelper(int[] coins, int amount) {
         if (amount == 0) {
            
             if (count < minCount) {
@@ -28,11 +26,10 @@ class Solution {
             return;
         }
 
-        for (int i = idx; i < coins.length; i++) {
+        for (int i = 0; i < coins.length; i++) {
             count++;
-            coinChangeHelper(coins, amount - coins[i],i);
+            coinChangeHelper(coins, amount - coins[i]);
             count--;
         }
     }
 }
-// Title: Coin Change
