@@ -44,7 +44,7 @@ class Solution {
                 s1.pop();
             }
             if(s1.isEmpty()){
-                Lsmall[i] = -1;
+                Lsmall[i] = 0;
             } else {
                 Lsmall[i] = s1.peek();
             }
@@ -53,5 +53,3 @@ class Solution {
     }
 
     }
-
-// Title: Largest Rectangle in Histogram
