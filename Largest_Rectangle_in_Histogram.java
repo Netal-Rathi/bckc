@@ -10,8 +10,7 @@ class Solution {
         
         for(int i = 0; i < size; i++){
             int height = heights[i];
-            int width = Rsmall[i] - Lsmall[i]-1 ;
-            
+            int width = Rsmall[i] - Lsmall[i] - 1;
             int area = height * width;
             if(area > max){
                 max = area;
@@ -44,7 +43,7 @@ class Solution {
                 s1.pop();
             }
             if(s1.isEmpty()){
-                Lsmall[i] = 0;
+                Lsmall[i] = -1;
             } else {
                 Lsmall[i] = s1.peek();
             }
@@ -53,5 +52,3 @@ class Solution {
     }
 
     }
-
-// Title: Largest Rectangle in Histogram
