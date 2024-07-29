@@ -14,3 +14,5 @@ class Solution {
         return count;
     }
 }
+
+// Title: Count Number of Teams
