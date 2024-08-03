@@ -14,3 +14,4 @@ class Solution {
         return true;
     }
 }
+// Title: Make Two Arrays Equal by Reversing Subarrays
