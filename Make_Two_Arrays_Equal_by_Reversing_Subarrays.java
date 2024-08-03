@@ -25,3 +25,5 @@ class Solution {
         return map.isEmpty();
     }
 }
+
+// Title: Make Two Arrays Equal by Reversing Subarrays
