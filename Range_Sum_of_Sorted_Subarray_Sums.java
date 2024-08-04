@@ -8,7 +8,7 @@ class Solution {
         
         // Generate all possible subarray sums
         for (int i = 0; i < n; i++) {
-            long sum = 0;  // Initialize sum for the current subarray starting at i
+            int sum = 0;  // Initialize sum for the current subarray starting at i
             for (int j = i; j < n; j++) {
                 sum += nums[j];
                 list.add(sum);
@@ -28,5 +28,3 @@ class Solution {
         return (int)(ans % 100000007);
     }
 }
-
-// Title: Range Sum of Sorted Subarray Sums
