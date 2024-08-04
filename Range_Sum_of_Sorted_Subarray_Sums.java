@@ -25,8 +25,6 @@ class Solution {
             ans += list.get(i);
         }
         
-        return (int)(ans % 1000000007);
+        return (int)(ans % 1_000_000_007);
     }
 }
-
-// Title: Range Sum of Sorted Subarray Sums
