@@ -4,7 +4,7 @@ import java.util.List;
 
 class Solution {
     public int rangeSum(int[] nums, int n, int left, int right) {
-        List<Long> list = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
         
         // Generate all possible subarray sums
         for (int i = 0; i < n; i++) {
@@ -18,15 +18,13 @@ class Solution {
         // Sort the list of subarray sums
         Collections.sort(list);
         
-        long ans = 0;
+        int ans = 0;
         
         // Sum the elements in the specified range
         for (int i = left - 1; i < right; i++) {
             ans += list.get(i);
         }
         
-        return (int)(ans % 100000007);
+        return ans;
     }
 }
-
-// Title: Range Sum of Sorted Subarray Sums
