@@ -21,12 +21,10 @@ class Solution {
         int ans = 0;
         
         // Sum the elements in the specified range
-        for (int i = left - 1; i < right; i++) {
+        for (int i = left-1 ; i < right; i++) {
             ans += list.get(i);
         }
         
         return ans;
     }
 }
-
-// Title: Range Sum of Sorted Subarray Sums
