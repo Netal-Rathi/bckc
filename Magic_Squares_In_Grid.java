@@ -45,3 +45,5 @@ class Solution {
                 grid[row][col + 2] + grid[row + 1][col + 1] + grid[row + 2][col] == sum);
     }
 }
+
+// Title: Magic Squares In Grid
