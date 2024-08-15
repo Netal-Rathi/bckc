@@ -2,7 +2,7 @@ class Solution {
     public boolean lemonadeChange(int[] bills) {
         int five = 0;
         int ten = 0;
-//        int twenty=0;
+        int twenty=0;
 
         for (int bill : bills) {
             if (bill == 5) {
@@ -15,7 +15,7 @@ class Solution {
                     return false;
                 }
             } else if (bill == 20) {
-              //  twenty++;
+                twenty++;
                 if (ten > 0 && five > 0) {
                     ten--;
                     five--;
@@ -30,5 +30,3 @@ class Solution {
         return true;
     }
 }
-
-// Title: Lemonade Change
