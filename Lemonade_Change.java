@@ -30,5 +30,3 @@ class Solution {
         return true;
     }
 }
-
-// Title: Lemonade Change
