@@ -1,2 +1,4 @@
 # Write your MySQL query statement below
 SELECT *  FROM Cinema where id%2 !=0  and description!='boring' ORDER BY id DESC;
+
+// Title: Not Boring Movies
