@@ -18,7 +18,7 @@ class Solution {
 
             }
            ans=ans+max;
-            if(col1!=-1 ){
+            if(col1!=-1 || col1!=0){
                 ans=ans-Math.abs(col2-col1);
                 
             }
@@ -28,4 +28,3 @@ class Solution {
         
     }
 }
-// Title: Maximum Number of Points with Cost
