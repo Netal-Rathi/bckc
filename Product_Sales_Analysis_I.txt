@@ -3,3 +3,4 @@ select Product.Product_name,Sales.Year,Sales.Price
 from Sales 
 join Product 
 on Sales.Product_id=Product.Product_id;
+// Title: Product Sales Analysis I
