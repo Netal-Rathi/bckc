@@ -3,7 +3,7 @@ class Solution {
         int min=Collections.min(arrays.get(0));
         int max=Collections.max(arrays.get(0));
         int maxdist=0;
-        for(int i=1;i<arrays.size();i++){
+        for(int i=0;i<arrays.size();i++){
             List<Integer> list=arrays.get(i);
             int currentmin= Collections.min(list);
             int currentmax=Collections.max(list);
@@ -21,4 +21,3 @@ class Solution {
         
     }
 }
-// Title: Maximum Distance in Arrays
