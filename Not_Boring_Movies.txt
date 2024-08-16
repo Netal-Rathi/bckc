@@ -1,10 +1,2 @@
-SELECT c1.id, c1.movie, c1.description, c1.rating
-FROM Cinema c1
-JOIN (
-    SELECT id 
-    FROM Cinema 
-    WHERE id % 2 = 1 AND description != 'boring'
-) c2 ON c1.id = c2.id
-ORDER BY c1.rating DESC;
-
-// Title: Not Boring Movies
+# Write your MySQL query statement below
+SELECT *  FROM Cinema where id%2 !=0  and description!='boring' ORDER BY rating DESC;
