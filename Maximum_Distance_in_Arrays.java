@@ -5,11 +5,10 @@ class Solution {
         for(List<Integer> list : arrays){
             if(min>Collections.min(list)){
                 min=Collections.min(list);
-            }else{
+            }
 
             if(max<Collections.max(list)){
                 max=Collections.max(list);
-            }
             }
         }
         System.out.println(max);
@@ -19,4 +18,3 @@ class Solution {
         
     }
 }
-// Title: Maximum Distance in Arrays
