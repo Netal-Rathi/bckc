@@ -1,24 +1,21 @@
 class Solution {
     public int maxDistance(List<List<Integer>> arrays) {
-        int min=Collections.min(arrays.get(0));
-        int max=Collections.max(arrays.get(0));
-        int maxdist=0;
-        for(int i=0;i<arrays.size();i++){
-            List<Integer> list=arrays.get(i);
-            int currentmin= Collections.min(list);
-            int currentmax=Collections.max(list);
-            maxdist=Math.max(maxdist,Math.abs(max-currentmin));
-            maxdist=Math.max(maxdist,Math.abs(currentmax-min));
+        int min=Integer.MAX_VALUE;
+        int max=Integer.MIN_VALUE;
+        for(List<Integer> list : arrays){
+            if(min>Collections.min(list)){
+                min=Collections.min(list);
+            }else{
 
-            min=Math.min(min,currentmin);
-            max=Math.max(max,currentmax);
-
+            if(max<Collections.max(list)){
+                max=Collections.max(list);
+            }
+            }
         }
         System.out.println(max);
         System.out.println(min);
-    return maxdist;
+    return max-min;
         
         
     }
 }
-// Title: Maximum Distance in Arrays
