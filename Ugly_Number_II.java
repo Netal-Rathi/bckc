@@ -31,3 +31,5 @@ class Solution {
         return uglyNumbers[n - 1]; // The nth ugly number
     }
 }
+
+// Title: Ugly Number II
