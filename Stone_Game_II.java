@@ -1,4 +1,4 @@
-class Solution {
+public class StoneGameII {
     public int stoneGameII(int[] piles) {
         int n = piles.length;
         int[][] dp = new int[n][n + 1];
@@ -27,6 +27,6 @@ class Solution {
 
         return dp[0][1];
     }
-}
 
-// Title: Stone Game II
+ 
+}
