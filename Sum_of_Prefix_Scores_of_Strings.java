@@ -21,3 +21,5 @@ class Solution {
         return arr; // Return the result array
     }
 }
+
+// Title: Sum of Prefix Scores of Strings
