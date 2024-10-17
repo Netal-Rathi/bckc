@@ -7,7 +7,7 @@ class Solution {
        char large=s.charAt(T);
        int no=T;
        for(int i=T;i<s.length();i++){
-        if(large<=s.charAt(i)){
+        if(large<s.charAt(i)){
             large=s.charAt(i);
             no=i;
         }
@@ -28,4 +28,3 @@ class Solution {
     return num;
 }
 }
-// Title: Maximum Swap
