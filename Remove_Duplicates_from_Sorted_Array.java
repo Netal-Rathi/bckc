@@ -3,7 +3,7 @@ class Solution {
         
         List <Integer> l1=new ArrayList<>();
         for(int i=0;i<nums.length;i++){
-            if(l1.isEmpty() || l1.get(l1.size()-1)!=nums[i]){
+            if(l1.isEmpty() || !l1.contains(nums[i])){
                l1.add(nums[i]);
             }
         }
@@ -19,4 +19,3 @@ class Solution {
         return l1.size();
     }
 }
-// Title: Remove Duplicates from Sorted Array
