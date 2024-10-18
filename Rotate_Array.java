@@ -1,20 +1,15 @@
 class Solution {
     public void rotate(int[] nums, int k) {
-        int [] arr=new int[nums.length];
-        int j=0;
-        for(int i=nums.length-k;i<nums.length;i++){
-            arr[j]=nums[i];
-            j++;
-        }
-        for(int i=0;i<nums.length-k;i++){
-            arr[j]=nums[i];
-            j++;
-        }
-        for(int i=0;i<nums.length;i++){
-            nums[i]=arr[i];
-        }
+          while(k!=0){
+            int temp= nums[nums.length-1];
+            for(int i=nums.length-1;i>0;i--){   
+                nums[i]=nums[i-1];
+                
+            }
+            nums[0]=temp;
+            k--;
+          }
         
-        System.out.println(Arrays.toString(arr));
+        System.out.println(nums);
     }
 }
-// Title: Rotate Array
