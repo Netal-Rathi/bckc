@@ -1,23 +1,14 @@
 class Solution {
-    public void rotate(int[] nums, int k) {
-        
+    public void rotate(int[] nums, int k) {;
+        int[] arr=new int[nums.length];
         k=k%nums.length;
-        reverse(nums,0,nums.length-1);
-        reverse(nums,0,k-1);
-        reverse(nums,k,nums.length-1);
-        System.out.println(Arrays.toString(nums));
-    }
-    
+    for(int i=0;i<nums.length;i++){
+        arr[(k+i)%nums.length]=nums[i];
 
-      public void reverse(int [] arr,int start,int end){
-        while(start<end){
-        int temp=arr[start];
-        arr[start]=arr[end];
-        arr[end]=temp;
-        start++;
-        end--;
-        }
-  
     }
+    for(int i=0;i<nums.length;i++){
+        nums[i]=arr[i];
+    }
+  }
+    
 }
-// Title: Rotate Array
