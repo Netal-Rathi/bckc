@@ -26,3 +26,4 @@ class Solution {
         
     }
 }
+// Title: Max Consecutive Ones
