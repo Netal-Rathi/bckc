@@ -8,7 +8,10 @@ class Solution {
                 if(nums[j]==1){
                     count++;
                 }else{
-                   
+                    if(temp<count){
+                        temp=count;
+                        break;
+                    }
                     break;
                 }
                
@@ -26,4 +29,3 @@ class Solution {
         
     }
 }
-// Title: Max Consecutive Ones
