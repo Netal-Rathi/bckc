@@ -10,11 +10,10 @@ class Solution {
                 }else{
                    
                     break;
-                }  
+                }
                
-            }
-            if(count==nums.length){
-                return count;
+               
+               
             }
             if(temp<count){
                 temp=count;
@@ -27,4 +26,3 @@ class Solution {
         
     }
 }
-// Title: Max Consecutive Ones
