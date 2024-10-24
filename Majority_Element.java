@@ -20,3 +20,4 @@ for(int i=0;i<nums.length;i++){
         return maxno;
     }
 }
+// Title: Majority Element
