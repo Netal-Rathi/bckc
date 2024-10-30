@@ -1,36 +1,35 @@
-import java.util.Arrays;
-
 class Solution {
     public void nextPermutation(int[] nums) {
-        int count = 0;
+      int count=0;
+for(int i=1;i<nums.length-1;i++){
+    if(nums[i]>nums[i+1]){
+        count++;
+    }else{
+        int temp=nums[i];
+        nums[i]=nums[i+1];
+        nums[i+1]=temp;
+        System.out.println(nums);
+        break;
 
-        
-        for (int i = 0; i < nums.length - 1; i++) {
-            if (nums[i + 1] > nums[i]) {
-                count++;
-            }
-        }
-
-
-        if (count == 0) {
-            Arrays.sort(nums);
-            return;
-        }
-int i;
-        for(i=nums.length-1;i>0;i--){
-            if(nums[i]>nums[i-1]){
-                for(int j=nums.length-1;j>=i;j--){
-                    int temp=nums[j];
-                    nums[j]=nums[i-1];
-                    nums[i-1]=temp;
-                    break;
-                }
-                break;
-            }
-        }
-
-        
-        Arrays.sort(nums, i, nums.length);
     }
-} 
-// Title: Next Permutation
+
+    int n=nums.length;
+    int j=n-1;
+    int k=0;
+    while(k<j){
+      int alter=nums[k];
+      nums[k]=nums[j];
+      nums[j]=alter;
+      j--; 
+      k++;
+
+    }
+    System.out.println(nums);
+
+}
+
+    
+}
+
+}
+    
