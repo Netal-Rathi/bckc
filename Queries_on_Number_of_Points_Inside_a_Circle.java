@@ -37,7 +37,11 @@ class Solution {
     }
 
     public int[] countPoints(int[][] points, int[][] queries) {
-     
+          for(int i=0;i<points.length;i++){
+            for(int j=0;j<points[0].length;j++){
+                System.out.print(points[i][j]);
+            }
+        }
          System.out.println();
         buildTree(points, 0, 0, points.length);
         for(int i=0;i<points.length;i++){
@@ -53,4 +57,3 @@ class Solution {
         return result;
     }
 }
-// Title: Queries on Number of Points Inside a Circle
