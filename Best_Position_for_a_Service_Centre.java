@@ -1,5 +1,5 @@
 class Solution {
-   public double getMinDistSum(int[][] positions) {
+    public double getMinDistSum(int[][] positions) {
 	double x = 0;
 	double y = 0;
 
@@ -35,4 +35,3 @@ private double distanceSum(double x, double y, int[][] positions) {
 	return res;
 }
 }
-// Title: Best Position for a Service Centre
