@@ -17,3 +17,5 @@ class Solution {
         return new ArrayList<>(anagramMap.values()); // Return the grouped anagrams as a list of lists
     }
 }
+
+// Title: Group Anagrams
