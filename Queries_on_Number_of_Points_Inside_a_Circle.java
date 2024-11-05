@@ -57,4 +57,3 @@ class Solution {
         return result;
     }
 }
-// Title: Queries on Number of Points Inside a Circle
