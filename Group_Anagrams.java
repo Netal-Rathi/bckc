@@ -1,21 +1,17 @@
-import java.util.*;
-
 class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
-        Map<String, List<String>> anagramMap = new HashMap<>(); // Use Map interface for better abstraction
-
+        HashMap<String, List<String>> anagramMap = new HashMap<>();
         for (String str : strs) {
-            char[] charArray = str.toCharArray(); // Convert string to char array
-            Arrays.sort(charArray); // Sort the characters to form the key
-            String sortedStr = new String(charArray); // Create a sorted string
-
-            // Initialize the list if the key does not exist
-            anagramMap.putIfAbsent(sortedStr, new ArrayList<>()); // Use putIfAbsent for cleaner code
-            anagramMap.get(sortedStr).add(str); // Add the original string to the corresponding list
+            char[] charArray = str.toCharArray();
+            Arrays.sort(charArray);
+            String sortedStr = new String(charArray);
+            if (!anagramMap.containsKey(sortedStr)) {
+                anagramMap.put(sortedStr, new ArrayList<>());
+            }
+            
+            anagramMap.get(sortedStr).add(str);
         }
-
-        return new ArrayList<>(anagramMap.values()); // Return the grouped anagrams as a list of lists
+        System.out.println(anagramMap);
+        return new ArrayList<>(anagramMap.values());
     }
 }
-
-// Title: Group Anagrams
