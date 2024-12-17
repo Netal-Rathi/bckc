@@ -24,12 +24,8 @@ class Solution {
             while(!(nums[i]>0 && nums[i+1]<0)){
                 
             if(nums[i]>0 && nums[i+1]>0){
-             int p=next_negative(nums,i);
-             int temp=nums[p];
-             for(int k=p;k>i+1;k--){
-                nums[k]=nums[k-1];
-
-               }
+                int temp=nums[next_negative(nums,i+1)];
+               nums[next_negative(nums,i+1)]= nums[i+1];
                nums[i+1]=temp;
                 
             }else if(nums[i]<0 && nums[i+1]<0){
@@ -58,4 +54,3 @@ class Solution {
 
     }
 }
-// Title: Rearrange Array Elements by Sign
