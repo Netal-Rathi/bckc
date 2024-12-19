@@ -7,7 +7,7 @@ class Solution {
         for(int j=i+1;j<n;j++){
             for(int k=j+1;k<n;k++){  
                 for(int l=k+1;l<n;l++){
-                    long sum= (long)nums[i]+nums[j]+nums[k];
+                    int sum= nums[i]+nums[j]+nums[k];
                   //  sum=sum+nums[k];
                     sum=sum+nums[l];
                      if(sum==target){
@@ -24,4 +24,3 @@ class Solution {
        return ans;
     }
 }
-// Title: 4Sum
