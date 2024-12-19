@@ -1,44 +1,26 @@
-import java.util.*;
-
 class Solution {
     public List<List<Integer>> fourSum(int[] nums, int target) {
-        List<List<Integer>> ans = new ArrayList<>();
-        if (nums.length < 4) {
-            return ans;
-        }
-        Arrays.sort(nums);
-        int n = nums.length;
-
-        for (int i = 0; i < n - 3; i++) {
-            // Skip duplicates for 'i'
-            if (i > 0 && nums[i] == nums[i - 1]) continue;
-
-            for (int j = i + 1; j < n - 2; j++) {
-                // Skip duplicates for 'j'
-                if (j > i + 1 && nums[j] == nums[j - 1]) continue;
-
-                int k = j + 1, l = n - 1;
-                while (k < l) {
-                    long sum = (long) nums[i] + nums[j] + nums[k] + nums[l]; // Avoid integer overflow
-                    if (sum == target) {
-                        ans.add(Arrays.asList(nums[i], nums[j], nums[k], nums[l]));
-
-                        // Skip duplicate elements after finding a valid combination
-                        while (k < l && nums[k] == nums[k + 1]) k++;
-                        while (k < l && nums[l] == nums[l - 1]) l--;
-
-                        k++;
-                        l--;
-                    } else if (sum < target) {
-                        k++;
-                    } else {
-                        l--;
-                    }
+       int n=nums.length;
+       
+       Set<List<Integer>> s1=new HashSet<>();
+       for(int i=0;i<n;i++){
+        for(int j=i+1;j<n;j++){
+            for(int k=j+1;k<n;k++){  
+                for(int l=k+1;l<n;l++){
+                    long sum= (long)nums[i]+nums[j]+nums[k];
+                  //  sum=sum+nums[k];
+                    sum=sum+nums[l];
+                     if(sum==target){
+                    List<Integer> li=Arrays.asList(nums[i],nums[j],nums[k],nums[l]);
+                       Collections.sort(li);
+                            s1.add(li);
                 }
+                }
+               
             }
         }
-        return ans;
+       }
+       List<List<Integer>> ans =new ArrayList<>(s1);
+       return ans;
     }
 }
-
-// Title: 4Sum
