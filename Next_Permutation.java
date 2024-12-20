@@ -24,9 +24,8 @@ int i;
                     int temp=nums[j];
                     nums[j]=nums[i-1];
                     nums[i-1]=temp;
-                   // break;
-                    }
                     break;
+                    }
                 }
                 break;
             }
@@ -36,4 +35,3 @@ int i;
         Arrays.sort(nums, i, nums.length);
     }
 } 
-// Title: Next Permutation
