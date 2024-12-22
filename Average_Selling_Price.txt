@@ -1,17 +1,10 @@
-SELECT 
-    p.product_id,
-    ROUND(
-        CASE 
-            WHEN SUM(u.units) = 0 THEN 0.00  -- Return 0.00 if no units are sold
-            ELSE SUM(p.price * u.units) / SUM(u.units) 
-        END, 2
-    ) AS average_price
-FROM 
-    Prices p
-LEFT JOIN 
-    UnitsSold u ON p.product_id = u.product_id
-    AND u.purchase_date BETWEEN p.start_date AND p.end_date
-GROUP BY 
-    p.product_id;
+# Write your MySQL query statement below and end_
+select  p.product_id  ,
+Round(case when sum(u.units)=0 then 0.00 else
+ SUM(p.price*u.units)/sum(u.units) end,2 )as average_price
+from Prices p
+LEFT join UnitsSold u on
+p.product_id=u.product_id
+AND  u.purchase_date between p.start_date AND p.end_date
+GROUP BY p.product_id  ;
 
-// Title: Average Selling Price
