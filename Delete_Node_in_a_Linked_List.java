@@ -12,10 +12,10 @@ class Solution {
         return ;
        }
 
-      /* if (node.next==null){
+       if (node.next==null){
         return ;
 
-       }*/
+       }
 
        node.val=node.next.val;
        node.next=node.next.next;
@@ -25,4 +25,3 @@ class Solution {
 
     }
 }
-// Title: Delete Node in a Linked List
