@@ -5,3 +5,5 @@ where id in (select managerId from Employee
 group by managerId
 having count(managerId)>=5
 );
+
+// Title: Managers with at Least 5 Direct Reports
