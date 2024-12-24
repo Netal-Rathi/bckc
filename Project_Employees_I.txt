@@ -1,6 +1,6 @@
 SELECT 
     p.project_id, 
-   Round( AVG(e.experience_years),2) AS average_years
+    AVG(e.experience_years) AS average_years
 FROM 
     Employee e 
 JOIN 
@@ -9,5 +9,3 @@ ON
     p.employee_id = e.employee_id
 GROUP BY 
     p.project_id;
-
-// Title: Project Employees I
