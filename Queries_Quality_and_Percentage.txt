@@ -4,3 +4,5 @@ select query_name, round(avg(rating/position),2) as quality ,
  ROUND(AVG(CASE WHEN rating > 3 THEN rating ELSE 0 END) / 100, 2) AS poor_query_percentage
 from Queries 
 group by query_name;
+
+// Title: Queries Quality and Percentage
