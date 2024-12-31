@@ -17,3 +17,5 @@ class Solution {
         return ans; // Return the full common prefix
     }
 }
+
+// Title: Longest Common Prefix
