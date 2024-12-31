@@ -1,18 +1,19 @@
 class Solution {
     public String longestCommonPrefix(String[] strs) {
-        String ans="";
+        if (strs == null || strs.length == 0) return ""; // Handle empty array
 
-        for(int i=0;i<strs[0].length();i++){
-            char current=strs[0].charAt(i);
-            for(int j=1;j<strs.length;j++){
-            if(current!=strs[j].charAt(i)){
-                return ans;
+        String ans = "";
+
+        for (int i = 0; i < strs[0].length(); i++) {
+            char currentChar = strs[0].charAt(i); // Take the i-th character from the first string
+            for (int j = 1; j < strs.length; j++) { // Compare with all other strings
+                if (i >= strs[j].length() || strs[j].charAt(i) != currentChar) {
+                    return ans; // Return the common prefix so far if characters don't match
+                }
             }
+            ans += currentChar; // Append the current character to the answer
         }
-        ans=ans+current;
-        
+
+        return ans; // Return the full common prefix
     }
-    return ans;
 }
-}
-// Title: Longest Common Prefix
