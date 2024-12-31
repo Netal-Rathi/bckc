@@ -15,4 +15,3 @@ class Solution {
     return ans;
 }
 }
-// Title: Longest Common Prefix
