@@ -1,20 +1,19 @@
-with first_logged_in as (
-    select player_id ,
-     min(event_date) as first_date
-     from Activity 
-     group by player_id
-
+WITH first_login AS (
+    SELECT 
+        player_id, 
+        MIN(event_date) AS first_date
+    FROM Activity
+    GROUP BY player_id
 ),
- consecutive_dates as (
-    select f.player_id 
-    from first_logged_in f 
-    join Activity a 
-    on a.player_id=f.player_id
-   AND a.event_date = DATE_ADD(f.first_date, INTERVAL 1 DAY)
-
+logged_in_next_day AS (
+    SELECT 
+        f.player_id
+    FROM first_login f
+    JOIN Activity a
+    ON f.player_id = a.player_id
+       AND a.event_date = DATE_ADD(f.first_date, INTERVAL 1 DAY)
 )
-select 
-Round(
-   IFNULL(count(distinct l.player_id)/count(distinct a.player_id),2),0) as fraction
-    from consecutive_dates l cross join Activity a ;
-// Title: Game Play Analysis IV
+SELECT 
+    ROUND(COUNT(DISTINCT l.player_id) * 1.0 / COUNT(DISTINCT a.player_id), 2) AS fraction
+FROM logged_in_next_day l
+CROSS JOIN Activity a;
