@@ -12,3 +12,5 @@ SELECT ROUND(COUNT(DISTINCT f.player_id) * 1.0 / COUNT(DISTINCT a.player_id), 2)
 FROM logged_back f
 JOIN Activity a
 ON f.player_id = a.player_id AND f.device_id = a.device_id;
+
+// Title: Game Play Analysis IV
