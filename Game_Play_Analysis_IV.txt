@@ -15,6 +15,5 @@ with first_logged_in as (
 )
 select 
 Round(
-   IFNULL(count(distinct l.player_id)/count(distinct a.player_id),0),2) as fraction
+   IFNULL(count(distinct l.player_id)/count(distinct a.player_id),2),0) as fraction
     from consecutive_dates l cross join Activity a ;
-// Title: Game Play Analysis IV
