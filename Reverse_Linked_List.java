@@ -10,8 +10,6 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
-        //itretive approch
-        /*
         ListNode prev=null;
         ListNode Next;
         ListNode current=head;
@@ -21,18 +19,8 @@ class Solution {
         prev=current;
         current=Next;
         }
-        head=prev;*/
-
-        if(head==null || head.next==null){
-            return head;
-        }
-
-        ListNode newhead=reverseList(head.next);
-        head.next.next=head;
-        head.next=null;
-
-        return newhead;
+        head=prev;
+        return head;
         
     }
 }
-// Title: Reverse Linked List
