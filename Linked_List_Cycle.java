@@ -21,8 +21,6 @@ public class Solution {
                 return true;
             }else{
                 map.put(head,1);
-                head=head.next;
-
             }
            
         }
@@ -31,4 +29,3 @@ public class Solution {
         
     }
 }
-// Title: Linked List Cycle
