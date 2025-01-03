@@ -1,32 +1,24 @@
-/**
- * Definition for singly-linked list.
- * class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) {
- *         val = x;
- *         next = null;
- *     }
- * }
- */
+import java.util.HashMap;
+
 public class Solution {
     public boolean hasCycle(ListNode head) {
-        HashMap<ListNode,Integer> map=new HashMap<>();
-        if(head==null|| head.next==null){
-            return false;
-        }
-        while(head!=null){
-          //  map.put(head,map.getorDefault(head,0)+1)
-            if(map.containsKey(head)){
+        // Initialize a HashMap to track visited nodes
+        HashMap<ListNode, Integer> map = new HashMap<>();
+
+        // Traverse the linked list
+        while (head != null) {
+            // If the current node is already in the map, there is a cycle
+            if (map.containsKey(head)) {
                 return true;
-            }else{
-                map.put(head,1);
             }
-           
+            // Mark the current node as visited
+            map.put(head, 1);
+
+            // Move to the next node
+            head = head.next;
         }
-      return false;
-        
-        
+
+        // If we reach the end of the list, there is no cycle
+        return false;
     }
 }
-// Title: Linked List Cycle
