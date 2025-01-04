@@ -18,3 +18,5 @@ JOIN
     FirstYearSales f
 ON 
     s.product_id = f.product_id AND s.year = f.first_year;
+
+// Title: Product Sales Analysis III
