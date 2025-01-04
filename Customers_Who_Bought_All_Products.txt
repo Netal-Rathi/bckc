@@ -7,3 +7,5 @@ on p.product_key=c.product_key
 group by c.customer_id
 having
 count(distinct c.product_key)=(select count(*) from product);
+
+// Title: Customers Who Bought All Products
