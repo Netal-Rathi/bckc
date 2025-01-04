@@ -1,9 +1,6 @@
-    select s.product_id,s.year as first_year,s.quantity,s.price
-    from sales s join product p
-    on s.product_id=p.product_id
+    select product_id,year as first_year,quantity,price
+    from sales 
     where year in(
         select min(year) from Sales
         group by product_id
     );
-
-// Title: Product Sales Analysis III
