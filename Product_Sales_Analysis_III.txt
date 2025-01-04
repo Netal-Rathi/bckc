@@ -8,3 +8,4 @@ from firsts f
 join sales s on
 f.product_id=s.product_id
 and f.first_year=s.year;
+// Title: Product Sales Analysis III
