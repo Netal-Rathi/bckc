@@ -30,3 +30,4 @@ class Solution {
         return head;
     }
 }
+// Title: Delete the Middle Node of a Linked List
