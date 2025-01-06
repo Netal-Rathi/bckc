@@ -10,60 +10,40 @@
  */
 class Solution {
     public ListNode sortList(ListNode head) {
-        // Base case: if the list is empty or has only one element
         if (head == null || head.next == null) {
-            return head;
+            return head; // Already sorted if the list is empty or has only one element
         }
 
-        // Step 1: Split the list into two halves
-        ListNode mid = getMid(head);
-        ListNode left = head;
-        ListNode right = mid.next;
-        mid.next = null; // Break the list into two halves
+        ListNode temp = head;
 
-        // Step 2: Recursively sort both halves
-        left = sortList(left);
-        right = sortList(right);
+        // Continue sorting until no swaps are needed in a complete pass
+        while (temp != null) {
+            ListNode current = temp;
+            boolean isSorted = true; // Assume that the list is sorted in this pass
 
-        // Step 3: Merge the sorted halves
-        return merge(left, right);
-    }
+            // Traverse the list starting from temp
+            while (current != null && current.next != null) {
+                if (current.val > current.next.val) {
+                    // Swap the values between current node and next node
+                    int tempVal = current.val;
+                    current.val = current.next.val;
+                    current.next.val = tempVal;
 
-    // Helper function to find the middle of the linked list
-    private ListNode getMid(ListNode head) {
-        ListNode slow = head, fast = head;
-        while (fast.next != null && fast.next.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
-        }
-        return slow;
-    }
-
-    // Helper function to merge two sorted linked lists
-    private ListNode merge(ListNode l1, ListNode l2) {
-        ListNode dummy = new ListNode(0);
-        ListNode current = dummy;
-
-        while (l1 != null && l2 != null) {
-            if (l1.val < l2.val) {
-                current.next = l1;
-                l1 = l1.next;
-            } else {
-                current.next = l2;
-                l2 = l2.next;
+                    // Since we made a swap, set isSorted to false
+                    isSorted = false;
+                }
+                current = current.next; // Move to the next node
             }
-            current = current.next;
+
+            // If no swaps were made, the list is sorted, so break the loop
+            if (isSorted) {
+                break;
+            }
+            
+            // Move to the next node for another pass
+            temp = temp.next;
         }
 
-        // Append the remaining elements, if any
-        if (l1 != null) {
-            current.next = l1;
-        } else if (l2 != null) {
-            current.next = l2;
-        }
-
-        return dummy.next;
+        return head;
     }
 }
-
-// Title: Sort List
