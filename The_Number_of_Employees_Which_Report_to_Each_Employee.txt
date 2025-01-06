@@ -12,3 +12,5 @@ JOIN Employees e
     ON m.emp_id = e.reports_to
 GROUP BY m.emp_id, m.name
 HAVING COUNT(e.reports_to) >= 1;
+
+// Title: The Number of Employees Which Report to Each Employee
