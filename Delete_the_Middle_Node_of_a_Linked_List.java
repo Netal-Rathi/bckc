@@ -13,8 +13,9 @@ class Solution {
         if(head==null|| head.next==null){
             return null;
         }
-        ListNode slow=head,fast=head,temp=null;
-        
+        ListNode slow=head;
+        ListNode temp=slow;
+        ListNode fast=head;
         while(fast.next!=null && fast.next.next!=null){
              temp=slow;
             slow=slow.next;
@@ -29,4 +30,3 @@ class Solution {
         return head;
     }
 }
-// Title: Delete the Middle Node of a Linked List
