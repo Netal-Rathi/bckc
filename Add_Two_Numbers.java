@@ -19,26 +19,25 @@ class Solution {
             }
 
             carry = sum / 10;  // Calculate carry for the next addition
-            temp = temp.next = new ListNode(sum % 10);  // Create new node for the current digit and move temp
+            temp.next = new ListNode(sum % 10);  // Create new node for the current digit
+            temp = temp.next;  // Move the temp pointer to the new node
         }
 
-        return l3.next;  // Reverse the result list before returning
+        return reverse(l3.next);  // Reverse the result list
     }
 
     // Function to reverse the linked list
-    // public ListNode reverse(ListNode head) {
-    //     ListNode prev = null, current = head, next = null;
+    public ListNode reverse(ListNode head) {
+        ListNode prev = null, current = head, next = null;
 
-    //     // Traverse the list and reverse the links
-    //     while (current != null) {
-    //         next = current.next;  
-    //         current.next = prev;  // Reverse the link
-    //         prev = current;  // Move prev to current
-    //         current = next;  // Move current to next
-    //     }
+        // Traverse the list and reverse the links
+        while (current != null) {
+            next = current.next;  // Store the next node
+            current.next = prev;  // Reverse the link
+            prev = current;  // Move prev to current
+            current = next;  // Move current to next
+        }
 
-    //     return prev;  // Return the new head of the reversed list
-    // }
+        return prev;  // Return the new head of the reversed list
+    }
 }
-
-// Title: Add Two Numbers
