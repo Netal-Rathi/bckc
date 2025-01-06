@@ -1,55 +1,16 @@
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) {
- *         val = x;
- *         next = null;
- *     }
- * }
- */
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        // HASH-map uses extra space O(n) to store values 
-        // HashMap<ListNode,Integer> map =new HashMap<>();
-        // while(headA!=null){
-        //     if(map.containsKey(headA)){
-        //         return headA;
-        //     }else{
-        //         map.put(headA,1);
-        //         headA=headA.next;
-        //     }
+        // Initialize two pointers for the two lists.
+        ListNode pointerA = headA;
+        ListNode pointerB = headB;
 
-        // }        
-
-        // while(headB!=null){
-
-        // if(map.containsKey(headB)){
-        //         return headB;
-        //     }else{
-        //         map.put(headB,1);
-        //         headB=headB.next;
-        //     }
-        // }
-        // return null;
-        ListNode pA=headA,pB=headB;
-
-
-        while(pA!=pB){
-            if(pA!=null){
-                pA=pA.next;
-            }else{
-              pA= headB;
-            }  
-
-               if(pB!=null){
-                pB=pB.next;
-            }else{
-                pB=headA;
-            }
+        // Traverse both lists. When one pointer reaches the end, redirect it to the head of the other list.
+        while (pointerA != pointerB) {
+            pointerA = (pointerA == null) ? headB : pointerA.next;
+            pointerB = (pointerB == null) ? headA : pointerB.next;
         }
-        return pA;
+
+        // The intersection node is either the intersection point or null if there's no intersection.
+        return pointerA;
     }
 }
-// Title: Intersection of Two Linked Lists
