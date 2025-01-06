@@ -1,16 +1,14 @@
-# Write your MySQL query statement below
-with mangers as (
-    select employee_id as emp_id,name
-     from Employees
+WITH managers AS (
+    SELECT employee_id AS emp_id, name
+    FROM Employees
 )
-select m.emp_id as employee_id,
-m.name as name 
-,count(e.reports_to) as  reports_count,
-Round(avg(e.age),0) as average_age
-from mangers m join
-Employees e on
-m.emp_id=e.reports_to
-group by e.reports_to
-having count(e.reports_to)>=1
-order by m.emp_id asc;
-// Title: The Number of Employees Which Report to Each Employee
+SELECT 
+    m.emp_id AS employee_id,
+    m.name AS name,
+    COUNT(e.reports_to) AS reports_count,
+    Round(AVG(e.age),0) AS average_age
+FROM managers m
+JOIN Employees e 
+    ON m.emp_id = e.reports_to
+GROUP BY m.emp_id, m.name
+HAVING COUNT(e.reports_to) >= 1;
