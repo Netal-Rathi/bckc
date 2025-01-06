@@ -11,16 +11,13 @@
 class Solution {
     public ListNode rotateRight(ListNode head, int k) {
         ListNode current=head,temp=head,prev=head;//current =alwasy first node 
-        if ( head==null ||head.next==null){
-            return head;
-        }
             int size=1;
         while(temp.next!=null){
             temp=temp.next;
             size++;
         }
         k=k%size;
-        if(k%size==0 ){
+        if(k%size==0 || head==null ||head.next==null){
             return head;
         }
         
@@ -41,4 +38,3 @@ class Solution {
         return head;
     }
 }
-// Title: Rotate List
