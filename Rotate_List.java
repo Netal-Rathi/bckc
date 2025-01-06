@@ -1,41 +1,41 @@
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
 class Solution {
     public ListNode rotateRight(ListNode head, int k) {
-        ListNode current=head,temp=head,prev=head;//current =alwasy first node 
-            int size=1;
-        while(temp.next!=null){
-            temp=temp.next;
+        if (head == null || head.next == null || k == 0) {
+            return head; // Handle edge cases
+        }
+
+        ListNode current = head, temp = head, prev = head;
+
+        // Find the length of the list
+        int size = 1;
+        while (temp.next != null) {
+            temp = temp.next;
             size++;
         }
-        k=k%size;
-        if(k%size==0 || head==null ||head.next==null){
-            return head;
+
+        // Reduce k to within bounds of the list length
+        k = k % size;
+        if (k == 0) {
+            return head; // No rotation needed
         }
-        
-        for(int i=0;i<k;i++){
-            temp=head;
-            prev=null;
-             while(temp.next!=null){
-            prev=temp;//second last node
-            temp=temp.next;//last node
-            //size++:
+
+        // Start the rotation process
+        for (int i = 0; i < k; i++) {
+            temp = head;
+            prev = null;
+
+            // Find the second last and last nodes
+            while (temp.next != null) {
+                prev = temp;
+                temp = temp.next;
+            }
+
+            // Adjust pointers to rotate
+            prev.next = null;  // Break the link at the second last node
+            temp.next = head;  // Point the last node to the current head
+            head = temp;       // Update the head to the last node
         }
-        prev.next=null;
-        temp.next=head;
-        head=temp;
-           
-            
-        }
+
         return head;
     }
 }
-// Title: Rotate List
