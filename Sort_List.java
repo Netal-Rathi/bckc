@@ -8,67 +8,60 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-
-
 class Solution {
-
-    //recursive merging
     public ListNode sortList(ListNode head) {
-        if(head==null || head.next==null){
+        // Base case: if the list is empty or has only one element
+        if (head == null || head.next == null) {
             return head;
         }
 
-        ListNode middle= findmid(head);
-        ListNode left=head;
-        ListNode right=middle.next;
-        middle.next=null;
-        
-         left=sortList(left);
-        right=sortList(right);
-        
-        return merge(left,right);
+        // Step 1: Split the list into two halves
+        ListNode mid = getMid(head);
+        ListNode left = head;
+        ListNode right = mid.next;
+        mid.next = null; // Break the list into two halves
+
+        // Step 2: Recursively sort both halves
+        left = sortList(left);
+        right = sortList(right);
+
+        // Step 3: Merge the sorted halves
+        return merge(left, right);
     }
 
-
-    // finding middle 
-    public ListNode findmid(ListNode head){
-        if(head==null || head.next==null){
-            return head;
-        }
-        ListNode slow=head,fast=head;
-        while(fast.next!=null && fast.next.next!=null){
-            fast=fast.next.next;
-            slow=slow.next;
+    // Helper function to find the middle of the linked list
+    private ListNode getMid(ListNode head) {
+        ListNode slow = head, fast = head;
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
         }
         return slow;
-        
     }
 
-    
-    //merging parts 
-    public ListNode merge(ListNode left,ListNode right){
-        ListNode temp=new ListNode(0);
-        ListNode current=temp;
-        
-        while(left!=null && right!=null){
-            if(left.val>right.val){
-                current.next=right;
-                right=right.next;
-            }else{
-                current.next=left;
-                left=left.next;
+    // Helper function to merge two sorted linked lists
+    private ListNode merge(ListNode l1, ListNode l2) {
+        ListNode dummy = new ListNode(0);
+        ListNode current = dummy;
 
+        while (l1 != null && l2 != null) {
+            if (l1.val < l2.val) {
+                current.next = l1;
+                l1 = l1.next;
+            } else {
+                current.next = l2;
+                l2 = l2.next;
             }
-            current=current.next;
-            
+            current = current.next;
         }
-        if(left!=null){
-                current.next=left;      
-                     }else{
-                        current.next=right;
-                     }
-                     return temp.next;
-    }
 
+        // Append the remaining elements, if any
+        if (l1 != null) {
+            current.next = l1;
+        } else if (l2 != null) {
+            current.next = l2;
+        }
+
+        return dummy.next;
+    }
 }
-// Title: Sort List
