@@ -1,44 +1,59 @@
+/*
+// Definition for a Node.
+class Node {
+    int val;
+    Node next;
+    Node random;
+
+    public Node(int val) {
+        this.val = val;
+        this.next = null;
+        this.random = null;
+    }
+}
+*/
+
 class Solution {
     public Node copyRandomList(Node head) {
         if (head == null) {
             return null;
         }
 
-        // Step 1: Create a copy of each node and link them together in an interweaved manner
-        Node current = head;
-        while (current != null) {
-            Node copy = new Node(current.val);
-            copy.next = current.next;
-            current.next = copy;
-            current = copy.next;
-        }
-
-        // Step 2: Assign random pointers for the copied nodes
-        current = head;
-        while (current != null) {
-            if (current.random != null) {
-                current.next.random = current.random.next;
-            }
-            current = current.next.next;
-        }
-
-        // Step 3: Separate the copied list from the original list
+        // Dummy node to simplify new list creation
         Node dummy = new Node(0);
-        Node copyCurrent = dummy;
-        current = head;
+        Node current = dummy; // Pointer to traverse and build the new list
+        Node temp = head;     // Pointer to traverse the original list
 
-        while (current != null) {
-            Node copy = current.next;
-            copyCurrent.next = copy;
-            copyCurrent = copy;
-
-            // Restore the original list
-            current.next = copy.next;
-            current = current.next;
+        // First pass: Copy nodes and next pointers
+        while (temp != null) {
+            current.next = new Node(temp.val); // Create a new node with the value of temp
+            current = current.next;           // Move the current pointer forward
+            temp = temp.next;                 // Move temp to the next node in the original list
         }
 
-        return dummy.next;
+        // Second pass: Copy random pointers
+        temp = head;              // Reset temp to the head of the original list
+        current = dummy.next;     // Start at the head of the new list
+        while (temp != null) {
+            if (temp.random != null) {
+                current.random = findNode(dummy.next, temp.random); // Map the random pointer
+            }
+            temp = temp.next;      // Move to the next node in the original list
+            current = current.next; // Move to the next node in the new list
+        }
+
+        return dummy.next; // Return the head of the new list
+    }
+
+    // Helper function to find a node in the copied list corresponding to a given original node
+    private Node findNode(Node copiedHead, Node target) {
+        Node temp = copiedHead;
+        while (temp != null) {
+            if (temp.val == target.val) {
+                return temp;
+            }
+            temp = temp.next;
+        }
+        return null;
     }
 }
-
-// Title: Copy List with Random Pointer
