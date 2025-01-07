@@ -1,48 +1,42 @@
-/*
-// Definition for a Node.
-class Node {
-    int val;
-    Node next;
-    Node random;
-
-    public Node(int val) {
-        this.val = val;
-        this.next = null;
-        this.random = null;
-    }
-}
-*/
-
 class Solution {
     public Node copyRandomList(Node head) {
-        Node dummy=new Node(0);
-        Node current=dummy;
-        Node temp=head;
-        while(temp!=null){
-            Node copy=new Node (temp.val);
-            copy.next=temp.next;
-            temp.next=copy;
-            temp=temp.next.next;
+        if (head == null) {
+            return null;
         }
 
+        // Step 1: Create a copy of each node and link them together in an interweaved manner
+        Node current = head;
+        while (current != null) {
+            Node copy = new Node(current.val);
+            copy.next = current.next;
+            current.next = copy;
+            current = copy.next;
+        }
 
-        temp=head;
-        while(temp!=null){
-            if(temp.random!=null){
-                temp.next.random=temp.random.next;
+        // Step 2: Assign random pointers for the copied nodes
+        current = head;
+        while (current != null) {
+            if (current.random != null) {
+                current.next.random = current.random.next;
             }
-            temp=temp.next.next;
+            current = current.next.next;
         }
-        temp=head;
 
-        while(temp!=null){
-            current.next=temp.next;
-            temp.next=temp.next.next;
-            current=current.next;
-            temp=temp.next;
+        // Step 3: Separate the copied list from the original list
+        Node dummy = new Node(0);
+        Node copyCurrent = dummy;
+        current = head;
+
+        while (current != null) {
+            Node copy = current.next;
+            copyCurrent.next = copy;
+            copyCurrent = copy;
+
+            // Restore the original list
+            current.next = copy.next;
+            current = current.next;
         }
+
         return dummy.next;
-
     }
 }
-// Title: Copy List with Random Pointer
