@@ -12,3 +12,4 @@ count(employee_id)=1;
 
 
 -- (case when count(employee_id)>2 then (case when primary_flag="M" then employee_id,department_id) else employee_id,departmet_id);;
+// Title: Primary Department for Each Employee
