@@ -1,0 +1,14 @@
+ select employee_id,department_id 
+from Employee 
+where
+ primary_flag="Y" 
+union
+ select employee_id,department_id 
+from Employee 
+group by employee_id having 
+count(employee_id)=1;
+
+
+
+
+-- (case when count(employee_id)>2 then (case when primary_flag="M" then employee_id,department_id) else employee_id,departmet_id);;
