@@ -32,16 +32,14 @@ class Solution {
         if(s1.length()>s2.length()){
             return false;
 
-        }       int k=s2.length()-1;
+        }
             for(int i=s1.length()-1 ; i>=0;i--){
-                if(s1.charAt(i)!=s2.charAt(k)){
+                if(s1.charAt(i)!=s2.charAt(i)){
                     return false;
                 }
-                k--;
             }
             return true;
         
     }
    
 }
-// Title: Count Prefix and Suffix Pairs I
