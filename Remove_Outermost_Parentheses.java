@@ -41,3 +41,4 @@ class Solution {
       return s1.toString();
     }
 }
+// Title: Remove Outermost Parentheses
