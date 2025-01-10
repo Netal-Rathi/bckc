@@ -2,10 +2,9 @@ class Solution {
     public boolean canConstruct(String s, int k) {
         if(s.length()==k){
             return true;
-            
         }
          HashMap<Character,Integer> map=new HashMap<>();
-        int evencount=0,oddcount=0,even=0,odd=0;
+        int evencount=0,oddcount=0;
 
         for(char c: s.toCharArray()){
             map.put(c,map.getOrDefault(c,0)+1);
@@ -18,28 +17,13 @@ class Solution {
             oddcount++;
         }
     }
-  for (Integer frequency : map.values()) {
-            if (frequency % 2 == 0) {
-                even++;
-            } else {
-                odd++;
-            }
-        }
-    
-        System.out.println("evencount :" + evencount + "  even_no :" + even);
-        System.out.println("odd :" + oddcount + "  odd_no: " + odd);
-        
-         if(evencount==0 && odd<=k){
-            return true;
-        }else if (evencount>0  &&  k>=oddcount%k){
-            return true;
-        }else{
-            return false;
-        }
-
-
-    
+        System.out.println("even" + evencount);
+        System.out.println("odd " + oddcount);
+    if(evencount>0  && k>=oddcount%k){
+        return true ;
+    }else{
+        return false;
+    }
 
 }
 }
-// Title: Construct K Palindrome Strings
