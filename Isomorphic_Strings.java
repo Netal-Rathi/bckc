@@ -15,12 +15,10 @@ class Solution {
             //   s.replaceAll(s.charAt(i),map.get(s.charAt(i)));
             //   charAt(i)=map.get(s.charAt(i));
                 
-            }else if(!map.containsValue(t.charAt(i))){
+            }else{
                 map.put(s.charAt(i),t.charAt(i));
              ans.append(map.get(s.charAt(i)));
                 
-            }else{
-                return false;
             }
         }
         System.out.println(ans.toString());
@@ -33,4 +31,3 @@ class Solution {
         
     }
 }
-// Title: Isomorphic Strings
