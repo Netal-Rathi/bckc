@@ -19,7 +19,7 @@ class Solution {
     }
         System.out.println("even" + evencount);
         System.out.println("odd " + oddcount);
-    if(k<=evencount && evencount%k==0 && k>=oddcount%k){
+    if(k<=evencount && k>=oddcount%k){
         return true ;
     }else{
         return false;
@@ -27,4 +27,3 @@ class Solution {
 
 }
 }
-// Title: Construct K Palindrome Strings
