@@ -1,44 +1,43 @@
 class Solution {
     public boolean rotateString(String s, String goal) {
-        if (s.length() != goal.length()) {
+        // Find all positions where the first character of goal occurs in s
+        if(s.length()!=goal.length()){
             return false;
         }
-        int ans[] = position(s, goal.charAt(0));
-       // int i = 0;
-        for (int j = 0; j < ans.length; j++) {
-            int start = ans[j];
-            boolean isvalid=true;
-            for (int k = 0; k < goal.length(); k++) {
+        int[] arr = position(s, goal.charAt(0));
+        
+        for (int i = 0; i < arr.length; i++) {
+            int start = arr[i];
+            boolean isMatch = true;
 
-                int idx = (start + k) % s.length();
-                if (goal.charAt(k) != s.charAt(idx)) {
-                    // continue;
-                    isvalid = false;
+            // Compare characters circularly
+            for (int j = 0; j < goal.length(); j++) {
+                int sIndex = (start + j) % s.length(); // Circular index in s
+                if (goal.charAt(j) != s.charAt(sIndex)) {
+                    isMatch = false;
                     break;
                 }
-
             }
-            if (isvalid) {
-                return true;
-                // break;
-            } 
-        }
-        return false;
 
+            // If a match is found, return true
+            if (isMatch) {
+                return true;
+            }
+        }
+
+        // If no match found, return false
+        return false;
     }
 
     public int[] position(String s, Character cg) {
-        int arr[] = new int[s.length()];
+        int[] arr = new int[s.length()];
         int j = 0;
         for (int i = 0; i < s.length(); i++) {
-            Character c = s.charAt(i);
-            if (c.equals(cg)) {
+            if (s.charAt(i) == cg) {
                 arr[j] = i;
                 j++;
             }
         }
-        return arr;
-        //return Arrays.copyOf(arr, j);
+        return Arrays.copyOf(arr, j); // Return only the valid positions
     }
 }
-// Title: Rotate String
