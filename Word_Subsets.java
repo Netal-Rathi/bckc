@@ -1,35 +1,42 @@
 class Solution {
     public List<String> wordSubsets(String[] words1, String[] words2) {
         List<String> ans=new ArrayList<>();
+      //  StringBuilder s1=new StringBuilder(String.join("",words1));
+     // StringBuilder temp=new StringBuilder();
+        String Hello="";
+        int count=0,checkcount=0;
 
-      int  maxcount []=new int[26];
-        for(String check:words2){
-           int count[]=new int [26];
-                for(char c:check.toCharArray()){
-                    count[c-'a']++;
+
+        for(String word : words1){
+            count=0;
+            for(String check: words2){
+                checkcount=0;
+             StringBuilder temp=new StringBuilder(word);
+         //  temp=word;
+                
+                for(int i=0;i<check.length();i++){
+                 //   StringBuilder temp=new StringBuilder(check);
+                
+                if(temp.toString().contains(Character.toString(check.charAt(i)))){
+                   // temp.replace(Character.toString(check.charAt(i)),"");
+              temp.deleteCharAt(temp.indexOf(Character.toString(check.charAt(i))));
+
+                    checkcount++;
+                }else{
+                    break;
                 }
-
-            for(int i=0;i<26;i++){
-                maxcount[i]=Math.max(maxcount[i],count[i]);
-            }
-
-        }
-        search : for(String word: words1){
-          int  maincheck[]=new int[26];
-            for(char c: word.toCharArray()){
-                maincheck[c-'a']++;
-            }
-            for(int i=0;i<26;i++){
-                if(maincheck[i]<maxcount[i]){
-                     continue search;
-                     
                 }
-               
+                if(checkcount==check.length()){
+                count++;
+                }
+                 
             }
-             ans.add(word);
-            
+            if(count==words2.length){
+                ans.add(word);
+                   }
+           
         }
-return ans;
+        return ans;
+
     }
 }
-// Title: Word Subsets
