@@ -15,7 +15,7 @@ class Solution {
                 for(int i=0;i<check.length();i++){
                  //   StringBuilder temp=new StringBuilder(check);
                 
-                if(temp.contains(Character.toString(check.charAt(i)))){
+                if(word.contains(Character.toString(check.charAt(i)))){
                     temp.replace(Character.toString(check.charAt(i)),"");
                     checkcount++;
                 }else{
@@ -36,4 +36,3 @@ class Solution {
 
     }
 }
-// Title: Word Subsets
