@@ -35,7 +35,7 @@ class Solution {
         
          if(evencount==0 && odd<=k){
             return true;
-        }else if (evencount>0  &&  k>=odd){
+        }else if (evencount>0  &&  k>=oddcount%k){
             return true;
         }else{
             return false;
@@ -46,4 +46,3 @@ class Solution {
 
 }
 }
-// Title: Construct K Palindrome Strings
