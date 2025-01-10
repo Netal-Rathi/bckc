@@ -4,10 +4,6 @@ class Solution {
             return true;
             
         }
-
-        if(s.length()<k){
-            return false;
-        }
          HashMap<Character,Integer> map=new HashMap<>();
         int evencount=0,oddcount=0,even=0,odd=0;
 
@@ -46,4 +42,3 @@ class Solution {
 
 }
 }
-// Title: Construct K Palindrome Strings
