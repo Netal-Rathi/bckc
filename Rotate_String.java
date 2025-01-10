@@ -1,9 +1,6 @@
 class Solution {
     public boolean rotateString(String s, String goal) {
         // Find all positions where the first character of goal occurs in s
-        if(s.length()!=goal.length()){
-            return false;
-        }
         int[] arr = position(s, goal.charAt(0));
         
         for (int i = 0; i < arr.length; i++) {
@@ -41,5 +38,3 @@ class Solution {
         return Arrays.copyOf(arr, j); // Return only the valid positions
     }
 }
-
-// Title: Rotate String
