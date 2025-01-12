@@ -4,7 +4,7 @@ class Solution {
         for(Character c: s.toCharArray()){
             if(c=='('){
                 depth++;
-               // temp=depth;
+                temp=depth;
             }else if(c==')'){
                 depth--;
             }else{
@@ -12,7 +12,7 @@ class Solution {
             }
             
             
-                count=Math.max(count,depth);
+                count=Math.max(count,temp);
 
             
             
@@ -21,4 +21,3 @@ class Solution {
         
     }
 }
-// Title: Maximum Nesting Depth of the Parentheses
