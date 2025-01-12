@@ -24,7 +24,7 @@ class Solution {
  
 }
 
-while(!open.isEmpty() && !stack1.isEmpty() ){
+while(!open.isEmpty() && !stack1.isEmpty() && open.peek()<stack1.peek()){
     open.pop();
     stack1.pop();
 }
@@ -36,4 +36,3 @@ if(!open.isEmpty()){
     return true;
 }
 }
-// Title: Check if a Parentheses String Can Be Valid
