@@ -11,14 +11,13 @@ class Solution {
                 continue;
             }
             
-            
+            if(depth==0){
                 count=Math.max(count,temp);
 
-            
+            }
             
         }
         return count;
         
     }
 }
-// Title: Maximum Nesting Depth of the Parentheses
