@@ -33,10 +33,6 @@ if(!open.isEmpty()){
     return false;
 
 }
-if(stack1.size()%2!=0){
-    return false;
-}
     return true;
 }
 }
-// Title: Check if a Parentheses String Can Be Valid
