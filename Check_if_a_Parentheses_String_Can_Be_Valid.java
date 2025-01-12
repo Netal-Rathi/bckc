@@ -1,48 +1,41 @@
+import java.util.Stack;
 class Solution {
-
     public boolean canBeValid(String s, String locked) {
-        int length = s.length();
-
-        // If length of string is odd, return false.
-        if (length % 2 == 1) {
+        if(s.length()%2==1){
             return false;
         }
+        Stack<Character> stack1=new Stack<>();
+        Stack<Character> open=new Stack<>();
 
-        Stack<Integer> openBrackets = new Stack<>();
-        Stack<Integer> unlocked = new Stack<>();
-
-        // Iterate through the string to handle '(' and ')'
-        for (int i = 0; i < length; i++) {
-            if (locked.charAt(i) == '0') {
-                unlocked.push(i);
-            } else if (s.charAt(i) == '(') {
-                openBrackets.push(i);
-            } else if (s.charAt(i) == ')') {
-                if (!openBrackets.empty()) {
-                    openBrackets.pop();
-                } else if (!unlocked.empty()) {
-                    unlocked.pop();
-                } else {
+        for(int i=0;i<s.length();i++){
+            if(locked.charAt(i)=='0'){
+                stack1.push(s.charAt(i));
+            }else if(s.charAt(i)=='('){
+                open.push(s.charAt(i));
+            }else if(s.charAt(i)==')' ){
+                if(!open.isEmpty()){
+                open.pop();
+                }else if(!stack1.isEmpty()){
+                    stack1.pop();
+                }else{
                     return false;
                 }
-            }
-        }
-
-        // Match remaining open brackets with unlocked characters
-        while (
-            !openBrackets.empty() &&
-            !unlocked.empty() &&
-            openBrackets.peek() < unlocked.peek()
-        ) {
-            openBrackets.pop();
-            unlocked.pop();
-        }
-
-        if (!openBrackets.empty()) {
-            return false;
-        }
-
-        return true;
     }
+ 
 }
-// Title: Check if a Parentheses String Can Be Valid
+
+while(!open.isEmpty() && !stack1.isEmpty() ){
+    open.pop();
+    stack1.pop();
+}
+
+if(!open.isEmpty()){
+    return false;
+
+}
+if(stack1.size()%2!=0){
+    return false;
+}
+    return true;
+}
+}
