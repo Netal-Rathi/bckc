@@ -3,9 +3,6 @@ class Solution {
         if(s.length()!=t.length()){
             return false;
         }
-        if(s.equals(t)){
-            return true;
-        }
         HashMap <Character,Integer> map1=new HashMap();
         HashMap <Character,Integer> map2=new HashMap();
         for(int i=0;i<s.length();i++){
@@ -33,4 +30,3 @@ class Solution {
         return true;
     }
 }
-// Title: Valid Anagram
