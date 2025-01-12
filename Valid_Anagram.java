@@ -10,12 +10,12 @@ class Solution {
                 map1.put(s.charAt(i),map1.getOrDefault(s.charAt(i),0)+1);
                 
             }else {
-                map1.put(s.charAt(i),1);
+                map1.put(s.charAt(i),0);
             }
               if(map2.containsKey(t.charAt(i))){
                 map2.put(t.charAt(i),map2.getOrDefault(t.charAt(i),0)+1);
             }else {
-                map2.put(t.charAt(i),1);
+                map2.put(t.charAt(i),0);
             }
 
 
@@ -30,4 +30,3 @@ class Solution {
         return true;
     }
 }
-// Title: Valid Anagram
