@@ -25,7 +25,7 @@ class Solution {
         }
 
            for(Character c : map1.keySet()){
-            if(!map1.get(c).equals(map2.get(c))){
+            if(map1.get(c)!=map2.get(c)){
                 return false;
             }
 
@@ -33,4 +33,3 @@ class Solution {
         return true;
     }
 }
-// Title: Valid Anagram
