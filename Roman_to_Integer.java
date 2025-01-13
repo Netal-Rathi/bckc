@@ -2,24 +2,22 @@ class Solution {
     public int romanToInt(String s) {
       //  int I=1,V=5,X=10,L=50,C=100,D=500,M=1000;
    //   HashMap <Character,Inteh>
-        int count=0, m=0;
+        int count=0;
         for(int i=0;i<s.length()-1;i++){
             int one=isvalid(s.charAt(i));
             int two=isvalid(s.charAt(i+1));
             if(one>=two){
                 count+=one;
                 System.out.println(count);
-                
+                if(i==s.length()-2){
+                    count+=two;
+                }
             }else{
                 count+=two-one;
                  System.out.println(count);
                  i++;
             }
-            m=i;
 
-        }
-        if(m==s.length()-2){
-        count+=isvalid(s.charAt(s.length()-1));
         }
         return count;
        
@@ -49,4 +47,3 @@ class Solution {
             return count;
     }
 }
-// Title: Roman to Integer
