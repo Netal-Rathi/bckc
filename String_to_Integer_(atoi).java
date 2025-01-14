@@ -1,31 +1,30 @@
 class Solution {
     public int myAtoi(String s) {
-        s=s.trim();
-        if(s.length()==0){
+         s=s.trim();
+         if(s.length()==0){
             return 0;
-        }
-        return helper(s,0,0,1);
+         }
+    long ans=0;
+    int i=0;
+    int sign=1;
+   if(s.charAt(0)=='-' || s.charAt(0)=='+'){
+    sign=(s.charAt(0)=='+') ? 1 :-1;
+    i++;
+   }
+
+   while(i<s.length() && Character.isDigit(s.charAt(i))){
+    ans=(ans*10) + (s.charAt(i)-'0');
+    //i++;
+    if(ans>Integer.MAX_VALUE){
+       if(sign==1){
+        return Integer.MAX_VALUE;
+       }else{
+        return Integer.MIN_VALUE;
+       }
     }
+    i++;
+   }
+   return (int) (ans*sign);
 
-    public int helper(String s,int i,long ans,int sign){
-        
-        if(i==s.length()){
-            return  (int)ans*sign;
-        }
-
-        if(i==0 && (s.charAt(i)=='-' || s.charAt(i)=='+')){
-           sign=s.charAt(i)=='-'? -1:1;
-            return helper(s,i+1,ans,sign);
-        }else if(Character.isDigit(s.charAt(i))){
-             ans=(ans* 10) + (s.charAt(i)-'0');
-            if(ans>Integer.MAX_VALUE){
-               return (sign == 1) ? Integer.MAX_VALUE : Integer.MIN_VALUE;
-            }
-          return helper(s,i+1,ans,sign);
-        }else{
-             return (int) ans * sign;
-         
-        }
     }
 }
-// Title: String to Integer (atoi)
