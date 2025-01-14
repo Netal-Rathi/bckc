@@ -13,3 +13,5 @@ from Accounts
 order by accounts_count desc;
 
 
+
+// Title: Count Salary Categories
