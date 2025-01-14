@@ -29,3 +29,5 @@ class Solution {
         return right - left - 1; // Return the length of the palindrome
     }
 }
+
+// Title: Longest Palindromic Substring
