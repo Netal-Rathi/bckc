@@ -1,25 +1,16 @@
-# Write your MySQL query statement bcount(account_id)
-select 'Low Salary'  as category ,
-COUNT(*) as accounts_count
-from Accounts
-where income< 20000
+SELECT 'Low Salary' AS category, COUNT(*) AS accounts_count
+FROM Accounts
+WHERE income < 20000
 
-union
+UNION
 
-select'Average Salary'  as category ,
-COUNT(*) as accounts_count
-from Accounts
-where income >= 20000 AND income <= 50000
+SELECT 'Average Salary' AS category, COUNT(*) AS accounts_count
+FROM Accounts
+WHERE income >= 20000 AND income <= 50000
 
-union 
+UNION
 
-select 'High Salary'  as category ,
-COUNT(*) as accounts_count
-from Accounts
-where income > 50000
+SELECT 'High Salary' AS category, COUNT(*) AS accounts_count
+FROM Accounts
+WHERE income > 50000;
 
-order by accounts_count desc;
-
-
-
-// Title: Count Salary Categories
