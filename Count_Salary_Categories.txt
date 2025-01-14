@@ -14,3 +14,5 @@ SELECT 'High Salary' AS category, COUNT(*) AS accounts_count
 FROM Accounts
 WHERE income > 50000;
 
+
+// Title: Count Salary Categories
