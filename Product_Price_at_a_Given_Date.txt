@@ -16,3 +16,5 @@ FROM (
     SELECT * FROM t2
 ) combined
 GROUP BY product_id;
+
+// Title: Product Price at a Given Date
