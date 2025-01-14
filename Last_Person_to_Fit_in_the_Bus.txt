@@ -1,0 +1,8 @@
+with cum_sum as (
+    select person_name,sum(weight) over(order by turn  ) as cumulitivesum,turn from Queue
+
+)
+select person_name from cum_sum
+where  cumulitivesum<=1000
+order by turn desc
+limit 1;
