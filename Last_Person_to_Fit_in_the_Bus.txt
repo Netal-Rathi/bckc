@@ -11,3 +11,5 @@ FROM CumulativeSum
 WHERE cumulative_weight = 1000
 ORDER BY turn DESC
 LIMIT 1;
+
+// Title: Last Person to Fit in the Bus
