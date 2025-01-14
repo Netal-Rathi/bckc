@@ -1,24 +1,31 @@
 class Solution {
     public String longestPalindrome(String s) {
-        int n = s.length();
-        int max_length = 0;
-        String result = "";
+        if (s == null || s.length() < 1) return "";
 
-        for (int i = 0; i < n; i++) { // Start index of substring
-            for (int j = i + 1; j <= n; j++) { // End index of substring (exclusive)
-                String ans = s.substring(i, j); // Substring from i to j-1
-                if (isvalid(ans) && ans.length() > max_length) {
-                    result = ans;
-                    max_length = ans.length();
-                }
+        int start = 0, end = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            // Odd-length palindrome (centered at one character)
+            int len1 = expandAroundCenter(s, i, i);
+            // Even-length palindrome (centered at two characters)
+            int len2 = expandAroundCenter(s, i, i + 1);
+            // Choose the longer palindrome
+            int len = Math.max(len1, len2);
+
+            if (len > end - start) {
+                // Update start and end indices of the longest palindrome
+                start = i - (len - 1) / 2;
+                end = i + len / 2;
             }
         }
-        return result;
+        return s.substring(start, end + 1);
     }
 
-    public Boolean isvalid(String s) {
-        return s.equals(new StringBuilder(s).reverse().toString());
+    private int expandAroundCenter(String s, int left, int right) {
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+            left--;  // Expand to the left
+            right++; // Expand to the right
+        }
+        return right - left - 1; // Return the length of the palindrome
     }
 }
-
-// Title: Longest Palindromic Substring
