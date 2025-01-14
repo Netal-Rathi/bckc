@@ -1,9 +1,13 @@
-with cum_sum as (
-    select person_name,sum(weight) over(order by turn ) as cumulitivesum,turn from Queue
-
+WITH CumulativeSum AS (
+    SELECT 
+        person_name,
+        turn,
+        weight,
+        SUM(weight) OVER (ORDER BY turn) AS cumulative_weight
+    FROM Queue
 )
-select person_name from cum_sum
-where  cumulitivesum<=1000
-order by turn desc
-limit 1;
-// Title: Last Person to Fit in the Bus
+SELECT person_name
+FROM CumulativeSum
+WHERE cumulative_weight <= 1000
+ORDER BY turn DESC
+LIMIT 1;
