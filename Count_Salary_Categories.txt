@@ -21,3 +21,5 @@ where income > 50000
 order by accounts_count desc;
 
 
+
+// Title: Count Salary Categories
