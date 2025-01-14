@@ -20,3 +20,5 @@ class Solution {
         return s.equals(new StringBuilder(s).reverse().toString());
     }
 }
+
+// Title: Longest Palindromic Substring
