@@ -1,13 +1,11 @@
 # Write your MySQL query statement below
 select e.employee_id 
 from Employees e 
-where manager_id in(
+where employee_id in(
     select  distinct employee_id from employees
     where manager_id is not null 
-    and manager_id not in(select distinct employee_idfrom employees
+    and manager_id not in(select distinct employee_id from employees
 )) and
 e.salary<31000
 order by e.employee_id;
 
-
-// Title: Employees Whose Manager Left the Company
