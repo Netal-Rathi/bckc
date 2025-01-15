@@ -8,3 +8,5 @@ where employee_id in(
 )) and
 e.salary<31000;
 
+
+// Title: Employees Whose Manager Left the Company
