@@ -29,3 +29,5 @@ class Solution {
        return maxv-minv;
     }
 }
+
+// Title: Sum of Beauty of All Substrings
