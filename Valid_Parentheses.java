@@ -14,7 +14,6 @@ class Solution {
                 return false;
             }
         }
-        return stack.isEmpty();
+        return true;
     }
 }
-// Title: Valid Parentheses
