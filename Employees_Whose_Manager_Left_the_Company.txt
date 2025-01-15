@@ -1,12 +1,7 @@
 # Write your MySQL query statement below
 select e.employee_id 
-from Employees e 
-where employee_id in(
-    select employee_id from employees
-    where manager_id is not null 
-    and manager_id not in(select distinct employee_id from employees
-)) and
-e.salary<31000;
+from Employees e left join Employees e1
+on e.employee_id=e1.manager_id
+where e.salary<31000
+and e1.manager_id is not null;
 
-
-// Title: Employees Whose Manager Left the Company
