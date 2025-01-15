@@ -5,3 +5,5 @@ on e.employee_id=e1.manager_id
 where e.salary<31000
 and e1.manager_id is not null;
 
+
+// Title: Employees Whose Manager Left the Company
