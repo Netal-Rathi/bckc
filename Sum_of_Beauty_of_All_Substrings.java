@@ -5,29 +5,21 @@ class Solution {
     public int beautySum(String s) {
         int sum = 0;
         for (int i = 0; i < s.length(); i++) {
-            int arr[]=new int[26];
-            for (int j = i; j < s.length(); j++) {
-                arr[s.charAt(j)-'a']++;
-                 sum += calc(arr);
-
-                
+            for (int j = i + 1; j < s.length(); j++) {
+                sum += calc(s.substring(i, j + 1));
             }
-           
         }
         return sum;
     }
 
-    public int calc(int arr[]) {
-        int maxv=0,minv=Integer.MAX_VALUE;
-       for(int elem : arr){
-        if(elem>0){
-        maxv=Math.max(maxv,elem);
-        minv=Math.min(minv,elem);
+    public int calc(String s) {
+        HashMap<Character, Integer> map = new HashMap<>();
+        for (Character c : s.toCharArray()) {
+            map.put(c, map.getOrDefault(c, 0) + 1);
         }
-
-       }
-       return maxv-minv;
+        List<Integer> frequencies = new ArrayList<>(map.values());
+        int max = Collections.max(frequencies); // Maximum frequency
+        int min = Collections.min(frequencies); // Minimum frequency
+        return max - min; // Difference between max and min frequency
     }
 }
-
-// Title: Sum of Beauty of All Substrings
