@@ -6,8 +6,5 @@ where employee_id in(
     where manager_id is not null 
     and manager_id not in(select distinct employee_id from employees
 )) and
-e.salary<31000
-order by e.employee_id;
+e.salary<31000;
 
-
-// Title: Employees Whose Manager Left the Company
