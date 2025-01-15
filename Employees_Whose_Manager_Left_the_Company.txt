@@ -9,3 +9,5 @@ where manager_id in(
 e.salary<31000
 order by e.employee_id;
 
+
+// Title: Employees Whose Manager Left the Company
