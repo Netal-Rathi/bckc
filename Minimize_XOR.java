@@ -10,7 +10,7 @@ class Solution {
        // int i=0;
         if(count1>count2){
             int toremove=count1-count2;
-            for(int i=s.length()-1; i>=0 && toremove>0 ;i--){
+            for(int i=0 ; i<s.length() && toremove>0 ;i++){
                 if(s.charAt(i)=='1'){
                     s.setCharAt(i,'0');
                     toremove--;
@@ -36,4 +36,3 @@ class Solution {
         
     }
 }
-// Title: Minimize XOR
