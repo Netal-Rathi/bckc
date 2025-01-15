@@ -4,11 +4,11 @@ class Solution {
         for(Character ch : s.toCharArray()){
             if(ch.equals('(') || ch.equals('{') || ch.equals('[')){
                 stack.push(ch);
-            }else if(ch.equals(')') && stack.peek().equals('(') && !stack.isEmpty()){
+            }else if(ch.equals(')') && stack.peek().equals('(')){
                 stack.pop();
-            }else if(ch.equals(']') && stack.peek().equals('[') && !stack.isEmpty()){
+            }else if(ch.equals(']') && stack.peek().equals('[')){
                 stack.pop();
-            }else if(ch.equals('}') && stack.peek().equals('{') && !stack.isEmpty()){
+            }else if(ch.equals('}') && stack.peek().equals('{')){
                 stack.pop();
             }else{
                 return false;
@@ -17,4 +17,3 @@ class Solution {
         return stack.isEmpty();
     }
 }
-// Title: Valid Parentheses
