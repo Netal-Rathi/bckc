@@ -23,3 +23,5 @@ class Solution {
         return max - min; // Difference between max and min frequency
     }
 }
+
+// Title: Sum of Beauty of All Substrings
