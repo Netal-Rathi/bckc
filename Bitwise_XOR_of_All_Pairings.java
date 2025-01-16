@@ -1,27 +1,29 @@
 class Solution {
 
     public int xorAllNums(int[] nums1, int[] nums2) {
-         int result=0;
-        int ans[]=new int[nums1.length*nums2.length];
-        for(int i=0;i<nums1.length;i++){
-            for(int j=0;j<nums2.length;j++){
-                ans[i]=nums1[i]^nums2[j];
-               result=result^ans[i];
-                System.out.print(result);
+        // Initialize XOR results for both arrays
+        int xor1 = 0;
+        int xor2 = 0;
 
+        // Get lengths of both arrays
+        int len1 = nums1.length;
+        int len2 = nums2.length;
+
+        // If nums2 length is odd, each element in nums1 appears odd times in final result
+        if (len2 % 2 != 0) {
+            for (int num : nums1) {
+                xor1 ^= num;
             }
         }
-        System.out.println();
-        System.out.print(0^4);
 
-       
-        // for(int i=0;i<ans.length/2;i+=2){
-        //     result=result^(ans[i]^ans[i+1]);
-        // }
-        // if(ans.length%2!=0){
-        //     result=result^ans[ans.length-1];
-        // }
-        return result;
+        // If nums1 length is odd, each element in nums2 appears odd times in final result
+        if (len1 % 2 != 0) {
+            for (int num : nums2) {
+                xor2 ^= num;
+            }
+        }
+
+        // Return XOR of both results
+        return xor1 ^ xor2;
     }
 }
-// Title: Bitwise XOR of All Pairings
