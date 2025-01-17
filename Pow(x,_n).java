@@ -5,9 +5,9 @@ class Solution {
             return 1.0;
         }
 
-        // if(n<0){
-        //     return 1 / myPow(x, -n);
-        // }
+        if(n<0){
+            return 1 / myPow(x, -n);
+        }
 
        double half=myPow(x,n/2);
        if(n%2==0){
@@ -18,4 +18,3 @@ class Solution {
         
     }
 }
-// Title: Pow(x, n)
