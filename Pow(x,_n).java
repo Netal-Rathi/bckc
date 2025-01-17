@@ -10,12 +10,12 @@ class Solution {
              return myPow(1/x, -n);
         }
 
-      if(n%2==0){
-        return myPow(x*x,n/2);
-      }else{
-        return x*myPow(x*x,n/2);
-      }
+       double half=myPow(x,n/2);
+       if(n%2==0){
+        return half*half;
+       }else{
+        return x*half*half;
+       }
         
     }
 }
-// Title: Pow(x, n)
