@@ -12,15 +12,6 @@ class Solution {
                 i++;
             }
         }
-        if(derived.length%2!=0 ){
-            
-            if(derived[derived.length-1]==1 ){
-                ans[derived.length-1]= (1-ans[0]);
-            }else{
-                ans[derived.length-1]=ans[0];
-            }
-
-        }
 
         for(int i=0;i<derived.length-1;i++){
        
@@ -34,4 +25,3 @@ class Solution {
         return true;
     }
 }
-// Title: Neighboring Bitwise XOR
