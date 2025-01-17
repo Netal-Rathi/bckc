@@ -18,7 +18,7 @@ class Solution {
         }else{
             ans[n-1]=1-ans[0];
         }
-      System.out.print(ans[n-1]);
+     //   System.out.print(ans[n-1]);
 
          for(int i=0;i<n-1;i++){
        
@@ -33,4 +33,3 @@ class Solution {
         
     }
 }
-// Title: Neighboring Bitwise XOR
