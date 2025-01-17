@@ -1,36 +1,36 @@
 class Solution {
     public boolean doesValidArrayExist(int[] derived) {
-        int n=derived.length;
-        int ans[]=new int[n];
-        ans[0]=0;
-         System.out.print(ans[0]);
-        for(int i=1;i<n-1;i++){
-            if(derived[i]==0 ){
-                ans[i]=ans[i-1];
-                 System.out.print(ans[i]);
+        int ans[]=new int[derived.length];
+        for(int i=0;i<derived.length-1;i++){
+            if(derived[i]==1){
+                ans[i]=0;
+                ans[i+1]=1;
+                i++;
             }else{
-                ans[i]=(1-ans[i-1]);
-                 System.out.print(ans[i]);
+                ans[i]=0;
+                ans[i+1]=0;
+                i++;
             }
         }
-        if(derived[n-1]==0){
-            ans[n-1]=ans[0];
-        }else{
-            ans[n-1]=1-ans[0];
-        }
-     //   System.out.print(ans[n-1]);
+        if(derived.length%2!=0 ){
+            
+            if(derived[derived.length-1]==1 ){
+                ans[derived.length-1]= (1-ans[0]);
+            }else{
+                ans[derived.length-1]=ans[0];
+            }
 
-         for(int i=0;i<n-1;i++){
+        }
+
+        for(int i=0;i<derived.length-1;i++){
        
             if(derived[i]!= (ans[i] ^ ans[i+1])){
                     return false;
             }
         }
-        if(derived[n-1] != (ans[0] ^ ans[n-1])){
+        if(derived[derived.length-1] != (ans[0] ^ ans[derived.length-1])){
             return false;
         }
         return true;
-        
     }
 }
-// Title: Neighboring Bitwise XOR
