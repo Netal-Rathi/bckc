@@ -8,3 +8,4 @@ public class Solution {
         return sum % 2 == 0;
     }
 }
+// Title: Neighboring Bitwise XOR
