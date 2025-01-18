@@ -6,3 +6,4 @@ SELECT
         ELSE COALESCE(LEAD(student) OVER(ORDER BY id), student)
     END AS student
 FROM Seat
+// Title: Exchange Seats
