@@ -1,33 +1,32 @@
 class Solution {
-    long mod = 1000000007;
-
     public int countGoodNumbers(long n) {
-        // long ans=1;
-        if (n % 2 == 0) {
-            // 5 to the power n% 2 calculates && 4 to the power
-            return (int) (((helper(5, n / 2) % mod) * (helper(4, n / 2) % mod)) % mod);
+        long mod = 1000000007;
 
-        } else {
-            // 4
-            return (int) (((helper(5, n / 2 + 1) % mod) * (helper(4, n / 2) % mod)) % mod);
+        // Even indices get 5, odd indices get 4
+        long evens = (n + 1) / 2;  // Count of even positions
+        long odds = n / 2;        // Count of odd positions
 
-        }
+        // Calculate modular exponentiation
+        long powerOf5 = modularExponentiation(5, evens, mod);
+        long powerOf4 = modularExponentiation(4, odds, mod);
 
+        // Return the result modulo 10^9 + 7
+        return (int) ((powerOf5 * powerOf4) % mod);
     }
 
-    public long helper(long n1, long m) {
-        m %= mod;
+    // Modular exponentiation to compute (base^exp) % mod
+    private long modularExponentiation(long base, long exp, long mod) {
+        long result = 1;
+        base %= mod;  // Ensure base is within mod range
 
-        if (m == 0) {
-            return 1;
+        while (exp > 0) {
+            if (exp % 2 == 1) {  // If exp is odd, multiply result by base
+                result = (result * base) % mod;
+            }
+            base = (base * base) % mod;  // Square the base
+            exp /= 2;
         }
 
-        if (m % 2 == 0) {
-            return (helper((n1 * n1) % mod, m / 2) % mod);
-        } else {
-            return ((n1 * helper((n1 * n1)% mod, m / 2)) % mod);
-        }
-
+        return result;
     }
 }
-// Title: Count Good Numbers
