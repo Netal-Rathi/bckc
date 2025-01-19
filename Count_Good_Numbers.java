@@ -1,6 +1,8 @@
 class Solution {
     public int countGoodNumbers(long n) {
-        
+        if(n==0){
+            return 1;
+        }
         long mod=1000000007;
         
     if(n%2==0){
@@ -30,4 +32,3 @@ class Solution {
 
     }
 }
-// Title: Count Good Numbers
