@@ -7,11 +7,11 @@ class Solution {
         
     if(n%2==0){
         // 5 to the power n% 2 calculates  && 4 to the power
-       return (int) ( ( (helper(5,n/2) % mod) * (helper(4,n/2) % mod)) % mod  );
+       return (int) ((helper(5,n/2) * helper(4,n/2)) % mod );
        
     }else{
         //4
-      return (int) ((( helper(5,n/2 +1) % mod)* (helper(4,n/2)% mod)) % mod) ;
+      return (int) (( helper(5,n/2 +1)* helper(4,n/2)) % mod );
      
     }
         
@@ -32,4 +32,3 @@ class Solution {
 
     }
 }
-// Title: Count Good Numbers
