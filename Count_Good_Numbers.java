@@ -5,31 +5,31 @@ class Solution {
          long ans=1;
         if (n % 2 == 0) {
             // 5 to the power n% 2 calculates && 4 to the power
-return (int)( (helper(5,n/2 , ans)  * helper(4,n/2 , ans)) % mod);
+return (int)( (helper(5,n/2)  * helper(4,n/2)) % mod);
 
         } else {
             // 4
-            return (int) ((helper(5, n / 2 + 1 , ans)  * helper(4, n / 2 , ans) ) % mod);
+            return (int) ((helper(5, n / 2 + 1)  * helper(4, n / 2) ) % mod);
 
         }
 
     }
 
-    public long helper(long n1, long m, long ans) {
-       
+    public long helper(long n1, long m) {
+        long ans=1;
         n1 %=  mod;
-      if(m==0){
-        return ans;
-      }
-        
+      
+        while(m>0){
       if(m%2==0){
-       return  helper(n1*n1 % mod ,m/2 ,ans);
+        n1=(n1*n1)% mod;
+        m=m/2;
+
       }else{
-       return  helper(n1, m-1 , ans*n1 % mod);
-       
+        ans=(ans*n1) % mod;
+        m-=1;
       }
-        
+        }
+        return ans ;
 
     }
 }
-// Title: Count Good Numbers
