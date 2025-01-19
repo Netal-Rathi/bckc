@@ -1,6 +1,8 @@
 class Solution {
-    long mod=1000000007;
-    public int countGoodNumbers(long n) {   
+    public int countGoodNumbers(long n) {
+        
+        long mod=1000000007;
+        
     if(n%2==0){
         // 5 to the power n% 2 calculates  && 4 to the power
        return (int) ( ( (helper(5,n/2) % mod) * (helper(4,n/2) % mod)) % mod  );
@@ -14,8 +16,7 @@ class Solution {
     }
 
     public long helper(long n1,long m){
-        m%=mod;
-                
+                long mod=1000000007;
         if(m==0){
             return 1;
         }
@@ -29,4 +30,3 @@ class Solution {
 
     }
 }
-// Title: Count Good Numbers
