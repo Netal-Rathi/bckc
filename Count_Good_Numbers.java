@@ -32,3 +32,4 @@ return (int)( (helper(5,n/2 , ans)  * helper(4,n/2 , ans)) % mod);
 
     }
 }
+// Title: Count Good Numbers
