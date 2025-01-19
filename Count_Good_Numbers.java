@@ -23,11 +23,10 @@ class Solution {
         }
 
         if (m % 2 == 0) {
-            return (helper((n1 * n1) % mod, m / 2) );
+            return (helper((n1 * n1) % mod, m / 2) % mod);
         } else {
-            return (n1 * helper((n1 * n1)% mod, m / 2) );
+            return ((n1 * helper((n1 * n1)% mod, m / 2)) % mod);
         }
 
     }
 }
-// Title: Count Good Numbers
