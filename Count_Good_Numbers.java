@@ -17,7 +17,7 @@ return (int)( (helper(5,n/2 , ans)  * helper(4,n/2 , ans)) % mod);
 
     public long helper(long n1, long m, long ans) {
        
-       // n1 %=  mod;
+        n1 %=  mod;
       if(m==0){
         return ans;
       }
@@ -32,4 +32,3 @@ return (int)( (helper(5,n/2 , ans)  * helper(4,n/2 , ans)) % mod);
 
     }
 }
-// Title: Count Good Numbers
