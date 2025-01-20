@@ -1,21 +1,22 @@
-
 class Solution {
     public int subarraySum(int[] nums, int k) {
-        int count = 0, prefixsum = 0;
-        HashMap<Integer, Integer> map = new HashMap<>();
-        map.put(0, 1);
-
-        for (int i = 0; i < nums.length; i++) {
-            prefixsum += nums[i];
-            if (map.containsKey(prefixsum - k)) {
-                count += map.get(prefixsum - k);
-
+        int sum=0;
+        int count=0;
+        for(int i=0;i<nums.length;i++){
+            sum=0;
+            for(int j=i;j<nums.length;j++){
+                
+                
+                sum=sum+nums[j];
+                
+                if(k==sum){
+                count++;
             }
-            map.put(prefixsum, map.getOrDefault(prefixsum, 0) + 1);
-
+            }
+            
         }
+      
         return count;
+        
     }
 }
-
-// Title: Subarray Sum Equals K
