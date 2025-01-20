@@ -3,18 +3,17 @@ class Solution {
         List<Integer> list=new ArrayList<>();
         HashMap <Integer,Integer> map=new HashMap<>();
         for(int i : nums){
-            if(map.containsKey(i)){
-                list.add(i);
-            }else{
-                map.put(i,1);
-            }
+            map.put(i, map.getOrDefault(i,0)+1);
 
         }
 
-        
+        for(int key : map.keySet()){
+            if(map.get(key)>1){
+                list.add(key);
+            }
+        }
         return list;
 
         
     }
 }
-// Title: Find All Duplicates in an Array
