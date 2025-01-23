@@ -5,23 +5,22 @@ class Solution {
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> ans = new ArrayList<>();
         List<Integer> arr = new ArrayList<>();
-        int i = 0;
-        helper(nums, arr, i, ans);
+        helper(arr, nums, 0, ans); 
         return ans;
     }
 
-    public void helper(int[] nums, List<Integer> arr, int i, List<List<Integer>> ans) {
-        if (i == nums.length) {
-            ans.add(new ArrayList<>(arr));
+    private void helper(List<Integer> arr, int[] nums, int index, List<List<Integer>> ans) {
+       
+        if (index == nums.length) {
+            ans.add(new ArrayList<>(arr)); 
             return;
         }
 
-        helper(nums, arr, i + 1, ans);
-        arr.add(nums[i]);
-        helper(nums, arr, i + 1, ans);
-        arr.remove(arr.size() - 1);
+        helper(arr, nums, index + 1, ans);
 
+    
+        arr.add(nums[index]);
+        helper(arr, nums, index + 1, ans);
+        arr.remove(arr.size() - 1); 
     }
 }
-
-// Title: Subsets
