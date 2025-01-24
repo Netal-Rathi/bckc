@@ -38,3 +38,5 @@ class Solution {
         return list; // Return the list of safe nodes
     }
 }
+
+// Title: Find Eventual Safe States
