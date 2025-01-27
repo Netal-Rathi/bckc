@@ -15,8 +15,6 @@ class Solution {
         }
 
 
-        return left;
+        return right;
     }
 }
-
-// Title: Search Insert Position
