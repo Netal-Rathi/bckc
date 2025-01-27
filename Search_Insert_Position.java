@@ -24,8 +24,7 @@ class Solution {
                 }
             }
         }
-       return target>nums[nums.length-1] ? nums.length:  0;
+       return target>nums.length-1 ? nums.length:  0;
     //    return nums.length;
     }
 }
-// Title: Search Insert Position
