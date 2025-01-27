@@ -6,17 +6,15 @@ class Solution {
             int mid = left + (right - left) / 2;
 
             if (nums[mid] == target) {
-                return mid; 
+                return mid; // Target found
             } else if (nums[mid] < target) {
-                left = mid + 1; 
+                left = mid + 1; // Search in the right half
             } else {
-                right = mid - 1; 
+                right = mid - 1; // Search in the left half
             }
         }
 
-
-        return right;
+        // If target is not found, `left` will be the correct insert position
+        return left;
     }
 }
-
-// Title: Search Insert Position
