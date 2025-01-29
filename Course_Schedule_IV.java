@@ -1,49 +1,28 @@
-import java.util.*;
-
 class Solution {
     public List<Boolean> checkIfPrerequisite(int numCourses, int[][] prerequisites, int[][] queries) {
-        // Graph representation
-        Map<Integer, List<Integer>> graph = new HashMap<>();
-        for (int i = 0; i < numCourses; i++) {
-            graph.put(i, new ArrayList<>());
-        }
-        
-        // Build adjacency list
-        for (int[] pre : prerequisites) {
-            graph.get(pre[0]).add(pre[1]);
-        }
-        
-        // Memoization map to avoid repeated DFS calls
-        Boolean[][] memo = new Boolean[numCourses][numCourses];
         List<Boolean> ans = new ArrayList<>();
-
-        // Process each query
-        for (int[] query : queries) {
-            ans.add(dfs(graph, memo, query[0], query[1]));
+        for (int query[] : queries) {
+            ans.add(dfs(prerequisites, query[1], query[0]));
         }
         return ans;
+
     }
 
-    private boolean dfs(Map<Integer, List<Integer>> graph, Boolean[][] memo, int src, int target) {
-        // If already computed, return memoized value
-        if (memo[src][target] != null) {
-            return memo[src][target];
-        }
-        
-        // If direct edge exists
-        if (graph.get(src).contains(target)) {
-            return memo[src][target] = true;
-        }
+    public Boolean dfs(int[][] p, int s, int t) {
 
-        // DFS traversal
-        for (int neighbor : graph.get(src)) {
-            if (dfs(graph, memo, neighbor, target)) {
-                return memo[src][target] = true;
+        for (int arr[] : p) {
+            if (arr[1] == s) {
+                if (arr[0] == t) {
+                    return true;
+                 //   break;
+                } else {
+                   if( dfs(p, arr[0], t)){
+                    return true;
+                   }
+                }
+
             }
         }
-        
-        return memo[src][target] = false;
+        return false;
     }
 }
-
-// Title: Course Schedule IV
