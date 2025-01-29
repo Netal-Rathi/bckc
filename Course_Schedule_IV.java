@@ -14,11 +14,8 @@ class Solution {
             if (arr[1] == s) {
                 if (arr[0] == t) {
                     return true;
-                 //   break;
                 } else {
-                   if( dfs(p, arr[0], t)){
-                    return true;
-                   }
+                    dfs(p, arr[0], t);
                 }
 
             }
@@ -26,4 +23,3 @@ class Solution {
         return false;
     }
 }
-// Title: Course Schedule IV
