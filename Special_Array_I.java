@@ -5,8 +5,7 @@ class Solution {
             return true;
         }
         
-        int parity = nums[0] % 2;  
-        
+        int parity = nums[0] % 2;  // Check the parity of the first element
         
         for (int i = 0; i < n; i++) {
             if (nums[i] % 2 != (i % 2 == 0 ? parity : 1 - parity)) {
@@ -17,5 +16,3 @@ class Solution {
         return true;
     }
 }
-
-// Title: Special Array I
