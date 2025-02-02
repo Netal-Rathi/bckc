@@ -17,3 +17,5 @@ class Solution {
         return true;
     }
 }
+
+// Title: Special Array I
