@@ -1,10 +1,16 @@
 class Solution {
     public int longestMonotonicSubarray(int[] nums) {
-        return helper(nums, 0, 1, 1, 1, 2); // Start with neutral status
+        int maxLength = 1; // Minimum length is 1 (single element)
+        
+        for (int i = 0; i < nums.length; i++) {
+            maxLength = Math.max(maxLength, helper(nums, i, i + 1, 1, 1, 2));
+        }
+        
+        return maxLength;
     }
 
     public int helper(int[] nums, int i, int n, int count, int ans, int status) {
-        if (n == nums.length || i==nums.length) {
+        if (n == nums.length) {
             return Math.max(ans, count);
         }
 
@@ -21,10 +27,8 @@ class Solution {
             return helper(nums, i, n + 1, count + 1, Math.max(count + 1, ans), status);
 
         } else {
-            status = 2; // Reset to neutral
-            return helper(nums, i + 1, i + 1 , 1, Math.max(count, ans), status);
+            // Start a new sequence from the next index
+            return Math.max(ans, count);
         }
     }
 }
-
-// Title: Longest Strictly Increasing or Strictly Decreasing Subarray
