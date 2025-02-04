@@ -10,13 +10,10 @@ class Solution {
         }
 
         if(n==0 || nums[n]>nums[n-1] ){
-          sum= sum+nums[n];
-          ans=Math.max(sum,ans);
-       return  helper(nums,n+1,sum,i,ans);
+       return  helper(nums,n+1,sum+nums[n],i,Math.max(sum,ans));
         }else{
           return helper(nums,n+1,nums[n],n,ans);
         }
     //    return ans;
     }
 }
-// Title: Maximum Ascending Subarray Sum
