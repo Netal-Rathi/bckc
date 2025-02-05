@@ -27,3 +27,4 @@ class Solution {
         return Arrays.equals(s1FrequencyMap, s2FrequencyMap);
     }
 }
+// Title: Check if One String Swap Can Make Strings Equal
