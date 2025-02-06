@@ -38,24 +38,22 @@ class Solution {
             map.add(num);
         }
         int ans=0;
-      //  int current=0;
-        //int count=1;
+        int current=0;
+        int count=1;
 
         for (int num : map){
                 if(!map.contains(num-1)){
-                  int  current=num;
-                   int  count=1;
-                
+                    current=num;
+                     count=1;
+                }
 
                 while(map.contains(current+1)){
                     current++;
                     count++;
                 }
                 ans=Math.max(count,ans);
-                }
         }
         return ans;
     
     }
 }
-// Title: Longest Consecutive Sequence
