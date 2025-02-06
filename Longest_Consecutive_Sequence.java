@@ -29,3 +29,5 @@ class Solution {
         return helper(nums, n + 1, 1, Math.max(count, ans));
     }
 }
+
+// Title: Longest Consecutive Sequence
