@@ -1,61 +1,46 @@
+import java.util.*;
+
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-        Set<List<Integer>> ans =new HashSet<>();
-        List<Integer> list=new ArrayList<>();
-        if (nums.length < 3) {
-            return new ArrayList<>(ans);
-            }
-            Arrays.sort(nums);
-        helper(nums,list,0,ans);
-        return new ArrayList<>(ans);
-    }
-    
+        List<List<Integer>> ans = new ArrayList<>();
+        Arrays.sort(nums); // Step 1: Sort the array
+       // int sum = 0;
 
-    public void helper(int [] nums,List<Integer> list,int n,Set<List<Integer>> ans){
-
-        if(n==nums.length){
-            if(list.size()==3 && (list.get(0)+list.get(1)+list.get(2))==0  && !ans.contains(list)){
-                ans.add(new ArrayList<>(list));
-               
+        int n = nums.length;
+        for (int i = 0; i < n - 2; i++) {
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
             }
-            return;
+                int j = i + 1, k = n - 1;
+                while (j < k) {
+                  int  sum = nums[i] + nums[j] + nums[k];
+                    if (sum == 0) {
+                        ans.add(new ArrayList<>(Arrays.asList(nums[i], nums[j], nums[k])));
+
+                        while (j<k &&nums[j] == nums[j + 1]) {
+                            j++;
+                        }
+                        
+                        while (j<k && nums[k] == nums[k - 1]) {
+                            k--;
+                        }
+                        j++;
+                        k--;
+                    } else if (sum <0) {
+                      
+                        j++;
+
+                    } else {
+                         
+                        k--;
+
+                    }
+
+                }
+            
         }
 
-        helper(nums,list,n+1,ans);
-        list.add(nums[n]);
-        helper(nums,list,n+1,ans);
-        list.remove(list.size()-1);
-        
-
+        return ans;
     }
+
 }
-
-
-
-
-
-
-
-//galat logic 
-// class Solution {
-// public List<List<Integer>> threeSum(int[] nums) {
-// List<List<Integer>> ans = new ArrayList<>();
-
-// int n = nums.length;
-// if (n < 3) {
-// return ans;
-// }
-// for (int i = 0; i < n - 2; i++) {
-// for (int j = i + 1; j < n - 1; j++) {
-// for (int k = j + 1; k < n; k++)
-
-// if (i != j && i != k && j != k
-// && nums[i] + nums[j] + nums[k] == 0) {
-// ans.add(new ArrayList<>(Arrays.asList(nums[i], nums[j], nums[k])));
-
-// }
-// }
-// }
-// return ans;
-// }
-// }
