@@ -27,15 +27,15 @@ class Solution {
                         j++;
                         k--;
                     } else if (sum <0) {
-                       while (j<k &&nums[j] == nums[j + 1]) {
-                            j++;
-                        }
+                        // while (nums[j] == nums[j + 1]) {
+                        //     j++;
+                        // }
                         j++;
 
                     } else {
-                         while (j<k && nums[k] == nums[k - 1]) {
-                            k--;
-                        }
+                        // while (nums[k] == nums[k - 1]) {
+                        //     k--;
+                        // }
                         k--;
 
                     }
@@ -48,5 +48,3 @@ class Solution {
     }
 
 }
-
-// Title: 3Sum
