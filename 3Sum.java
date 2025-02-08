@@ -9,14 +9,15 @@ class Solution {
         }
         Arrays.sort(nums);
         for (int i = 0; i < n - 2; i++) {
-          //  for (int j = i + 1; j < n - 1; j++) {
-                for (int k = i+ 2; k < n; k++)
+            for (int j = i + 1; j < n - 1; j++) {
+                for (int k = j + 1; k < n; k++)
 
-                    if ( nums[i] + nums[i+1] + nums[k] == 0) {
-                        ans.add(new ArrayList<>(Arrays.asList(nums[i], nums[i+1], nums[k])));
+                    if (i != j && i != k && j != k
+                            && nums[i] + nums[j] + nums[k] == 0) {
+                        ans.add(new ArrayList<>(Arrays.asList(nums[i], nums[j], nums[k])));
 
                     }
-           // }
+            }
         }
         return new ArrayList<>( ans);
     }
