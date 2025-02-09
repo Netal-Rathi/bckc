@@ -1,7 +1,5 @@
 class Solution {
     public int[][] merge(int[][] intervals) {
-    Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
-
         int m=intervals[0].length;
         int n=intervals.length;
         int arr[][]=new int [n][m];
@@ -11,8 +9,9 @@ class Solution {
         arr[0][1]=intervals[0][1];
 
         for(int i=1;i<n;i++){
-if(arr[j][0]<=intervals[i][0]  && arr[j][1]<=intervals[i][1] &&
-arr[j][1]>=intervals[i][0]) {
+if((arr[j][0]<=intervals[i][0]  && arr[j][1]<=intervals[i][1] &&
+arr[j][1]>=intervals[i][0])  ||  (arr[j][0]>=intervals[i][0]  && arr[j][1]>=intervals[i][1] &&
+arr[j][1]>=intervals[i][0])){
                 arr[j][0]=  Math.min(arr[j][0],intervals[i][0]);
                 arr[j][1]=Math.max(intervals[i][1],arr[j][1]);
               //  i=i++;
@@ -38,4 +37,3 @@ arr[j][1]>=intervals[i][0]) {
 
 // if(arr[j][0]<=intervals[i][0] && arr[j][1]<=intervals[i[1] &&
 // arr[j][1]=>intervals[i][0]){
-// Title: Merge Intervals
