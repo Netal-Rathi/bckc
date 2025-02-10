@@ -12,8 +12,8 @@ class Solution {
 if((arr[j][0]<=intervals[i][0]  && arr[j][1]<=intervals[i][1] &&
 arr[j][1]>=intervals[i][0])  ||  (arr[j][0]>=intervals[i][0]  && arr[j][1]>=intervals[i][1] &&
 arr[j][1]>=intervals[i][0])){
-                arr[j][0]=  Math.min(arr[j][0],intervals[i][0]);
-                arr[j][1]=Math.max(intervals[i][1],arr[j][1]);
+                //arr[j][0]=arr[i][0];
+                arr[j][1]=intervals[i][1];
               //  i=i++;
                // j++;
                 
