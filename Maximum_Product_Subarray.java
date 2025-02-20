@@ -1,9 +1,9 @@
 class Solution {
     public int maxProduct(int[] nums) {
         int res = Integer.MIN_VALUE;
-        for (int n : nums) {
-            res = Math.max(res, n);
-        }
+        // for (int n : nums) {
+        //     res = Math.max(res, n);
+        // }
 
         int curMax = 1, curMin = 1;
 
