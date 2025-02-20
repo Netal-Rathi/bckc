@@ -1,21 +1,18 @@
 class Solution {
     public int maxProduct(int[] nums) {
-        int res = Integer.MIN_VALUE;
-        // for (int n : nums) {
-        //     res = Math.max(res, n);
-        // }
+        int res=1,maxprod=Integer.MIN_VALUE,minprod=Integer.MAX_VALUE;
+        //int ans=Intgere.MAX_VALUE;
 
-        int curMax = 1, curMin = 1;
-
-        for (int n : nums) {
-            int temp = curMax * n;
-            curMax = Math.max(temp, Math.max(curMin * n, n));
-            curMin = Math.min(temp, Math.min(curMin * n, n));
-
-            res = Math.max(res, curMax);
-        }
-
-        return res;        
+        for(int i=0;i<nums.length;i++){
+                    res=res*nums[i];
+                  
+                    minprod=Math.min(res,minprod);
+                      maxprod=Math.max(res,Math.max(minprod,maxprod));
+                   
+                    
+                    
+                    
+            }
+      return maxprod ;
     }
 }
-// Title: Maximum Product Subarray
