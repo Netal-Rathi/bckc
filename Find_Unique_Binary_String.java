@@ -22,3 +22,5 @@ class Solution {
         return result;
     }
 }
+
+// Title: Find Unique Binary String
