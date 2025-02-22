@@ -1,13 +1,12 @@
 class Solution {
     public int hIndex(int[] citations) {
         HashMap<Integer,Integer> map=new HashMap<>();
-        // if(citations.length==1 && citations[0]==0){
-        //     return 0;
-        // }
+        if(citations.length==1 && citations[0]==0){
+            return 0;
+        }
         int max_h=Integer.MIN_VALUE;
         Arrays.sort(citations);
         for(int i = 0;i<citations.length;i++ ){
-            if(citations[i]!=0)
             map.put(citations.length-i , citations[i]);
         }
         System.out.println(map);
@@ -20,4 +19,3 @@ class Solution {
        return max_h;
     }
 }
-// Title: H-Index
