@@ -4,7 +4,7 @@ class Solution {
         int max_h=Integer.MIN_VALUE;
         Arrays.sort(citations);
         for(int i = 0;i<citations.length;i++ ){
-            map.put(citations.length-i , citations[i]);
+            map.put(citations[i],citations.length-i);
         }
         System.out.println(map);
 
