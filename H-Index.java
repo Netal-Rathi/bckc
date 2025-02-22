@@ -4,7 +4,7 @@ class Solution {
         // if(citations.length==1 && citations[0]==0){
         //     return 0;
         // }
-        int max_h=0;
+        int max_h=Integer.MIN_VALUE;
         Arrays.sort(citations);
         for(int i = 0;i<citations.length;i++ ){
             if(citations[i]!=0)
