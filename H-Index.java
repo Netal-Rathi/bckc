@@ -17,4 +17,3 @@ class Solution {
         
     }
 }
-// Title: H-Index
