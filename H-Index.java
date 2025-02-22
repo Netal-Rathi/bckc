@@ -1,19 +1,15 @@
 class Solution {
     public int hIndex(int[] citations) {
-        HashMap<Integer,Integer> map=new HashMap<>();
-        int max_h=Integer.MIN_VALUE;
-        Arrays.sort(citations);
-        for(int i = 0;i<citations.length;i++ ){
-            map.put(citations[i],citations.length-i);
-        }
-        System.out.println(map);
 
-        for(Map.Entry<Integer,Integer> entry: map.entrySet()){
-            if(entry.getKey() <= (entry.getValue())){
-                max_h=Math.max(max_h,entry.getKey());
+        int max_h = 0;
+        Arrays.sort(citations);
+        for (int i = 0; i < citations.length; i++) {
+
+            if (citations.length - i <= citations[i]) {
+                max_h = Math.max(max_h, citations.length - i);
             }
         }
+
         return max_h;
-        
     }
 }
