@@ -19,3 +19,4 @@ TimeLimitedCache.prototype.get = function(key) {
 TimeLimitedCache.prototype.count = function() {
     return this.cache.size;
 };
+// Title: Cache With Time Limit
