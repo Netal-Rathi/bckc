@@ -15,3 +15,4 @@ var compactObject = function(obj) {
 
     return compacted;
 };
+// Title: Compact Object
