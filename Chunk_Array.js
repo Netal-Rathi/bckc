@@ -25,3 +25,4 @@ var chunk = function(arr, size) {
     // if(subarr.length) res.push(subarr);
     // return res;
 };
+// Title: Chunk Array
