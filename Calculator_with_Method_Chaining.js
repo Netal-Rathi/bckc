@@ -61,3 +61,4 @@ class Calculator {
         return this.result;
     }
 }
+// Title: Calculator with Method Chaining
