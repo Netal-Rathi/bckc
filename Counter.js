@@ -4,3 +4,4 @@ function createCounter(start) {
     return count++;
   }
 }
+// Title: Counter
