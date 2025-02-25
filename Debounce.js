@@ -5,3 +5,4 @@ var debounce = function(fn, t = 1000) {
         timer = setTimeout(() => fn(...args), t);
     }
 };
+// Title: Debounce
