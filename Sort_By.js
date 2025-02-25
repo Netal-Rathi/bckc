@@ -13,3 +13,4 @@ var sortBy = function(arr, fn) {
 // -> A negative value indicates thtat a should come before b.
 // -> A Positive value indicates thtat a should come after b.
 // -> Zero or Null indicates that a and b are considered equal.
+// Title: Sort By
