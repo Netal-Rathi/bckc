@@ -17,10 +17,6 @@ class Solution {
 
             if(!map.containsKey(pattern.charAt(i)) &&  !map.containsValue(words[i])){
                 map.put(pattern.charAt(i),words[i]);
-            }else{
-             if(!map.containsKey(pattern.charAt(i)) &&  map.containsValue(words[i])){
-                return false;
-            }
             }
 
         }
