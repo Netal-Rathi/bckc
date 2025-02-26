@@ -9,9 +9,8 @@ class Solution {
    Set<Integer> ans=new HashSet<>();
 
         while( n!=1 && !ans.contains(sum)   ){
-             ans.add(sum);
             sum=0;
-          
+           ans.add(n);
             while(n!=0){
                 int digit=n%10;
                 sum+=digit*digit;
