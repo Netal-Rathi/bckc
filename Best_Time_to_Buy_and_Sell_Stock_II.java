@@ -1,28 +1,18 @@
 class Solution {
     public int maxProfit(int[] prices) {
-        // if(prices==Arrays.sort(prices)){
-        //     return 0;
-        // }
-        int sum=0,buy=0,sell=0;
-
-        for(int i=0;i<prices.length-1;i++){
-            while(i<prices.length-1 && prices[i]>prices[i+1] ){
-                i++;
-            }
-            System.out.println("buy : " + i);
-            buy=i;
-            while(i<prices.length-1  && (prices[i]<prices[i+1]  && prices[buy]<=prices[i+1]) ){
-                i++;
-            }
-            System.out.println("sell : " + i);
-            sell=i;
-            sum+= prices[sell]-prices[buy];
-            System.out.println("total : " + sum);
-            System.out.println("i : " + i);
-
+       int maxsell=prices[0], buy= prices[0] , profit=0;
+       for(int i=1;i<prices.length;i++){
+        if(prices[i]>=maxsell){
+            maxsell=prices[i];
+        }else{
+            profit+= maxsell- buy;
+            maxsell=prices[i];
+            buy=prices[i];
         }
 
-return sum;
-        
+       }
+       profit+= maxsell- buy;
+       return profit ;
+
     }
 }
