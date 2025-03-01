@@ -1,17 +1,18 @@
 class Solution {
     public boolean canJump(int[] nums) {
-        int maxjump=0;
-        for(int i=0;i<nums.length;i++){
-            if(i>maxjump){
-                return false;
-            }
-            maxjump=Math.max(maxjump,i+nums[i]);
-            if(maxjump>=nums.length-1){
+        if(nums.length==1){
                 return true;
             }
+        for(int i=0;i<nums.length;i++){
+            
+            if(i+nums[i]<nums.length){
+                i=i+nums[i];
+            }else{
+                
+                return false;
+            }
         }
-        return false;
+        return true ;
         
     }
 }
-// Title: Jump Game
