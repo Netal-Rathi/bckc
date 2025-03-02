@@ -1,22 +1,17 @@
 class Solution {
     public boolean canPlaceFlowers(int[] flowerbed, int n) {
-        if (n == 0) {
-            return true;
+        if(n==0){
+            return true ;
         }
-
-        for (int i = 0; i < flowerbed.length; i++) {
-
-            if ( (i == 0 && flowerbed[i] == 0 && flowerbed[i + 1] == 0) || (i == flowerbed.length - 1 && flowerbed[i] == 0 && flowerbed[i - 1] == 0)
-                    || (i > 0 && flowerbed[i] == 0 && flowerbed[i - 1] == 0 && flowerbed[i + 1] == 0))
-                     {
-                flowerbed[i] = 1;
+      
+        for(int i=1;i<flowerbed.length-1;i++){
+            if(flowerbed[i]==0 && flowerbed[i-1]==0 && flowerbed[i+1]==0 ){
+                flowerbed[i]=1;
                 n--;
             }
 
         }
-        System.out.println(n);
-        return n <= 0 ? true : false;
-
+        return n<=0 ? true : false ;
+        
     }
 }
-// Title: Can Place Flowers
