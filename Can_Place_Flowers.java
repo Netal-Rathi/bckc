@@ -1,11 +1,7 @@
 class Solution {
     public boolean canPlaceFlowers(int[] flowerbed, int n) {
-        if (flowerbed.length==1 ) {
-             if(flowerbed[0]==0){
+        if (n == 0) {
             return true;
-             }else{
-                return false;
-             }
         }
 
         for (int i = 0; i < flowerbed.length; i++) {
@@ -23,4 +19,3 @@ class Solution {
 
     }
 }
-// Title: Can Place Flowers
