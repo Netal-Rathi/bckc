@@ -6,3 +6,4 @@ class Solution {
         
     }
 }
+// Title: Count Total Number of Colored Cells
