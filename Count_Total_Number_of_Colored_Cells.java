@@ -3,14 +3,8 @@ class Solution {
         if(n==0){
             return 0;
         }
-
-        long sum=1;
-        for(int i=1;i<n;i++){
-            sum+=4*i;
-        }
-        return sum;
-
+        
+        return (n-1)*4 + 1;
         
     }
 }
-// Title: Count Total Number of Colored Cells
