@@ -4,8 +4,7 @@ class Solution {
             return 0;
         }
 
-       return 1 + (long) (n) * (n-1) * 2 ;
-       
+       return 1 + (n)* (n-1) * 2;
         
     }
 }
