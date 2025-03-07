@@ -1,31 +1,27 @@
 class Solution {
     public int countPrimes(int n) {
-         if(n<2){
+        if(n<2){
             return 0;
         }
         int count=0;
         for(int i=2;i<n;i++){
-            if(isprime(i)){
-                count++;
-            }
+                if(i==2 || i==3){
+                    count++;
+                }else if(i%2==0 || i%3==0 ){
+                    continue;
+                }else if(i>=5){
+                    for(int j=5;j*j<i;j+=6){
+                        if(i%(j-1)==0 || i%(j+1)==0){
+                            continue;
+                        }
+
+                    }
+                    count++;
+                    
+                }else{
+                    count++;
+                }
         }
         return count;
-      
-    }
-    public boolean isprime(int n){
-       
-        if(n==2|| n==3){
-            return true;
-        }
-        if(n%2==0 || n%3==0){
-            return false;
-        }
-
-        for(int i=5 ; i*i<=n;i+=6){
-            if(n%(i+1)==0 || n%(i+2)==0){
-                return false;
-            }
-        }
-        return true;
     }
 }
