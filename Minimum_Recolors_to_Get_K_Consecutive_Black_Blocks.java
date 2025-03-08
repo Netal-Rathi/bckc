@@ -21,3 +21,4 @@ class Solution {
        return k-max_colour;
     }
 }
+// Title: Minimum Recolors to Get K Consecutive Black Blocks
