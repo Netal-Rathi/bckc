@@ -3,20 +3,18 @@ class Solution {
         int n = colors.length;
         int count = 0;
         
-        for (int i = 0; i < n; i++) { 
-            boolean alternate = true;
+        for (int i = 0; i <= n - k; i++) { // Ensuring `i + k - 1` is within bounds
+            boolean isAlternating = true;
             
-            for (int j = 0; j < k - 1; j++) { 
-                int first = (i + j) % n;     
-                int second = (i + j + 1) % n; 
-                
-                if (colors[first] == colors[second]) { 
-                    alternate = false;
+            // Check if the segment of length `k` is alternating
+            for (int j = i; j < i + k - 1; j+=j+1%n) {
+                if (colors[j] == colors[j + 1]) {
+                    isAlternating = false;
                     break;
                 }
             }
             
-            if (alternate) {
+            if (isAlternating) {
                 count++;
             }
         }
