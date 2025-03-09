@@ -1,23 +1,35 @@
 class Solution {
+
     public int numberOfAlternatingGroups(int[] colors, int k) {
-        int n = colors.length;
-        int count = 0;
+        int length = colors.length;
+        int result = 0;
+
+        int alternatingElementsCount = 1;
+        int lastColor = colors[0];
+
+     
+        for (int i = 1; i < length + k - 1; i++) {
+            int index = i % length; 
+
+    
+            if (colors[index] == lastColor) {
         
-        for (int i = 0; i <= n - k; i++) { // Ensuring `i + k - 1` is within bounds
-            boolean isAlternating = true;
-            
-            // Check if the segment of length `k` is alternating
-            for (int j = i; j < i + k - 1; j+=j+1%n) {
-                if (colors[j] == colors[j + 1]) {
-                    isAlternating = false;
-                    break;
-                }
+                alternatingElementsCount = 1;
+                lastColor = colors[index];
+                continue;
             }
-            
-            if (isAlternating) {
-                count++;
+
+          
+            alternatingElementsCount += 1;
+
+          
+            if (alternatingElementsCount >= k) {
+                result++;
             }
+
+            lastColor = colors[index];
         }
-        return count;
+
+        return result;
     }
 }
