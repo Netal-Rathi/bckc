@@ -54,3 +54,4 @@ class Solution {
         return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
     }
 }
+// Title: Count of Substrings Containing Every Vowel and K Consonants II
