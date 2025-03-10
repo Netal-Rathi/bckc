@@ -1,57 +1,24 @@
 class Solution {
-
     public long countOfSubstrings(String word, int k) {
-        return atLeastK(word, k) - atLeastK(word, k + 1);
-    }
-
-    private long atLeastK(String word, int k) {
-        long numValidSubstrings = 0;
-        int start = 0;
-        int end = 0;
-       
-        HashMap<Character, Integer> vowelCount = new HashMap<>();
-        int consonantCount = 0;
-
- 
-        while (end < word.length()) {
-           
-            char newLetter = word.charAt(end);
-
-            if (isVowel(newLetter)) {
-                vowelCount.put(
-                    newLetter,
-                    vowelCount.getOrDefault(newLetter, 0) + 1
-                );
-            } else {
-                consonantCount++;
-            }
-
-           
-            while (vowelCount.size() == 5 && consonantCount >= k) {
-                numValidSubstrings += word.length() - end;
-                char startLetter = word.charAt(start);
-                if (isVowel(startLetter)) {
-                    vowelCount.put(
-                        startLetter,
-                        vowelCount.get(startLetter) - 1
-                    );
-                    if (vowelCount.get(startLetter) == 0) {
-                        vowelCount.remove(startLetter);
-                    }
+        int count = 0;
+        for (int i = 0; i < word.length(); i++) {
+            HashMap<Character, Integer> map = new HashMap<>();
+            int temp = k;
+            for (int j = i; j < word.length(); j++) {
+                if (word.charAt(j) == ('a') || word.charAt(j) == ('e') || word.charAt(j) == ('i')
+                        || word.charAt(j) == ('o') || word.charAt(j) == ('u')) {
+                    map.put(word.charAt(j), map.getOrDefault(word.charAt(j), 0) + 1);
                 } else {
-                    consonantCount--;
+                    temp--;
                 }
-                start++;
+                if (temp == 0 && (map.containsKey('a') && map.containsKey('e') && map.containsKey('i')
+                        && map.containsKey('o') && map.containsKey('u'))) {
+                    count++;
+                    
+                }
             }
-
-            end++;
         }
+        return count;
 
-        return numValidSubstrings;
-    }
-
-    private boolean isVowel(char c) {
-        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
     }
 }
-// Title: Count of Substrings Containing Every Vowel and K Consonants II
