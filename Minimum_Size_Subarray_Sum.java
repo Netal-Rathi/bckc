@@ -7,6 +7,8 @@ class Solution {
             
             
             while(start<=end && sum>=target){
+                   System.out.println(sumlen);
+                      System.out.println(sum);
                 minlength=Math.min(minlength,sumlen);
                 sum-=nums[start];
                 start++;
@@ -16,9 +18,8 @@ class Solution {
 
 
         }
-        return minlength==Integer.MAX_VALUE? 0 : minlength;
+        return minlength!=Integer.MAX_VALUE? minlength : 0;
 
         
     }
 }
-// Title: Minimum Size Subarray Sum
