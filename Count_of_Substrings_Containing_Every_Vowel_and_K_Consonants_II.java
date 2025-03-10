@@ -14,7 +14,7 @@ class Solution {
                 if (temp == 0 && (map.containsKey('a') && map.containsKey('e') && map.containsKey('i')
                         && map.containsKey('o') && map.containsKey('u'))) {
                     count++;
-                    
+                    break;
                 }
             }
         }
@@ -22,4 +22,3 @@ class Solution {
 
     }
 }
-// Title: Count of Substrings Containing Every Vowel and K Consonants II
