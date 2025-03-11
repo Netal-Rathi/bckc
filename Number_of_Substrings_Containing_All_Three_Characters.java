@@ -1,28 +1,18 @@
 class Solution {
+
     public int numberOfSubstrings(String s) {
-        int count = 0;
-        HashMap<Character, Integer> map = new HashMap<>();
-        int start = 0;
-        
-        for (int end = 0; end < s.length(); end++) {
-            // Expand window by adding s[end]
-            map.put(s.charAt(end), map.getOrDefault(s.charAt(end), 0) + 1);
-            
-            // Shrink window until it is no longer valid
-            while (map.size() == 3) {
-                count += (s.length() - end); // Count valid substrings
-                char startChar = s.charAt(start);
-                map.put(startChar, map.get(startChar) - 1);
-                
-                // Remove key if its frequency is 0
-                if (map.get(startChar) == 0) {
-                    map.remove(startChar);
-                }
-                
-                start++; // Move left pointer
-            }
+        int len = s.length();
+        // Track last position of a, b, c
+        int[] lastPos = { -1, -1, -1 };
+        int total = 0;
+
+        for (int pos = 0; pos < len; pos++) {
+            // Update last position of current character
+            lastPos[s.charAt(pos) - 'a'] = pos;
+
+            total += 1 + Math.min(lastPos[0], Math.min(lastPos[1], lastPos[2]));
         }
-        
-        return count;
+
+        return total;
     }
 }
