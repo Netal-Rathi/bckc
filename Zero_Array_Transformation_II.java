@@ -1,30 +1,33 @@
 class Solution {
-
     public int minZeroArray(int[] nums, int[][] queries) {
-        int n = nums.length, sum = 0, k = 0;
-        int[] differenceArray = new int[n + 1];
-
-        for (int index = 0; index < n; index++) {
-
-            while (sum + differenceArray[index] < nums[index]) {
-                k++;
-
-               
-                if (k > queries.length) {
-                    return -1;
-                }
-                int left = queries[k - 1][0], right = queries[k - 1][1], val =
-                    queries[k - 1][2];
-
-                if (right >= index) {
-                    differenceArray[Math.max(left, index)] += val;
-                    differenceArray[right + 1] -= val;
+        if(iszero(nums)){
+            return 0;
+        }
+        int count=0;
+        int [] temp=java.util.Arrays.copyOf(nums,queries.length);
+        for(int [] arr : queries){
+            for(int i=arr[0];i<=arr[1];i++){
+                if(arr[2] >= nums[i]){
+                    nums[i]=0;
+                }else{
+                    nums[i]=nums[i]-arr[2];
                 }
             }
-      
-            sum += differenceArray[index];
+            if(!Arrays.equals(temp,nums)){
+            count++;
+            }
+            if(iszero(nums)){
+                return count;
+            }
         }
-        return k;
+        return iszero(nums)? count : -1;
+    }
+    public boolean iszero(int [] nums){
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]!=0){
+                    return false;
+            }
+        }
+        return true;
     }
 }
-// Title: Zero Array Transformation II
