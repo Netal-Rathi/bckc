@@ -1,18 +1,26 @@
 class Solution {
 
     public int numberOfSubstrings(String s) {
-        int len = s.length();
-        // Track last position of a, b, c
-        int[] lastPos = { -1, -1, -1 };
-        int total = 0;
+        int count=0, start=0;
+        HashMap<Character,Integer> map=new HashMap<>();
+    
 
-        for (int pos = 0; pos < len; pos++) {
-            // Update last position of current character
-            lastPos[s.charAt(pos) - 'a'] = pos;
+        for(int end=0;end<s.length();end++){
+            Character l=s.charAt(end);
+            map.put(l,map.getOrDefault(l,0)+1);
 
-            total += 1 + Math.min(lastPos[0], Math.min(lastPos[1], lastPos[2]));
+            while(map.size()==3){
+                count+=s.length()-end;
+                map.put(s.charAt(start),map.get(s.charAt(start))-1);
+              
+                if(map.get(s.charAt(start))==0){
+                    map.remove(s.charAt(start));
+                }
+                start++;
+            }
+      
         }
-
-        return total;
+        return count;
+   
     }
 }
