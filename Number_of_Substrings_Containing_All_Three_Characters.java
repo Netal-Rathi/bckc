@@ -26,3 +26,5 @@ class Solution {
         return count;
     }
 }
+
+// Title: Number of Substrings Containing All Three Characters
