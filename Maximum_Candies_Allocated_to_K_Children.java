@@ -1,10 +1,12 @@
 class Solution {
     public int maximumCandies(int[] candies, long k) {
-        
+        // if(Arrays.stream(candies).sum()<k){
+        //     return 0;
+        // }
         int left=0;
         int right=Arrays.stream(candies).max().getAsInt();
         System.out.println(right);
- 
+  //   int ans=right;
         while(left<right){
            int mid=(left + right +1 )/2;
             if(checkmax(candies,k,mid)){
@@ -31,4 +33,3 @@ class Solution {
         return count>=k ;
     }
 }
-// Title: Maximum Candies Allocated to K Children
