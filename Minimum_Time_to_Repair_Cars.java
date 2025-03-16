@@ -3,7 +3,7 @@ import java.util.*;
 class Solution {
     public long repairCars(int[] ranks, int cars) {
         long left = 1; 
-        long right = (long) ranks[0] * (long) cars * (long) cars; 
+        long right = (long) ranks[0] * (long) cars * (long) cars; /
         long ans = right;
 
         while (left <= right) {
@@ -28,5 +28,3 @@ class Solution {
         return totalCars >= cars;
     }
 }
-
-// Title: Minimum Time to Repair Cars
