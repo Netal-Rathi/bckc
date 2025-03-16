@@ -2,7 +2,7 @@ import java.util.*;
 
 class Solution {
     public long repairCars(int[] ranks, int cars) {
-     //   Arrays.sort(ranks);
+        Arrays.sort(ranks);
     long left=1;
     long right=(long) ranks[0]*(long) cars* (long) cars;
     long ans=right;
@@ -33,5 +33,3 @@ long current=0;
     }
      
 }
-
-// Title: Minimum Time to Repair Cars
