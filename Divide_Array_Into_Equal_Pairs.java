@@ -6,14 +6,15 @@ class Solution {
             map.put(i,map.getOrDefault(i,0)+1);
         }
         for(Map.Entry <Integer,Integer> entry:map.entrySet()){
-            if(entry.getValue()%2!=0){
-                return false;
+            if(entry.getValue()%2==0){
+                count-=entry.getValue()/2;
 
+            }else{
+                return false;
             }
 
         }
-        return true ;
+        return count==0?true : false;
         
     }
 }
-// Title: Divide Array Into Equal Pairs
