@@ -1,32 +1,42 @@
-import java.util.*;
-
 class Solution {
-    public long repairCars(int[] ranks, int cars) {
-        long left = 1; 
-        long right = (long) ranks[0] * (long) cars * (long) cars; /
-        long ans = right;
 
-        while (left <= right) {
-            long mid = left + (right - left) / 2;
-            if (canRepairAllCars(ranks, cars, mid)) {
-                ans = mid; 
-                right = mid - 1; 
+    public long repairCars(int[] ranks, int cars) {
+        int minRank = ranks[0], maxRank = ranks[0];
+
+        // Find min and max rank dynamically
+        for (int rank : ranks) {
+            minRank = Math.min(minRank, rank);
+            maxRank = Math.max(maxRank, rank);
+        }
+        // Frequency array to count mechanics with each rank
+        int[] freq = new int[maxRank + 1];
+        for (int rank : ranks) {
+            minRank = Math.min(minRank, rank);
+            freq[rank]++;
+        }
+
+        // Minimum possible time, Maximum possible time
+        long low = 1, high = 1L * minRank * cars * cars;
+
+        // Perform binary search to find the minimum time required
+        while (low < high) {
+            long mid = (low + high) / 2;
+            long carsRepaired = 0;
+
+            // Calculate the total number of cars that can be repaired in 'mid' time
+            for (int rank = 1; rank <= maxRank; rank++) {
+                carsRepaired +=
+                    freq[rank] * (long) Math.sqrt(mid / (long) rank);
+            }
+
+            // Adjust the search boundaries based on the number of cars repaired
+            if (carsRepaired >= cars) {
+                high = mid; // Try to find a smaller time
             } else {
-                left = mid + 1; // Increase time if it's not possible
+                low = mid + 1; // Need more time
             }
         }
-        return ans;
-    }
 
-   
-    private boolean canRepairAllCars(int[] ranks, int cars, long time) {
-        long totalCars = 0;
-        for (int rank : ranks) {
-            totalCars += (long) Math.sqrt(time / rank); 
-            if (totalCars >= cars) return true; 
-        }
-        return totalCars >= cars;
+        return low;
     }
 }
-
-// Title: Minimum Time to Repair Cars
