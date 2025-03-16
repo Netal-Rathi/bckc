@@ -5,20 +5,20 @@ class Solution {
         }
         int left=0;
         int right=Arrays.stream(candies).max().getAsInt();
-  //   int ans=right;
+     int ans=right;
         while(left<right){
-           int mid=(left + right +1 )/2;
+           int mid=left + (right - left )/2;
             if(!checkmax(candies,k,mid)){
                 right=mid-1;
-             //   ans=right;
+                ans=right;
 
             }else{
-                left=mid;
+                left=mid+1;
 
             }
 
         }
-        return left;
+        return ans;
 
         
     }
@@ -31,4 +31,3 @@ class Solution {
         return count>=k ;
     }
 }
-// Title: Maximum Candies Allocated to K Children
