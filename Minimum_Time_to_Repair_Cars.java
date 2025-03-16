@@ -23,7 +23,7 @@ class Solution {
     public boolean isall(int[] ranks , int cars , long mid){
 long current=0;
         for(int rank : ranks){
-            current+=(long)Math.sqrt(mid/rank);
+            current+=Math.sqrt(mid/rank);
             if(current>=cars){
                 return true;
             }
@@ -33,5 +33,3 @@ long current=0;
     }
      
 }
-
-// Title: Minimum Time to Repair Cars
