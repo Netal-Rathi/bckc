@@ -1,8 +1,5 @@
 class Solution {
     public int lengthOfLongestSubstring(String s) {
-        if(s.length()==0){
-            return 0;
-        }
      HashSet<Character> set=new HashSet<>();
         int max_cnt=Integer.MIN_VALUE;
         int start=0;
@@ -21,4 +18,3 @@ class Solution {
         
     }
 }
-// Title: Longest Substring Without Repeating Characters
