@@ -1,52 +1,53 @@
-import java.util.*;
-
 class Solution {
+
     public List<String> findAllRecipes(
-            String[] recipes,
-            List<List<String>> ingredients,
-            String[] supplies) {
-                
-        HashSet<String> set = new HashSet<>(Arrays.asList(supplies)); 
-        HashMap<String, Integer> ind = new HashMap<>(); 
-        HashMap<String, List<String>> adj = new HashMap<>(); 
-        Queue<String> q = new LinkedList<>(); 
-        List<String> ans = new ArrayList<>();
+        String[] recipes,
+        List<List<String>> ingredients,
+        String[] supplies
+    ) {
+        // Track available ingredients and recipes
+        Set<String> available = new HashSet<>();
+        for (String supply : supplies) {
+            available.add(supply);
+        }
 
-        
-        for (int i = 0; i < recipes.length; i++) {
-          ind.put(recipes[i], 0);
-            for (String ingredient : ingredients.get(i)) {
-                if (!set.contains(ingredient)) { 
-                    adj.putIfAbsent(ingredient, new ArrayList<>());
-                    adj.get(ingredient).add(recipes[i]); 
-                    ind.put(recipes[i], ind.getOrDefault(recipes[i], 0) + 1); 
+        // Queue to process recipe indices
+        Queue<Integer> recipeQueue = new LinkedList<>();
+        for (int idx = 0; idx < recipes.length; ++idx) {
+            recipeQueue.offer(idx);
+        }
+
+        List<String> createdRecipes = new ArrayList<>();
+        int lastSize = -1;
+
+        // Continue while we keep finding new recipes
+        while (available.size() > lastSize) {
+            lastSize = available.size();
+            int queueSize = recipeQueue.size();
+
+            // Process all recipes in current queue
+            while (queueSize-- > 0) {
+                int recipeIdx = recipeQueue.poll();
+                boolean canCreate = true;
+
+                // Check if all ingredients are available
+                for (String ingredient : ingredients.get(recipeIdx)) {
+                    if (!available.contains(ingredient)) {
+                        canCreate = false;
+                        break;
+                    }
+                }
+
+                if (!canCreate) {
+                    recipeQueue.offer(recipeIdx);
+                } else {
+                    // Recipe can be created - add to available items
+                    available.add(recipes[recipeIdx]);
+                    createdRecipes.add(recipes[recipeIdx]);
                 }
             }
         }
 
-        
-        for (String recipe : recipes) {
-            if (ind.get(recipe) == 0) {
-                q.offer(recipe);
-            }
-        }
-
-       
-        while (!q.isEmpty()) {
-            String node = q.poll();
-            ans.add(node);
-
-            for (String n : adj.getOrDefault(node, new ArrayList<>())) {
-                ind.put(n, ind.get(n) - 1);
-                if (ind.get(n) == 0) {
-                    q.offer(n);
-                }
-            }
-        }
-
-        return ans;
+        return createdRecipes;
     }
-
 }
-
-// Title: Find All Possible Recipes from Given Supplies
