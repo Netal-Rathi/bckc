@@ -15,22 +15,21 @@ class Solution {
         int n=intervals.length;
         int arr[][]=new int [n][m];
      //   ArrayList<int[]> arr=new ArrayList<>()
-        int j=0;// new formed array index 
+        int j=0;
         arr[0][0]=intervals[0][0];
         arr[0][1]=intervals[0][1];
 
         for(int i=1;i<n;i++){
-            if (arr[j][1] >= intervals[i][0]) { 
+ if (arr[j][1] >= intervals[i][0]) { 
                 // Merge intervals
                 arr[j][0] = Math.min(arr[j][0], intervals[i][0]);
                 arr[j][1] = Math.max(arr[j][1], intervals[i][1]);
                 
             }else{
-                //add elements 
                 j++;
                   arr[j][0]=intervals[i][0];
                 arr[j][1]=intervals[i][1];
-             
+              //  j++;
                 
             }
         }
@@ -42,4 +41,3 @@ class Solution {
         return result;
     }
 }
-// Title: Count Days Without Meetings
