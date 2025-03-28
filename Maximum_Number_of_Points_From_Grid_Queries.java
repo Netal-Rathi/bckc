@@ -124,3 +124,4 @@ class UnionFind {
         return size[find(node)];
     }
 }
+// Title: Maximum Number of Points From Grid Queries
