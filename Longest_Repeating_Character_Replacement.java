@@ -1,29 +1,23 @@
-import java.util.*;
-
 class Solution {
     public int characterReplacement(String s, int k) {
-        HashMap<Character, Integer> map = new HashMap<>();
-        int start = 0, maxLength = 0, maxCount = 0;
-
-        for (int end = 0; end < s.length(); end++) {
-            char currentChar = s.charAt(end);
-            map.put(currentChar, map.getOrDefault(currentChar, 0) + 1);
-            maxCount = Math.max(maxCount, map.get(currentChar));
-
-        
-            while (end - start + 1 - maxCount > k) {
-                char startChar = s.charAt(start);
-                map.put(startChar, map.get(startChar) - 1);
-                if (map.get(startChar) == 0) {
-                    map.remove(startChar);
-                }
-                start++;
+        int start=0,max_len=0,count=0;
+        for(int end=0;end<s.length();end++){
+            char sa=s.charAt(start);
+            if(s.charAt(end)!=sa){
+                count++;
             }
+        while(count>k){
+                    if(s.charAt(start)!=sa){
+                            count--;
+                    }
+                    start++;
 
-            maxLength = Math.max(maxLength, end - start + 1);
         }
 
-        return maxLength;
+
+            max_len=Math.max(max_len,end-start+1);
+        }
+        return max_len;
+        
     }
 }
-// Title: Longest Repeating Character Replacement
