@@ -1,22 +1,29 @@
 class Solution {
     public int longestOnes(int[] nums, int k) {
-     int nzero=0,max_num=0,start=0;
-   // int calc=0;
+        int temp=0;
+        int max_num=0,start=0;
+    int calc=0;
         for(int end=0;end<nums.length;end++){
-           if(nums[end]==0){
-           nzero++;
-           }
+            if(nums[end]==1 ){
+                calc++;
+            }else{
+                if(nums[end]==0){
+                    temp++;
+                    calc++;
+                  
+                }
+            }
 
-            while(nzero>k){
+            while(temp>k){
                 if(nums[start]==0){
                   
-                    nzero--;
+                    temp--;
                 }
-                 // calc-=1;
+                  calc-=1;
                 start++;
             }
 
-            max_num=Math.max(max_num,end-start+1);
+            max_num=Math.max(max_num,calc);
            
 
            }
@@ -26,5 +33,3 @@ class Solution {
        
         
     }
-
-// Title: Max Consecutive Ones III
