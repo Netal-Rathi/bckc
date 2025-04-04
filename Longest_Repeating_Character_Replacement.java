@@ -21,3 +21,4 @@ class Solution {
         
     }
 }
+// Title: Longest Repeating Character Replacement
