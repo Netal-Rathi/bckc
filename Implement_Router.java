@@ -1,5 +1,5 @@
 class Router {
-   List<int[]> router = new ArrayList<>();
+    Queue<int[]> router = new LinkedList<>();
 
     int memoryLimit;
 
@@ -46,5 +46,3 @@ class Router {
         return count;
     }
 }
-
-// Title: Implement Router
