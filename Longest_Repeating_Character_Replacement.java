@@ -3,7 +3,9 @@ class Solution {
         int[] count = new int[26]; // Equivalent to vector<int> cou(26, 0)
         int n = s.length();
         int ans = 0;
-       
+        if (n <= k) {
+            return n;
+        }
         int left = 0, right = 0;
         int maxFreq = 0;
         
@@ -22,4 +24,3 @@ class Solution {
         return ans;
     }
 }
-// Title: Longest Repeating Character Replacement
