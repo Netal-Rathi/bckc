@@ -26,3 +26,4 @@ class Solution {
         return maxLength;
     }
 }
+// Title: Longest Repeating Character Replacement
