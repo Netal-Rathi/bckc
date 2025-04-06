@@ -1,27 +1,28 @@
+import java.util.*;
+
 class Solution {
     public int characterReplacement(String s, int k) {
-        int[] count = new int[26]; // Equivalent to vector<int> cou(26, 0)
-        int n = s.length();
-        int ans = 0;
-        if (n <= k) {
-            return n;
-        }
-        int left = 0, right = 0;
-        int maxFreq = 0;
-        
-        while (right < n) {
-            char ch = s.charAt(right);
-            count[ch - 'A']++;
-            right++;
-            maxFreq = Math.max(count[ch - 'A'], maxFreq);
+        HashMap<Character, Integer> map = new HashMap<>();
+        int start = 0, maxLength = 0, maxCount = 0;
 
-            if ((right - left - maxFreq) > k) {
-                count[s.charAt(left) - 'A']--;
-                left++;
+        for (int end = 0; end < s.length(); end++) {
+            char currentChar = s.charAt(end);
+            map.put(currentChar, map.getOrDefault(currentChar, 0) + 1);
+            maxCount = Math.max(maxCount, map.get(currentChar));
+
+        
+            while (end - start + 1 - maxCount > k) {
+                char startChar = s.charAt(start);
+                map.put(startChar, map.get(startChar) - 1);
+                if (map.get(startChar) == 0) {
+                    map.remove(startChar);
+                }
+                start++;
             }
-            ans = Math.max(ans, right - left);
+
+            maxLength = Math.max(maxLength, end - start + 1);
         }
-        return ans;
+
+        return maxLength;
     }
 }
-// Title: Longest Repeating Character Replacement
