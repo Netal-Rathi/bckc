@@ -1,4 +1,3 @@
-
 class Solution {
     public int numberOfSubarrays(int[] nums, int k) {
         int start=0,prefixsubarray=0,oddcount=0,result=0;
@@ -22,4 +21,3 @@ class Solution {
         return result;
     }
 }
-// Title: Count Number of Nice Subarrays
