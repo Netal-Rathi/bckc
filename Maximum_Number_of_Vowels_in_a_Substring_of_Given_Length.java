@@ -20,7 +20,7 @@ class Solution {
             if (isVowel(s.charAt(i - k))) {
                 count--;
             }
-            
+            /
             if (isVowel(s.charAt(i))) {
                 count++;
             }
@@ -37,4 +37,3 @@ class Solution {
                c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U';
     }
 }
-// Title: Maximum Number of Vowels in a Substring of Given Length
