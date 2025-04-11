@@ -1,40 +1,33 @@
 class Solution {
     public int maxVowels(String s, int k) {
-        if (s.length() < k) {
+        if(s.length()<k){
             return 0;
         }
-        
-        int max_len = 0;
-        int count = 0;
-        
-     
-        for (int i = 0; i < k; i++) {
-            if (isVowel(s.charAt(i))) {
-                count++;
+        String vowel="aeiouAEIOU";
+        int start=0,max_len=0;
+        for(int i=0;i<k;i++){
+            if(vowel.contains(String.valueOf(s.charAt(i)))){
+                    max_len++;
             }
         }
-        max_len = count;
-  
-        for (int i = k; i < s.length(); i++) {
-        
-            if (isVowel(s.charAt(i - k))) {
-                count--;
-            }
-            /
-            if (isVowel(s.charAt(i))) {
+        int count=max_len;
+
+        for(int i=k-1;i<s.length();i++){
+            char c=s.charAt(i);
+            
+            if(i!=k-1 && vowel.contains(String.valueOf(c))){
                 count++;
             }
-       
-            max_len = Math.max(max_len, count);
+                while(i-start+1>k){
+                   if(vowel.contains(String.valueOf(s.charAt(start)))){
+                    count--;
+                   }
+                   start++;
+                        
+                }
+                    max_len=Math.max(max_len,count);
         }
-        
         return max_len;
-    }
-    
-  
-    private boolean isVowel(char c) {
-        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ||
-               c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U';
+        
     }
 }
-// Title: Maximum Number of Vowels in a Substring of Given Length
