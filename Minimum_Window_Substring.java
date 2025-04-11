@@ -1,46 +1,52 @@
 class Solution {
     public String minWindow(String s, String t) {
-        if (t.length() > s.length()) return "";
-        
-        Map<Character, Integer> target = new HashMap<>();
-        for (char c : t.toCharArray()) {
-            target.put(c, target.getOrDefault(c, 0) + 1);
+        if (t.length() > s.length()) {
+            return "";
         }
-        
-        Map<Character, Integer> window = new HashMap<>();
-        int left = 0, valid = 0;
-        int minLen = Integer.MAX_VALUE;
-        int resultStart = 0;
-        
-        for (int right = 0; right < s.length(); right++) {
-            char c = s.charAt(right);
-            if (target.containsKey(c)) {
-                window.put(c, window.getOrDefault(c, 0) + 1);
-                if (window.get(c).equals(target.get(c))) {
+        HashMap<Character, Integer> map1 = new HashMap<>();
+        for (int i = 0; i < t.length(); i++) {
+            map1.put(t.charAt(i), map1.getOrDefault(t.charAt(i), 0) + 1);
+        }
+        HashMap<Character, Integer> map2 = new HashMap<>();
+        int start = 0, res = 0, valid = 0, left = 0;
+        //   String min_req="";
+        int min_len = Integer.MAX_VALUE;
+        for (int i = 0; i < s.length(); i++) {
+            char d = s.charAt(i);
+            //  if (t.contains(String.valueOf(d)))
+            if (map1.containsKey(d)) {
+                map2.put(s.charAt(i), map2.getOrDefault(s.charAt(i), 0) + 1);
+                if (map2.get(s.charAt(i)).equals(map1.get(s.charAt(i)))) {
                     valid++;
                 }
             }
-            
-            while (valid == target.size()) {
-                // Update minimum window
-                if (right - left + 1 < minLen) {
-                    minLen = right - left + 1;
-                    resultStart = left;
+
+            while (valid == map1.size()) {
+
+                if (i - start + 1 < min_len) {
+                    min_len = i - start + 1;
+                    left = start;
                 }
-                
-                // Shrink window from left
-                char leftChar = s.charAt(left);
-                if (target.containsKey(leftChar)) {
-                    if (window.get(leftChar).equals(target.get(leftChar))) {
-                        valid--;
+                //   left=start;
+                char l = s.charAt(start);
+                if (map1.containsKey(l)) {
+                    if (map2.containsKey(l)) {
+                        map2.put(l, map2.get(l)-1);
+                        // if (map2.get(s.charAt(start)) == 0) {
+                        //     map2.remove(s.charAt(start));
+                        // }
+
+                        if (map2.get(l) < map1.get(l)) {
+                            valid--;
+                        }
                     }
-                    window.put(leftChar, window.get(leftChar) - 1);
+
                 }
-                left++;
+                start++;
             }
+
         }
-        
-        return minLen == Integer.MAX_VALUE ? "" : s.substring(resultStart, resultStart + minLen);
+        System.out.println(min_len);
+        return min_len == Integer.MAX_VALUE ? "" : s.substring(left, left + min_len);
     }
 }
-// Title: Minimum Window Substring
