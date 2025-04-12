@@ -7,11 +7,11 @@ class Solution {
         return 2;
       }
       //int n=nums.length;
-   
+      int n=0;
+      if(nums.length>=3){
       String b=Integer.toBinaryString(nums.length);
-     int n=b.length();
-      
+      n=b.length();
+      }
       return (int)Math.pow(2,n);
     }
 }
-// Title: Number of Unique XOR Triplets I
