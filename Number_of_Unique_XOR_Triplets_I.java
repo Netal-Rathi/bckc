@@ -17,7 +17,7 @@ class Solution {
     }
     
     public void calculate(Set<Integer> ans ,int nums[],int i,int j ,int k ){
-        if(i>=nums.length-1 || j>=nums.length-1 || k>=nums.length-1){
+        if(i==nums.length-1 || j==nums.length-1 || k==nums.length-1){
             return;
         }
                 ans.add(nums[i] ^ nums[j] ^ nums[k]);
@@ -41,4 +41,3 @@ class Solution {
         
     }
 }
-// Title: Number of Unique XOR Triplets I
