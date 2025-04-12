@@ -1,18 +1,17 @@
 class Solution {
     public int uniqueXorTriplets(int[] nums) {
-      if(nums.length==1){
-        return 1;
-      }
-      if(nums.length==2){
-        return 2;
-      }
-      //int n=nums.length;
-      int n=0;
-      if(nums.length>=3){
-      String b=Integer.toBinaryString(nums.length);
-      n=b.length();
-      }
-      return (int)Math.pow(2,n);
+        int n = nums.length;
+
+        if (n < 3) return n;
+
+        // Find the Most Significant Bit
+        int cnt = 0;
+        int temp = n;
+        while (temp > 0) {
+            temp >>= 1;
+            cnt++;
+        }
+
+        return (int)Math.pow(2, cnt);
     }
 }
-// Title: Number of Unique XOR Triplets I
