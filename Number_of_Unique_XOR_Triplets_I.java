@@ -2,43 +2,36 @@ class Solution {
     public int uniqueXorTriplets(int[] nums) {
      //   int i=0,j=0,k=0;
         Set<Integer> ans=new HashSet<>();
-        calculate(ans,nums,0,0,0);
-        return ans.size();
+//         calculate(ans,nums,0,0,0);
+//         return set.size();
         
-        // for(int i=0;i<nums.length;i++){
-        //     for(int j=i;j<nums.length;j++){
-        //         for(int k=j;k<nums.length;k++){
-        //             ans.add(nums[i]^nums[j]^nums[k]);
-        //         }
-        //     }
-        // }
-        // return ans.size();
+        for(int i=0;i<nums.length;i++){
+            for(int j=i;j<nums.length;j++){
+                for(int k=j;k<nums.length;k++){
+                    ans.add(nums[i]^nums[j]^nums[k]);
+                }
+            }
+        }
+        return ans.size();
         
     }
     
-    public void calculate(Set<Integer> ans ,int nums[],int i,int j ,int k ){
-        if(i==nums.length-1 || j==nums.length-1 || k==nums.length-1){
-            return;
-        }
-                ans.add(nums[i] ^ nums[j] ^ nums[k]);
+//     public set<Integer> calculte(Set<Integer> ans ,int nums[],int i,int j ,int k ){
+//         if(i==nums.length-1 || j==nums.length-1 || k==nums.length-1){
+//             return;
+//         }
         
-        if(k<nums.length-1){
-
-        //first element fixedj+1
+//         ans.add(nums[i] ^ nums[j] ^ nums[k]);
+//         //first element fixedj+1
         
+//         j=j+1;
+//         return (ans,nums,i,j,k);
         
-        calculate(ans,nums,i,j,k+1);
-        }else if (j<nums.length-1) {
-        
-        //secon;
-        calculate(ans,nums,i,j+1,j+1);
-            
-        }else{
-            calculate(ans,nums,i+1,i+1,i+1);
-        }
+//         //secon element fixed 
+//         k=k+1;
+//         return (ans,nums,i,j,k);
         
         
         
-    }
+//     }
 }
-// Title: Number of Unique XOR Triplets I
