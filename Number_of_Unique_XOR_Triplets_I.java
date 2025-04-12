@@ -3,25 +3,35 @@ import java.util.Set;
 
 class Solution {
     public int uniqueXorTriplets(int[] nums) {
-        Set<Integer> uniqueXors = new HashSet<>();
-        
-        for (int i = 0; i < nums.length; i++) {
-            int ijXor = nums[i];
-            for (int j = i; j < nums.length; j++) {
-                if (j > i) {
-                    ijXor ^= nums[j];
-                }
-                int ijkXor = ijXor;
-                for (int k = j; k < nums.length; k++) {
-                    if (k > j) {
-                        ijkXor ^= nums[k];
-                    }
-                    uniqueXors.add(ijkXor);
-                }
-            }
+        Set<Integer> ans = new HashSet<>();
+        optimizedCalculate(ans, nums, 0, 0, 0);
+        return ans.size();
+    }
+    
+    private void optimizedCalculate(Set<Integer> ans, int[] nums, int i, int j, int k) {
+
+        if (i >= nums.length) {
+            return;
         }
         
-        return uniqueXors.size();
+        
+        if (j >= nums.length) {
+            optimizedCalculate(ans, nums, i + 1, i + 1, i + 1);
+            return;
+        }
+        
+       
+        if (k >= nums.length) {
+            optimizedCalculate(ans, nums, i, j + 1, j + 1);
+            return;
+        }
+        
+   
+        if (i <= j && j <= k) {
+            ans.add(nums[i] ^ nums[j] ^ nums[k]);
+        }
+        
+     
+        optimizedCalculate(ans, nums, i, j, k + 1);
     }
 }
-// Title: Number of Unique XOR Triplets I
