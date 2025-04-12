@@ -18,19 +18,18 @@ class Solution {
         ans.add(nums[i] ^ nums[j] ^ nums[k]);
         
       
- if (k + 1 < nums.length && j <= k + 1) {
-          calculate(ans, nums, i, j, k + 1);
-        }
-        
-        if (j + 1 < nums.length && i <= j + 1 && j + 1 <= k) {
-            
-            calculate(ans, nums, i, j + 1, k);
-        }
-        
-        if (i + 1 < nums.length && i + 1 <= j && j <= k) {
-            
-            calculate(ans, nums, i + 1, j, k);
+        if (k < nums.length - 1) {
+           if(i<=j && j<=k){
+            calculate(ans, nums, i, j, k + 1);
+           }
+        } else if (j < nums.length - 1) {
+            if(i<=j && j<=k){
+            calculate(ans, nums, i, j + 1, k); 
+            }
+        } else {
+            if(i<=j && j<=k){
+            calculate(ans, nums, i + 1,j, k);
+            }
         }
     }
 }
-// Title: Number of Unique XOR Triplets I
