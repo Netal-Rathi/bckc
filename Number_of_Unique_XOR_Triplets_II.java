@@ -1,9 +1,5 @@
 class Solution {
     public int uniqueXorTriplets(int[] nums) {
-        if(nums.length==1){
-            return 1;
-        }
-        
         Set<Integer> set=new HashSet<>();
         for(int i=0;i<nums.length;i++){
             for(int j=i+1;j<nums.length;j++){
@@ -22,4 +18,3 @@ class Solution {
         return ans.size();
     }
 }
-// Title: Number of Unique XOR Triplets II
