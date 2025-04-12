@@ -1,18 +1,24 @@
+class Solution {
     public int uniqueXorTriplets(int[] nums) {
-        // 0 used here because duplicates xor to 0.
-        Set<Integer> pairs = new HashSet<>(List.of(0)); 
-        for (int i = 0, n = nums.length; i < n; ++i) {
-            for (int j = i + 1; j < n; ++j) {
-                pairs.add(nums[i] ^ nums[j]);
-            }
+        if(nums.length==1){
+            return 1;
         }
         
-        BitSet triplets = new BitSet();
-        for (int xy : pairs) {
-            for (int z : nums) {
-                triplets.set(xy ^ z);
+        Set<Integer> set=new HashSet<>();
+        for(int i=0;i<nums.length;i++){
+            for(int j=i+1;j<nums.length;j++){
+                set.add(nums[i]^nums[j]);
             }
         }
-        return triplets.cardinality();
+
+        Set<Integer> ans=new HashSet<>();
+       // int k=0;
+        for(Integer i :set){
+            for(int k:nums){
+            ans.add(k^i);
+           // k++;
+            }
+        }
+        return ans.size();
     }
-// Title: Number of Unique XOR Triplets II
+}
