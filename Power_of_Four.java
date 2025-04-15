@@ -1,0 +1,21 @@
+class Solution {
+    public boolean isPowerOfFour(int n) {
+        return (n!=2 && n>0 && powerof2(n) && ((0x55555555 & n)==n));
+    }
+    public boolean powerof2(int n){
+        return (n>0 && ((n & (n-1))==0));
+    }
+
+    // public boolean isevenplace(int n){
+    //     String s=Integer.toBinaryString(n);
+    //     s=new StringBuilder(s).reverse().toString();
+    //     for(int i=0;i<s.length();i++){
+    //         if(s.charAt(i)=='1' && i%2!=0){
+                
+    //             return false;
+
+    //         }
+    //     }
+    //     return true;
+    // }
+}
