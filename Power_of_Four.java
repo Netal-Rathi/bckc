@@ -8,7 +8,6 @@ class Solution {
 
     public boolean isevenplace(int n){
         String s=Integer.toBinaryString(n);
-        s=new StringBuilder(s).reverse().toString();
         for(int i=0;i<s.length();i++){
             if(s.charAt(i)==1 && i%2!=0){
                 return false;
@@ -18,4 +17,3 @@ class Solution {
         return true;
     }
 }
-// Title: Power of Four
