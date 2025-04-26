@@ -27,3 +27,5 @@ class Solution {
         return mostCommon;
     }
 }
+
+// Title: Find the Most Common Response
