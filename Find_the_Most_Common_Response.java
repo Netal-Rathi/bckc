@@ -13,26 +13,17 @@ class Solution {
             }
         }
 
-        String fa = "";
-        int count = 0;
+        String mostCommon = "";
+        int maxCount = 0;
 
-             for(Map.Entry<String,Integer> entry : map.entrySet()){
-          // count=Math.max(count,entry.getKey());
-              if(count<entry.getValue()){
-                  count=entry.getValue();
-                  fa=entry.getKey();
-              }else{
-                  if(count==entry.getValue()){
-                      if(fa.compareTo(entry.getKey())>0){
-                          fa=entry.getKey();
-                      }
-                      
-                  }
-              }
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            if (entry.getValue() > maxCount || 
+               (entry.getValue() == maxCount && entry.getKey().compareTo(mostCommon) < 0)) {
+                maxCount = entry.getValue();
+                mostCommon = entry.getKey();
+            }
         }
 
-        return fa;
+        return mostCommon;
     }
 }
-
-// Title: Find the Most Common Response
