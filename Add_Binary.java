@@ -35,3 +35,5 @@ class Solution {
         return arr;
     }
 }
+
+// Title: Add Binary
