@@ -30,3 +30,4 @@ class Solution {
         return count==3?true:false;
     }
 }
+// Title: Three Consecutive Odds
