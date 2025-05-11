@@ -10,16 +10,17 @@ class Solution {
             }
 
         }
-       
+        if(count==3){
+            return true;
+        }
         for(int i=end;i<arr.length;i++){
             if(count==3){
                 return true;
             }
-            
+             start=start+1;
              if(arr[start]%2!=0){
             count--;
              }
-              start=start+1;
             if(arr[i]%2!=0){
                 count++;
             }
@@ -29,4 +30,3 @@ class Solution {
         return count==3?true:false;
     }
 }
-// Title: Three Consecutive Odds
