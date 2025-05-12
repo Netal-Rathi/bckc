@@ -8,7 +8,7 @@ class Solution {
        for(int i=0;i<s.length();i++){
         if(s.charAt(i)==122){
             n+=1;
-        }else if(s.charAt(i)>=(122-(t-1))){
+        }else if(s.charAt(i)==(122-(t-1))){
             n+=1;
             System.out.println(n);
        }else{
@@ -18,4 +18,3 @@ class Solution {
             return n;
     }
 }
-// Title: Total Characters in String After Transformations I
