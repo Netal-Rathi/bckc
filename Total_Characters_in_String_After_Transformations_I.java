@@ -15,8 +15,6 @@ class Solution {
         continue ;
        }
        }
-           // return n % (Math.pow(10,9)+7);
-           return n;
+            return n;
     }
 }
-// Title: Total Characters in String After Transformations I
