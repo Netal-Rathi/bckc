@@ -1,29 +1,21 @@
 class Solution {
     public int lengthAfterTransformations(String s, int t) {
         // 97 -122 
-                int mod=1000000007;
-                int ans=0;
-                int[] count=new int [26];
-                for(char ch:s.toCharArray()){
-                    count[ch-'a']++;
-                }
-
-                for(int i=0;i<t;i++){
-                    int [] arr=new int [26];
-                    arr[0]=count[25];
-                    arr[1]=count[25] + count [0];
-                    for(int j=2;j<26;j++){
-                        arr[j]=count[j-1];
-                    }
-                    count=arr;
-                }
-
-                for(int i=0;i<26;i++){
-                    ans=(ans+count[i])%mod;
-                }
-                return ans ;
-
+        int n=s.length();
+        if(t==0){
+            return n;
+        }
+       for(int i=0;i<s.length();i++){
+        if(s.charAt(i)==122){
+            n+=1;
+        }else if(s.charAt(i)>=(122-(t-1))){
+            n+=1;
+            System.out.println(n);
+       }else{
+        continue ;
+       }
+       }
+           // return n % (Math.pow(10,9)+7);
+           return n;
     }
-    
 }
-// Title: Total Characters in String After Transformations I
