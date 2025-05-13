@@ -10,10 +10,10 @@ class Solution {
 
                 for(int i=0;i<t;i++){
                     int [] arr=new int [26];
-                    arr[0]=count[25]%mod;
-                    arr[1]=(count[25] + count [0])%mod;
+                    arr[0]=count[25];
+                    arr[1]=count[25] + count [0];
                     for(int j=2;j<26;j++){
-                        arr[j]=count[j-1]%mod;
+                        arr[j]=count[j-1];
                     }
                     count=arr;
                 }
@@ -26,4 +26,3 @@ class Solution {
     }
     
 }
-// Title: Total Characters in String After Transformations I
