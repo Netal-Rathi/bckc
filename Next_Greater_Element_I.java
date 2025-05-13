@@ -1,12 +1,11 @@
 class Solution {
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
         int ans[]=new int[nums1.length];
-        
+        boolean check=false;
         int k=0;
 
         for(int num : nums1){
             int i=0;
-            boolean check=false;
             while(num!=nums2[i]){
                 i++;
             }
@@ -23,7 +22,6 @@ class Solution {
                         break;
                 }
             }
-            System.out.println(!check);
             if(!check){
             ans[k]=-1;
             k++;
@@ -33,4 +31,3 @@ class Solution {
         return ans;
     }
 }
-// Title: Next Greater Element I
