@@ -5,3 +5,5 @@ public class Solution {
         return (int) Long.parseLong(reversed, 2);  // Cast to int as return type
     }
 }
+
+// Title: Reverse Bits
