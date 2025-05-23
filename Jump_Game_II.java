@@ -1,32 +1,22 @@
 class Solution {
     public int jump(int[] nums) {
-        int i=0,count=1;
-        int n=nums.length;
-        while(i<n){
-            int j=nums[i];
-            int temp=j;
-             int k=j;
-            if(nums[i+j]==n-1){
-                return count++;
-            }else{
-                
-                int max=nums[i+temp];
-               
-                while(temp>0){
-                    if(nums[i+temp]>max){
-                        k=temp;
-                     //   temp--;
-                    }
-                    temp--;
-                    
-                }
-
-                count++;
-            }
-            i+=k;
+        int n=nums.length,sum=0,len=0;
+        if(n==1){
+            return 0;
         }
-        return count;
+        
+        for(int i=0;i<n;i++){
+            sum+=nums[i];
+            if(nums[i]!=0){
+                len++;
+            }
+            if(sum>=n-1){
+                return len;
+            }
+                
+
+        }
+        return len;
         
     }
 }
-// Title: Jump Game II
