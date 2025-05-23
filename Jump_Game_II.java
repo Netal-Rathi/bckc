@@ -6,18 +6,14 @@ class Solution {
         }
         
         for(int i=0;i<n;i++){
-            sum+=nums[i];
-            if(nums[i]!=0){
-                len++;
-            }
             if(sum>=n-1){
                 return len;
             }
-                
+                sum+=nums[i];
+                len++;
 
         }
         return len;
         
     }
 }
-// Title: Jump Game II
