@@ -6,7 +6,7 @@ class Solution {
         }
         
         for(int i=0;i<n;i++){
-            if(sum>=n-1){
+            if(sum>=n){
                 return len;
             }
                 sum+=nums[i];
@@ -17,4 +17,3 @@ class Solution {
         
     }
 }
-// Title: Jump Game II
