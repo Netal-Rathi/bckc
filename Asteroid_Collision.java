@@ -4,31 +4,24 @@ class Solution {
         int n=asteroids.length;
 
         for (int a : asteroids ){
-            boolean alive =true;
-          while(!stack.isEmpty() && a<0 && stack.peek()>0){
-            if(Math.abs(a)>stack.peek()){
-                stack.pop();
-                continue;
-            }else if (Math.abs(a)==stack.peek()){
-                stack.pop();
-
+            if(a>0){
+                stack.push(a);
+            }else if ( stack.isEmpty() || stack.peek()<0 ){
+                stack.push(a);
+            }else {
+                if(Math.abs(a)>=stack.peek()){
+                    stack.pop();
+                }
             }
-             alive=false;
-             break;
-            
-          }
-            if(alive){
-            stack.push(a);
         }
-     
+        ArrayList<Integer> list=new ArrayList<>();
+        while(!stack.isEmpty()){
+            list.add(stack.pop());
+
         }
-       int[] result = new int[stack.size()];
-        for (int i = stack.size() - 1; i >= 0; --i) {
-            result[i] = stack.pop();
-        }
-        
-        return result;
+        Collections.reverse(list);
+        int [] ans= list.stream().mapToInt(Integer :: intValue).toArray();
+        return ans  ;
     }
     
 }
-// Title: Asteroid Collision
