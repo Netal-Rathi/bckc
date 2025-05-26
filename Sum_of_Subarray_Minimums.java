@@ -10,7 +10,7 @@ class Solution {
         //for(int i=0;i<n;i++){
             for(int i=0;i<n;i++){
               //  int top=arr[i];
-            while(!stack.isEmpty() && arr[stack.peek()]>=arr[i]){
+            while(!stack.isEmpty() && arr[stack.peek()]>arr[i]){
                 stack.pop();
             }
             
@@ -45,4 +45,3 @@ class Solution {
                 return (int)answer;
     }
 }
-// Title: Sum of Subarray Minimums
