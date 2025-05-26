@@ -1,48 +1,21 @@
 class Solution {
     public int sumSubarrayMins(int[] arr) {
-      int mod = (int) 1e9 + 7;
-        int n=arr.length;
-        int [] left =new int[n];
-        int [] right =new int[n];
-        Arrays.fill(left,-1);
-        Arrays.fill(right,n);
-            Deque<Integer> stack = new ArrayDeque<>();
-        //for(int i=0;i<n;i++){
-            for(int i=0;i<n;i++){
-              //  int top=arr[i];
-            while(!stack.isEmpty() && arr[stack.peek()]>arr[i]){
-                stack.pop();
-            }
-            
-            if(!stack.isEmpty()){
-                left[i]=stack.peek();
-            }
-            stack.push(i);
-            }
-            stack.clear();
+        int modul=1000000007;
+        int n=arr.length,start=0,sum=0,minval=Integer.MAX_VALUE;
+         while(start<n-1){
+            minval=arr[start];
+            sum+=minval%modul;
+            for(int end=start+1;end<n;end++){
+              minval=  Math.min(minval,arr[end]);
+                 sum+=minval%modul;
 
-            // right previous next smaller element 
+            }
+         
+            start++;
 
-            for(int i=n-1;i>=0;i--){
-              //  int top=arr[i];
-            while(!stack.isEmpty() && arr[stack.peek()]>arr[i]){
-                stack.pop();
-            }
-            
-            if(!stack.isEmpty()){
-                right[i]=stack.peek();
-            }
-            stack.push(i);
-            }
-        
-                    // previous==> i-left[i]
-                    //next ==> right[i]-i
-                    long answer=0;
-                    for (int i = 0; i < n; ++i) {
-            answer += (long) (i - left[i]) * (right[i] - i) % mod * arr[i] % mod;
-            answer %= mod;
-        }
-                return (int)answer;
+         }
+         System.out.println(start);
+           return sum+arr[start]%modul;
     }
+ 
 }
-// Title: Sum of Subarray Minimums
