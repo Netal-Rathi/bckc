@@ -3,15 +3,15 @@ class Solution {
         Stack<Integer> stack=new Stack<>();
         int n=asteroids.length;
 
-        for (int a : asteroids ){
-            if(a>0){
-                stack.push(a);
-            }else if ( stack.isEmpty() || stack.peek()<0 ){
-                stack.push(a);
-            }else {
-                if(Math.abs(a)>=stack.peek()){
-                    stack.pop();
-                }
+        for(int i=0;i<n;i++){
+            if(asteroids[i]>0){
+                stack.push(asteroids[i]);
+            }else{
+          while(!stack.isEmpty() && Math.abs(asteroids[i])>=stack.peek() ){
+            //if( Math.abs(asteroids[i])>=stack.peek()){
+            stack.pop();
+            
+          }
             }
         }
         ArrayList<Integer> list=new ArrayList<>();
@@ -25,4 +25,3 @@ class Solution {
     }
     
 }
-// Title: Asteroid Collision
