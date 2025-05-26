@@ -1,22 +1,52 @@
 class Solution {
     public int sumSubarrayMins(int[] arr) {
-        int modul=1000000007;
-        int n=arr.length,start=0,sum=0,minval=Integer.MAX_VALUE;
-         while(start<n-1){
-            minval=arr[start];
-            sum+=minval%modul;
-            for(int end=start+1;end<n;end++){
-              minval=  Math.min(minval,arr[end]);
-                 sum+=minval%modul;
-
-            }
-         
-            start++;
-
-         }
-         System.out.println(start);
-           return sum+arr[start]%modul;
+        int mod=1000000007;
+         // int[] arr = {1, 2, 3};
+        List<List<Integer>> allSubarrays = new ArrayList<>();
+        generateSubarrays(arr, 0, 0, allSubarrays);
+        int sum=0;
+        int module=1000000007;
+        
+        // Print all subarrays
+        for (List<Integer> subarray : allSubarrays) {
+            sum+=Collections.min(subarray)%module;
+        }
+        return sum;
+        
     }
- 
+
+    
+    // public static void main(String[] args) {
+    //     int[] arr = {1, 2, 3};
+    //     List<List<Integer>> allSubarrays = new ArrayList<>();
+    //     generateSubarrays(arr, 0, 0, allSubarrays);
+    //     int sum=0;
+    //     int mod=1000000007;
+        
+    //     // Print all subarrays
+    //     for (List<Integer> subarray : allSubarrays) {
+    //         sum+=Collections.min(subarray)%mod;
+    //     }
+    // }
+
+    static void generateSubarrays(int[] arr, int start, int end, List<List<Integer>> result) {
+        if (start == arr.length) {
+            return;
+        }
+
+        // When end reaches the end of array, increase start
+        else if (end == arr.length) {
+            generateSubarrays(arr, start + 1, start + 1, result);
+        }
+
+        // Generate current subarray and recurse
+        else {
+            List<Integer> subarray = new ArrayList<>();
+            for (int i = start; i <= end; i++) {
+                subarray.add(arr[i]);
+            }
+            result.add(subarray);
+            generateSubarrays(arr, start, end + 1, result);
+        }
+    }
 }
-// Title: Sum of Subarray Minimums
