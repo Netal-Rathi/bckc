@@ -1,27 +1,23 @@
 class Solution {
     public int[] maxSlidingWindow(int[] nums, int k) {
-             Deque <Integer> q=new ArrayDeque<>();
-              ArrayList <Integer> ans=new ArrayList<>();
-              int n=nums.length;
-             
+        ArrayList <Integer> list=new ArrayList<>();
+         ArrayList <Integer> ans=new ArrayList<>();
+       // int maxelem=Integer.MIN_VALUE;
+            for(int i=0;i<k;i++){
+             //   maxelem=Math.max(maxelem,nums[i]);
+             list.add(nums[i]);
+            }
+           ans.add(Collections.max(list));
+            int start=0;
 
-              for(int i=0;i<n;i++){
-                while(!q.isEmpty() && q.peekFirst()<=i-k){
-                    q.removeFirst();
-                }
+            for(int i=k;i<nums.length;i++){
+                list.remove(0);
+                    start++;
+                    list.add(nums[i]);
+                     ans.add(Collections.max(list));
 
-
-                while(!q.isEmpty() && nums[q.peekLast()]<=nums[i]){
-                    q.removeLast();
-                }
-                q.addLast(i);
-                if(i>=k-1){
-                    ans.add(nums[q.peekFirst()]);
-                }
-              }
-
+            }
             return ans.stream().mapToInt(Integer::intValue).toArray();
         
     }
 }
-// Title: Sliding Window Maximum
