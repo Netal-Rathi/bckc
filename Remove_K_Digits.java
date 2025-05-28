@@ -1,29 +1,29 @@
 class Solution {
     public String removeKdigits(String num, int k) {
-        int n = num.length();
-        // if you remove all or more digits than length, result is "0"
-        if (k >= n) return "0";
-
-        Deque<Character> stack = new ArrayDeque<>();
-        for (char c : num.toCharArray()) {
-            // 1) Greedy pop
-            while (!stack.isEmpty() && k > 0 && stack.peekLast() > c) {
-                stack.removeLast();
-                k--;
+        if(k>=num.length()){
+            return "0";
+        }
+        Stack <Character> stack=new Stack<>();
+            int temp=k;
+            for(int i=0;i<num.length();i++){
+               // stack.push(num.charAt(i));
+                while(!stack.isEmpty() && temp>0 && num.charAt(i)<stack.peek()){
+                    stack.pop();
+                    temp--;
+                }
+                
+               stack.push(num.charAt(i));
             }
-            // 2) Push current
-            stack.addLast(c);
-        }
-        // 3) Pop any remaining from end
-        while (k > 0) {
-            stack.removeLast();
-            k--;
-        }
-        // 4) Build result and strip leading zeros
-        StringBuilder sb = new StringBuilder();
+            while(!stack.isEmpty() && temp!=0){
+                stack.pop();
+                temp--;
+            }
+
+              StringBuilder sb = new StringBuilder();
         while (!stack.isEmpty()) {
-            sb.append(stack.removeFirst());
+            sb.append(stack.pop());
         }
+        sb.reverse();
         // remove leading '0's
         int idx = 0;
         while (idx < sb.length() && sb.charAt(idx) == '0') {
@@ -31,7 +31,6 @@ class Solution {
         }
         String res = sb.substring(idx);
         return res.isEmpty() ? "0" : res;
+           
     }
 }
-
-// Title: Remove K Digits
