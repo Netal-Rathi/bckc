@@ -33,3 +33,5 @@ class Solution {
         return res.isEmpty() ? "0" : res;
     }
 }
+
+// Title: Remove K Digits
