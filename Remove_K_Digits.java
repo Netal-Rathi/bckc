@@ -1,37 +1,33 @@
 class Solution {
     public String removeKdigits(String num, int k) {
-        if(k>=num.length()){
+        if(k==num.length()-1){
             return "0";
         }
         Stack <Character> stack=new Stack<>();
             int temp=k;
             for(int i=0;i<num.length();i++){
                // stack.push(num.charAt(i));
-                while(!stack.isEmpty() && temp>0 && num.charAt(i)<stack.peek()){
+                while(!stack.isEmpty() && temp!=0 && num.charAt(i)<stack.peek()){
                     stack.pop();
                     temp--;
                 }
+                // if(stack.isEmpty() || num.charAt(i)<stack.peek()){
+                //     stack.push(num.charAt(i));
+                // }
                 
-               stack.push(num.charAt(i));
+                stack.push(num.charAt(i));
             }
             while(!stack.isEmpty() && temp!=0){
                 stack.pop();
                 temp--;
             }
 
-              StringBuilder sb = new StringBuilder();
-        while (!stack.isEmpty()) {
-            sb.append(stack.pop());
-        }
-        sb.reverse();
-        // remove leading '0's
-        int idx = 0;
-        while (idx < sb.length() && sb.charAt(idx) == '0') {
-            idx++;
-        }
-        String res = sb.substring(idx);
-        return res.isEmpty() ? "0" : res;
+            StringBuilder ans=new StringBuilder();
+            while(!stack.isEmpty()){
+                ans.append(stack.pop());
+            }
+       String finans=   ans.reverse().toString().replaceFirst("^0+","");
+       return finans.length()==0? "0" : finans;
            
     }
 }
-// Title: Remove K Digits
