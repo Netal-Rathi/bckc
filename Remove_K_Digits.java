@@ -14,13 +14,8 @@ class Solution {
                 // if(stack.isEmpty() || num.charAt(i)<stack.peek()){
                 //     stack.push(num.charAt(i));
                 // }
-                
                 stack.push(num.charAt(i));
             }
-            while(!stack.isEmpty() && temp!=0){
-                stack.pop();
-            }
-
             StringBuilder ans=new StringBuilder();
             while(!stack.isEmpty()){
                 ans.append(stack.pop());
@@ -30,4 +25,3 @@ class Solution {
            
     }
 }
-// Title: Remove K Digits
