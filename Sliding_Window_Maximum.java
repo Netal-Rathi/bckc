@@ -1,9 +1,7 @@
 class Solution {
     public int[] maxSlidingWindow(int[] nums, int k) {
-        if (n == 0 || k == 0) return new int[0];
              Deque <Integer> q=new ArrayDeque<>();
               ArrayList <Integer> ans=new ArrayList<>();
-
               int n=nums.length;
              
 
@@ -26,4 +24,3 @@ class Solution {
         
     }
 }
-// Title: Sliding Window Maximum
