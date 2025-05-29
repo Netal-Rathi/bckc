@@ -1,5 +1,3 @@
-import java.util.*;
-
 class LRUCache {
  int capacity;
  Deque <Integer> q;
@@ -7,14 +5,14 @@ class LRUCache {
 
     public LRUCache(int capacity) {
         this.capacity=capacity;
-        this.q=new ArrayDeque<>();
+        this.q=new ArrayDeque();
         this.map=new HashMap<>();
 
     }
     
     public int get(int key) {
 
-        if(!map.containsKey(key)){
+        if(!q.contains(key)){
             return -1;
         }
         q.remove(key);
@@ -25,12 +23,11 @@ class LRUCache {
     }
     
     public void put(int key, int value) {
-        if(map.containsKey(key)){
+        if(q.contains(key)){
             q.remove(key);
 
         }else if(q.size()==capacity){
-           int lru = q.pollFirst(); // Remove LRU key
-            map.remove(lru);
+            map.remove(q.pollFirst());
         }
         q.addLast(key);
         map.put(key,value);
@@ -47,4 +44,3 @@ class LRUCache {
  * int param_1 = obj.get(key);
  * obj.put(key,value);
  */
-// Title: LRU Cache
