@@ -1,26 +1,24 @@
 class StockSpanner {
-    // HashMap<Integer,Integer> map=new HashMap<>();
-    // Stack<Integer> stack=new Stack<>();
-    Stack<int[]> stack;
-
+    HashMap<Integer,Integer> map=new HashMap<>();
+    Stack<Integer> stack=new Stack<>();
 
     public StockSpanner() {
-        stack=new Stack<>();
+        
     }
     
     public int next(int price) {
-        int count=1;
-        while(!stack.isEmpty() && stack.peek()[0]<=price){
-           // count++;
-            // if(map.containsKey(stack.peek())){
-            //     count+=map.get(stack.peek());
-            // }
+        int count=0;
+        while(!stack.isEmpty() && stack.peek()<=price){
+            count++;
+            if(map.containsKey(stack.peek())){
+                count+=map.get(stack.peek());
+            }
            // map.put(stack.peek(),count);
-            count+=stack.pop()[1];
+            stack.pop();
         }
-        stack.push(new int []{price,count});
-        // map.put(price,count);
-        return count;
+        stack.push(price);
+        map.put(price,count);
+        return count+1;
         
         
     }
@@ -31,4 +29,3 @@ class StockSpanner {
  * StockSpanner obj = new StockSpanner();
  * int param_1 = obj.next(price);
  */
-// Title: Online Stock Span
