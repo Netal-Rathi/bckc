@@ -1,31 +1,27 @@
+import java.util.*;
+
 class Solution {
     public int trap(int[] height) {
-        int n = height.length;
-        if (n == 0) return 0;
+        Stack<int[]> stack = new Stack<>();
+        int sum = 0;
 
-        int[] leftMax = new int[n];
-        int[] rightMax = new int[n];
+        for (int i = 0; i < height.length; i++) {
+            int currHeight = height[i];
 
-        // Fill leftMax array
-        leftMax[0] = height[0];
-        for (int i = 1; i < n; i++) {
-            leftMax[i] = Math.max(height[i], leftMax[i - 1]);
+            // Process while stack is not empty and current height is greater than top of stack
+            while (!stack.isEmpty() && currHeight > stack.peek()[0]) {
+                int[] bottom = stack.pop();
+                if (stack.isEmpty()) break;
+
+                int distance = i - stack.peek()[2] - 1;
+                int boundedHeight = Math.min(currHeight, stack.peek()[0]) - bottom[0];
+                sum += distance * boundedHeight;
+            }
+
+            // push: [height, visited (0/1), index]
+            stack.push(new int[]{currHeight, 0, i});
         }
 
-        // Fill rightMax array
-        rightMax[n - 1] = height[n - 1];
-        for (int i = n - 2; i >= 0; i--) {
-            rightMax[i] = Math.max(height[i], rightMax[i + 1]);
-        }
-
-        // Compute trapped water
-        int trapped = 0;
-        for (int i = 0; i < n; i++) {
-            trapped += Math.min(leftMax[i], rightMax[i]) - height[i];
-        }
-
-        return trapped;
+        return sum;
     }
 }
-
-// Title: Trapping Rain Water
