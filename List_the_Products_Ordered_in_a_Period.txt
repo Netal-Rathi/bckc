@@ -5,3 +5,5 @@ where p.product_id=o.product_id
 and o.order_date >=STR_TO_DATE('01-02-2020','%d-%m-%y') and o.order_date<STR_TO_DATE('01-03-2020','%d-%m-%y')
 group by p.product_name 
 having sum(o.unit)>=100;
+
+// Title: List the Products Ordered in a Period
