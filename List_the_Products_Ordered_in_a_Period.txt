@@ -12,3 +12,5 @@ GROUP BY
     p.product_name
 HAVING 
     SUM(o.unit) >= 100;
+
+// Title: List the Products Ordered in a Period
