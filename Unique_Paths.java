@@ -4,13 +4,13 @@ class Solution {
         if(i==n || j==m){
             return 0;
         }
-         if(i==n-1 &&  j==m-1){
+         if(i==n-1 || j==m-1){
             return 1;
         }
 
         int down=checker(i+1,j,m,n);
-        int right=checker(i,j+1,m,n);
-        return down+right;
+        int up=checker(i,j+1,m,n);
+        return down+up;
 
     }
     public int uniquePaths(int m, int n) {
@@ -19,4 +19,3 @@ class Solution {
         
     }
 }
-// Title: Unique Paths
