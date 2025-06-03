@@ -1,26 +1,31 @@
 class Solution {
     public List<List<Integer>> subsetsWithDup(int[] nums) {
-        Arrays.sort(nums); // Important for handling duplicates
-        Set<List<Integer>> ans = new HashSet<>();
-        List<Integer> list = new ArrayList<>();
-        generate(nums, 0, list, ans);
-        return new ArrayList<>(ans);
+
+Set<List<Integer>> ans=new HashSet<>();
+
+List<Integer> list=new ArrayList<>();
+check(nums,ans,list,0);
+List<List<Integer>> fine=new ArrayList<>(ans);
+
+return fine  ;
+        
     }
 
-    private void generate(int[] nums, int idx, List<Integer> list, Set<List<Integer>> ans) {
-        if (idx == nums.length) {
-            ans.add(new ArrayList<>(list)); // Make a copy before adding
+    public void check(int[] nums ,Set<List<Integer>> ans ,List<Integer> list,int idx){
+
+        if(idx==nums.length  ){
+            ans.add(new ArrayList<>(list));
             return;
         }
-
-        // Include the current element
+// include 
         list.add(nums[idx]);
-        generate(nums, idx + 1, list, ans);
-        list.remove(list.size() - 1); // Backtrack
+        check(nums,ans,list,idx+1);
+        list.remove(list.size()-1);
 
-        // Exclude the current element
-        generate(nums, idx + 1, list, ans);
+        //exclude
+        check(nums,ans,list,idx+1);
+
+
+        
     }
 }
-
-// Title: Subsets II
