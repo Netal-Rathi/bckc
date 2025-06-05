@@ -15,27 +15,34 @@
  */
 class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
-        Queue<TreeNode> q = new LinkedList<>();
-        List<List<Integer>> finalAns = new ArrayList<List<Integer>>();
+        Queue<TreeNode> q=new LinkedList<>();
+        
+        List<List<Integer>> ans=new ArrayList<>();
         if(root==null){
-            return finalAns;
+            return ans;
         }
         q.add(root);
+        
         while(!q.isEmpty()){
-            int levels = q.size();
-            List<Integer> subLevels = new ArrayList<>();
-            for(int i=0;i<levels;i++){
-                if(q.peek().left!=null){
-                    q.add(q.peek().left);
-                }
-                if(q.peek().right!=null){
-                    q.add(q.peek().right);
-                }
-                subLevels.add(q.remove().val);
+            int level=q.size();
+            List<Integer> sublist=new ArrayList<>();
+            for(int i=0;i<level;i++){
+            if(q.peek().left!=null){
+            q.offer(q.peek().left);
             }
-            finalAns.add(subLevels);
+            if(q.peek().right!=null){
+            q.offer(q.peek().right);
+            }
+            
+            sublist.add(q.remove().val);
+            }
+            ans.add(sublist);
+           // q.push(root.right);
+           
+
+        
         }
-        return finalAns;
+        return ans;
+        
     }
 }
-// Title: Binary Tree Level Order Traversal
