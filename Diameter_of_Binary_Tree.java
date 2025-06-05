@@ -14,23 +14,20 @@
  * }
  */
 class Solution {
-     int maxlen=0;
     public int diameterOfBinaryTree(TreeNode root) {
-       
-         helper(root);
-        return maxlen;
+        return helper(root,Integer.MIN_VALUE);
         
     }
 
-    public int helper(TreeNode root){
+    public int helper(TreeNode root, int maxlen){
 
         if(root==null){
             return 0;
         }
-        int left = helper(root.left);
+        int left = helper(root.left,maxlen);
 
-        int right=helper(root.right);
-       maxlen=Math.max(maxlen, Math.abs(left+right ));
+        int right=helper(root.right,maxlen);
+        maxlen=Math.max(maxlen, Math.abs(left-right )+1);
 
 
 
@@ -38,4 +35,3 @@ class Solution {
 
     }
 }
-// Title: Diameter of Binary Tree
