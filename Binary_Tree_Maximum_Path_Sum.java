@@ -30,10 +30,8 @@ class Solution {
 
         int left = helper(root.left);
         int right = helper(root.right);
-        int sum=Math.max(Math.max(Math.max(left+right+root.val,left+root.val),right+root.val),root.val);
-        maxsum = Math.max(maxsum, sum);
-        return sum;
+        maxsum = Math.max(maxsum, (left + right + root.val));
+        return left + right + root.val;
 
     }
 }
-// Title: Binary Tree Maximum Path Sum
