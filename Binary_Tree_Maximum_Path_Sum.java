@@ -14,7 +14,7 @@
  * }
  */
 class Solution {
-    int maxsum = Integer.MIN_VALUE;
+    int maxsum = 0;
 
     public int maxPathSum(TreeNode root) {
         helper(root);
@@ -35,4 +35,3 @@ class Solution {
 
     }
 }
-// Title: Binary Tree Maximum Path Sum
