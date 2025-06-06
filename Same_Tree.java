@@ -26,12 +26,9 @@ class Solution {
         if(one==null || two==null || one.val!=two.val){
             return false;
         }
-        Boolean left=check(one.left,two.left);
-        Boolean right=check(one.right,two.right);
+
        
 
-      //  return check(one.left,two.left) && check(one.right,two.right);
-      return left && right;
+        return check(one.left,two.left) && check(one.right,two.right);
     }
 }
-// Title: Same Tree
