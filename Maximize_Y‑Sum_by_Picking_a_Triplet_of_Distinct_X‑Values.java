@@ -1,25 +1,24 @@
+import java.util.*;
+
 class Solution {
     public int maxSumDistinctTriplet(int[] x, int[] y) {
-HashMap<Integer,Integer> map=new HashMap<>();
+        Map<Integer, PriorityQueue<Integer>> map = new HashMap<>();
 
-        for(int i=0;i<x.length;i++){
-          //  map.put(x[i],)
-            if(map.containsKey(x[i])){
-                map.put(x[i],Math.max(map.get(x[i]),y[i]));
-            }else{
-                map.put(x[i],y[i]);
-            }
+        for (int i = 0; i < x.length; i++) {
+            map.putIfAbsent(x[i], new PriorityQueue<>(Collections.reverseOrder()));
+            map.get(x[i]).offer(y[i]);
         }
-List<Integer> list=new ArrayList<>();
-        for(Map.Entry<Integer,Integer> entry :map.entrySet()){
-            list.add(entry.getValue());
-            
+
+       
+        List<Integer> topY = new ArrayList<>();
+        for (PriorityQueue<Integer> pq : map.values()) {
+            topY.add(pq.peek());  
         }
-        Collections.sort(list,Collections.reverseOrder());
-        int sum=-1;
-        if(list.size()>=3)
-     sum=list.get(0)+list.get(1)+list.get(2);
-        return sum;
+
+     
+        if (topY.size() < 3) return -1; 
+
+        Collections.sort(topY, Collections.reverseOrder());
+        return topY.get(0) + topY.get(1) + topY.get(2);
     }
 }
-// Title: Maximize Y‑Sum by Picking a Triplet of Distinct X‑Values
