@@ -1,37 +1,29 @@
 class Solution {
     public int goodSubtreeSum(int[] vals, int[] par) {
-        int maxsum = Integer.MIN_VALUE;
+        int n = vals.length;
+        List<List<Integer>> tree = new ArrayList<>();
+        for (int i = 0; i < n; i++) tree.add(new ArrayList<>());
 
-        List<List<Integer>> list = new ArrayList<>();
-        int n = par.length;
-
+        int root = -1;
         for (int i = 0; i < n; i++) {
-            list.add(new ArrayList<>());
-        }
-
-       
-        for (int i = 0; i < n; i++) {
-            if (par[i] != -1) {
-                list.get(par[i]).add(i);
+            if (par[i] == -1) {
+                root = i;
+            } else {
+                tree.get(par[i]).add(i);
             }
         }
 
-        // For each node, calculate sum of subtree rooted at that node
-        for (int i = 0; i < n; i++) {
-            int sum = subtreeSum(i, list, vals);
-            maxsum = Math.max(maxsum, sum);
-        }
-
-        return maxsum;
+        int[] maxSum = new int[1];  
+        dfs(root, tree, vals, maxSum);
+        return maxSum[0];
     }
 
-    private int subtreeSum(int node, List<List<Integer>> list, int[] vals) {
+    private int dfs(int node, List<List<Integer>> tree, int[] vals, int[] maxSum) {
         int sum = vals[node];
-        for (int child : list.get(node)) {
-            sum += subtreeSum(child, list, vals);
+        for (int child : tree.get(node)) {
+            sum += dfs(child, tree, vals, maxSum);
         }
+        maxSum[0] = Math.max(maxSum[0], sum);
         return sum;
     }
 }
-
-// Title: Maximum Good Subtree Score
