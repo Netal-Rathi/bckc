@@ -33,3 +33,5 @@ class Solution {
         }
     }
 }
+
+// Title: Maximize Y‑Sum by Picking a Triplet of Distinct X‑Values
