@@ -22,3 +22,4 @@ List<Integer> list=new ArrayList<>();
         return sum;
     }
 }
+// Title: Maximize Y‑Sum by Picking a Triplet of Distinct X‑Values
