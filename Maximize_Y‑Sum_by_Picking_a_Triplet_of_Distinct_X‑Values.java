@@ -2,25 +2,34 @@ import java.util.*;
 
 class Solution {
     public int maxSumDistinctTriplet(int[] x, int[] y) {
-        Map<Integer, PriorityQueue<Integer>> map = new HashMap<>();
+        int maxsum = -1;
+        Set<List<Integer>> set = new HashSet<>();
+        generateTriplets(set, x, 0, new ArrayList<>());
 
-        for (int i = 0; i < x.length; i++) {
-            map.putIfAbsent(x[i], new PriorityQueue<>(Collections.reverseOrder()));
-            map.get(x[i]).offer(y[i]);
+        for (List<Integer> triplet : set) {
+            int sum = y[triplet.get(0)] + y[triplet.get(1)] + y[triplet.get(2)];
+            maxsum = Math.max(maxsum, sum);
         }
 
-       
-        List<Integer> topY = new ArrayList<>();
-        for (PriorityQueue<Integer> pq : map.values()) {
-            topY.add(pq.peek());  
+        return maxsum;
+    }
+
+    private void generateTriplets(Set<List<Integer>> set, int[] x, int start, List<Integer> current) {
+        if (current.size() == 3) {
+            int a = x[current.get(0)];
+            int b = x[current.get(1)];
+            int c = x[current.get(2)];
+
+            if (a != b && b != c && a != c) {
+                set.add(new ArrayList<>(current)); 
+            }
+            return;
         }
 
-     
-        if (topY.size() < 3) return -1; 
-
-        Collections.sort(topY, Collections.reverseOrder());
-        return topY.get(0) + topY.get(1) + topY.get(2);
+        for (int i = start; i < x.length; i++) {
+            current.add(i);
+            generateTriplets(set, x, i + 1, current);
+            current.remove(current.size() - 1); 
+        }
     }
 }
-
-// Title: Maximize Y‑Sum by Picking a Triplet of Distinct X‑Values
