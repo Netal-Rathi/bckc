@@ -22,3 +22,5 @@ class Solution {
         return topY.get(0) + topY.get(1) + topY.get(2);
     }
 }
+
+// Title: Maximize Y‑Sum by Picking a Triplet of Distinct X‑Values
