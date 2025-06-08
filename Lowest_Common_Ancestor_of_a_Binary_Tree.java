@@ -9,24 +9,17 @@
  */
 class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-return check(root,p,q);
-
-        
-    }
-
-    public TreeNode check (TreeNode root ,TreeNode p,TreeNode q){
-        if(root==null || root==p || root==q){
+        if (root == null || root == p || root == q) {
             return root;
         }
 
-        TreeNode left=check(root.left,p,q);
-        TreeNode right=check(root.right,p,q);
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
 
-        if(left!=null && right!=null){
+        if (left != null && right != null) {
             return root;
         }
 
-        return right!=null? right : left;
+        return left != null ? left : right;
     }
 }
-// Title: Lowest Common Ancestor of a Binary Tree
