@@ -25,7 +25,7 @@ class Solution {
         if(counter==null){
             return true;
         }
-                    if(counter.val<=root || counter.val>base ){
+                    if(counter.val<root || counter.val>base ){
                         return false;
                     }
                    
@@ -38,4 +38,3 @@ class Solution {
 return left && right;
     }
 }
-// Title: Validate Binary Search Tree
