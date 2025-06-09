@@ -14,24 +14,27 @@
  * }
  */
 class Solution {
-   
+    int base=Integer.MAX_VALUE;
+    int minimum=Integer.MIN_VALUE;
     public boolean isValidBST(TreeNode root) {
-        return check(root,Long.MIN_VALUE,Long.MAX_VALUE);
+        return check(root,minimum,base);
         
     }
 
-    public Boolean check(TreeNode root ,long min,long max){
-        if(root==null){
+    public Boolean check(TreeNode counter,int root,int base){
+        if(counter==null){
             return true;
         }
+                    if(counter.val<=root || counter.val>=base ){
+                        return false;
+                    }
+                   
+         //   TreeNode node=new TreeNode(counter);
+       Boolean  left= check(counter.left,root,counter.val);
+     
+       Boolean right=check(counter.right,counter.val,base);
+     
 
-        if(root.val<=min || root.val>=max){
-            return false;
-        }
-        Boolean left=check(root.left,min,root.val);
-        Boolean right=check(root.right,root.val,max);
-        return left && right;
-      
+return left && right;
     }
 }
-// Title: Validate Binary Search Tree
