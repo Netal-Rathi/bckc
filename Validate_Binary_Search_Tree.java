@@ -30,7 +30,7 @@ class Solution {
                     }
                    
          //   TreeNode node=new TreeNode(counter);
-       Boolean  left= check(counter.left,root,counter.val);
+       Boolean  left= check(counter.left,minimum,counter.val);
      
        Boolean right=check(counter.right,counter.val,base);
      
@@ -38,4 +38,3 @@ class Solution {
 return left && right;
     }
 }
-// Title: Validate Binary Search Tree
