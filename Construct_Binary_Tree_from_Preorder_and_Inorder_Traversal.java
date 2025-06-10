@@ -26,9 +26,9 @@ class Solution {
         if(start>end){
             return null;
         }
-        // if(start<0 || end<0){
-        //     return null;
-        // }
+        if(start<0 || end<0){
+            return null;
+        }
 
         
 
@@ -55,4 +55,3 @@ class Solution {
 
     }
 }
-// Title: Construct Binary Tree from Preorder and Inorder Traversal
