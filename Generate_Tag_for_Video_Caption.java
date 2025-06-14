@@ -5,7 +5,7 @@ class Solution {
         s.append('#');
 s.append(Character.toLowerCase(arr[0].charAt(0)));
         if(arr[0].length()>=100){
-        s.append(arr[0].substring(1,99));
+        s.append(arr[0].substring(1,100));
         }else{
               s.append(arr[0].substring(1));
         }
@@ -37,4 +37,3 @@ s.append(Character.toLowerCase(arr[0].charAt(0)));
     }
     
 }
-// Title: Generate Tag for Video Caption
