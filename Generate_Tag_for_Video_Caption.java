@@ -4,11 +4,8 @@ class Solution {
         StringBuilder s=new StringBuilder();
         s.append('#');
 s.append(Character.toLowerCase(arr[0].charAt(0)));
-        if(arr[0].length()>=100){
-        s.append(arr[0].substring(1,100));
-        }else{
-              s.append(arr[0].substring(1));
-        }
+        
+        s.append(arr[0].substring(1));
         for( int i=1;i<arr.length;i++){
             String word=arr[i];
             if(!word.equalsIgnoreCase("leetcode")  ){
@@ -37,4 +34,3 @@ s.append(Character.toLowerCase(arr[0].charAt(0)));
     }
     
 }
-// Title: Generate Tag for Video Caption
