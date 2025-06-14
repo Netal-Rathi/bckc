@@ -12,8 +12,7 @@ class Solution {
                 if (first.length() >= 100) {
                     s.append(first.substring(1, 99));  
                 } else {
-s.append(first.substring(1).toLowerCase());
-
+                    s.append(first.substring(1));
                 }
             }
         }
@@ -46,5 +45,3 @@ s.append(first.substring(1).toLowerCase());
         return s.toString();
     }
 }
-
-// Title: Generate Tag for Video Caption
