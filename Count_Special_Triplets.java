@@ -31,3 +31,5 @@ class Solution {
         return (int) count;
     }
 }
+
+// Title: Count Special Triplets
