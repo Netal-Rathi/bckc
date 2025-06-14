@@ -10,14 +10,8 @@ s.append(Character.toLowerCase(arr[0].charAt(0)));
             String word=arr[i];
             if(!word.equalsIgnoreCase("leetcode")  ){
            s.append(Character.toUpperCase(word.charAt(0)));
-                 if(s.length()==100){
-                    return s.toString();
-                }
             }else{
                s.append(Character.toLowerCase(word.charAt(0)));
-                 if(s.length()==100){
-                    return s.toString();
-                }
             }
             for(int j=1;j<word.length();j++){
                 char ch=Character.toLowerCase(word.charAt(j));
@@ -34,4 +28,3 @@ s.append(Character.toLowerCase(arr[0].charAt(0)));
     }
     
 }
-// Title: Generate Tag for Video Caption
