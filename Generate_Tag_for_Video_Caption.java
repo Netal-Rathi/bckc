@@ -4,11 +4,7 @@ class Solution {
         StringBuilder s=new StringBuilder();
         s.append('#');
         for(String word: arr){
-            if(!word.equals("leetcode")){
            s.append(Character.toUpperCase(word.charAt(0)));
-            }else{
-                s.append(word.charAt(0));
-            }
             for(int j=1;j<word.length();j++){
                 char a=word.charAt(j);
                 if((a>='a' && a<='z' ) ||(a>='A' && a<='Z') ){
@@ -24,4 +20,3 @@ class Solution {
     }
     
 }
-// Title: Generate Tag for Video Caption
