@@ -14,10 +14,9 @@ class Solution {
 
     public void check(int [] nums,List<Integer> list,int idx,Set<List<Integer>>set){
         if(list.size()==3 && !set.contains(list)){
-           // List<Integer> list=new ArrayList<.();
-                int i=nums[list.get(0)];
-                int j=nums[list.get(1)];
-                int k=nums[list.get(2)];
+                int i=list.get(0);
+                int j=list.get(1);
+                int k=list.get(2);
             if(i==j*2 && k==j*2){
                 count++;
                 set.add(list);
@@ -29,15 +28,10 @@ class Solution {
             return;
         }
         for(int i=idx ;i<nums.length;i++){
-            if(!list.contains(i)){
-            list.add(i);
-            }
+            list.add(nums[i]);
             check(nums,list,idx+1,set);
-            if(list.size()>=1){
             list.remove(list.size()-1);
-            }
         }
         
     }
 }
-// Title: Count Special Triplets
