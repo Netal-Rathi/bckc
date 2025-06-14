@@ -1,12 +1,11 @@
 class Solution {
     int count=0;
     public int specialTriplets(int[] nums) {
-        int mod=1000000007;
         
         List<Integer> list=new ArrayList<>();
         Set<List<Integer>> set=new HashSet<>();
         check(nums,list,0,set);
-        return count % mod;
+        return count;
         
 
         
@@ -41,4 +40,3 @@ class Solution {
         
     }
 }
-// Title: Count Special Triplets
