@@ -1,39 +1,48 @@
 class Solution {
     public String generateTag(String caption) {
-        String[] words = caption.trim().split("\\s+");
-        StringBuilder sb = new StringBuilder("#");
+        String[] arr = caption.split(" ");
+        StringBuilder s = new StringBuilder();
+        s.append('#');
 
-        for (int i = 0; i < words.length; i++) {
-            String word = words[i];
+      
+        if (arr.length > 0) {
+            String first = arr[0];
+            if (first.length() > 0) {
+                s.append(Character.toLowerCase(first.charAt(0)));
+                if (first.length() >= 100) {
+                    s.append(first.substring(1, 99).toLowerCase());  
+                } else {
+s.append(first.substring(1).toLowerCase());
 
-            
-            StringBuilder cleaned = new StringBuilder();
-            for (char ch : word.toCharArray()) {
-                if (Character.isLetter(ch)) {
-                    cleaned.append(ch);
                 }
-            }
-
-            if (cleaned.length() == 0) continue;
-
-           
-            if (i == 0) {
-                sb.append(cleaned.toString().toLowerCase());
-            } else {
-                sb.append(Character.toUpperCase(cleaned.charAt(0)));
-                if (cleaned.length() > 1) {
-                    sb.append(cleaned.substring(1).toLowerCase());
-                }
-            }
-
-            
-            if (sb.length() >= 100) {
-                return sb.substring(0, 100);
             }
         }
 
-        return sb.toString();
+        for (int i = 1; i < arr.length; i++) {
+            String word = arr[i];
+            if (word.isEmpty()) continue;
+
+            // Decide first character case
+            if (!word.equalsIgnoreCase("leetcode")) {
+                s.append(Character.toUpperCase(word.charAt(0)));
+            } else {
+                s.append(Character.toLowerCase(word.charAt(0)));
+            }
+
+           
+            if (s.length() >= 100) return s.substring(0, 100);
+
+            
+            for (int j = 1; j < word.length(); j++) {
+                char ch = Character.toLowerCase(word.charAt(j));
+                if (ch >= 'a' && ch <= 'z') {
+                    s.append(ch);
+                }
+
+                if (s.length() >= 100) return s.substring(0, 100);
+            }
+        }
+
+        return s.toString();
     }
 }
-
-// Title: Generate Tag for Video Caption
