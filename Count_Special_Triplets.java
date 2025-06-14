@@ -1,35 +1,43 @@
-import java.util.*;
-
 class Solution {
+    int count=0;
     public int specialTriplets(int[] nums) {
-        int n = nums.length;
-        int mod = 1_000_000_007;
-        long count = 0;
+        int mod=1000000007;
+        
+        List<Integer> list=new ArrayList<>();
+        Set<List<Integer>> set=new HashSet<>();
+        check(nums,list,0,set);
+        return count % mod;
+        
 
-        Map<Integer, Integer> suffix = new HashMap<>();
-        Map<Integer, Integer> prefix = new HashMap<>();
+        
+        
+    }
 
-       
-        for (int num : nums) {
-            suffix.put(num, suffix.getOrDefault(num, 0) + 1);
+    public void check(int [] nums,List<Integer> list,int idx,Set<List<Integer>>set){
+        if(list.size()==3 && !set.contains(list)){
+           // List<Integer> list=new ArrayList<.();
+                int i=nums[list.get(0)];
+                int j=nums[list.get(1)];
+                int k=nums[list.get(2)];
+            if(i==j*2 && k==j*2){
+                count++;
+                set.add(list);
+            }
+            return;
         }
 
-        for (int j = 0; j < n; j++) {
-            int x = nums[j];
-          
-            suffix.put(x, suffix.get(x) - 1);
-
-            int left = prefix.getOrDefault(2 * x, 0);   
-            int right = suffix.getOrDefault(2 * x, 0);  
-
-            count = (count + (1L * left * right)) % mod;
-
-           
-            prefix.put(x, prefix.getOrDefault(x, 0) + 1);
+        if(list.size()==3){
+            return;
         }
-
-        return (int) count;
+        for(int i=idx ;i<nums.length;i++){
+            if(list.size()==0 || i>list.get(list.size()-1)){
+            list.add(i);
+            }
+            check(nums,list,idx+1,set);
+            if(list.size()>=1){
+            list.remove(list.size()-1);
+            }
+        }
+        
     }
 }
-
-// Title: Count Special Triplets
