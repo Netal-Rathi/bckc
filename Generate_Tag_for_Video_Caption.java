@@ -3,7 +3,11 @@ class Solution {
         String arr[]= caption.split(" ");
         StringBuilder s=new StringBuilder();
         s.append('#');
-s.append(Character.toLowerCase(arr[0].charAt(0)));
+                    if(!arr[0].equalsIgnoreCase("leetcode")  ){
+           s.append(Character.toUpperCase(arr[0].charAt(0)));
+            }else{
+               s.append(Character.toLowerCase(arr[0].charAt(0)));
+            }
         
         s.append(arr[0].substring(1));
         for( int i=1;i<arr.length;i++){
@@ -28,4 +32,3 @@ s.append(Character.toLowerCase(arr[0].charAt(0)));
     }
     
 }
-// Title: Generate Tag for Video Caption
