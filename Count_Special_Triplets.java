@@ -29,7 +29,7 @@ class Solution {
             return;
         }
         for(int i=idx ;i<nums.length;i++){
-            if(list.size()==0 || i>list.get(list.size()-1)){
+            if(!list.contains(i)){
             list.add(i);
             }
             check(nums,list,idx+1,set);
@@ -40,4 +40,3 @@ class Solution {
         
     }
 }
-// Title: Count Special Triplets
