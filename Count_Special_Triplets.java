@@ -21,7 +21,7 @@ class Solution {
                 int key = entry.getKey();
                 int halfKey = key / 2;
 
-                if ( key%2==0 && map.containsKey(halfKey)) {
+                if (map.containsKey(halfKey)) {
                     List<Integer> list2 = map.get(halfKey);
                     int l1 = list1.size();
                     int l2 = list2.size();
@@ -42,5 +42,3 @@ class Solution {
         return count % mod;
     }
 }
-
-// Title: Count Special Triplets
