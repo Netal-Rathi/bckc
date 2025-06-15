@@ -1,7 +1,7 @@
 class Solution {
     public int specialTriplets(int[] nums) {
        int  count=0;
-          int mod = 1_000_000_007;
+        int mod=1000000007;
         HashMap<Integer,Integer> prefix= new HashMap<>();
         HashMap<Integer,Integer> suffix=new HashMap<>();
 
@@ -26,4 +26,3 @@ class Solution {
         return count%mod;
     }
 }
-// Title: Count Special Triplets
