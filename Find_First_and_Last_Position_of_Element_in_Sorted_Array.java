@@ -14,18 +14,14 @@ class Solution {
 
                     start=middle+1;
             }else{
-                if(middle!=0 && nums[middle-1]==target){
+                if(nums[middle-1]==target){
                     arr[0]=middle-1;
                     arr[1]=middle;
                     return arr;
-                }else if(middle != nums.length-1 && nums[middle+1]==target){
+                }else if(nums[middle+1]==target){
                     arr[0]=middle;
                     arr[1]=middle+1;
                     return arr;
-                }else {
-                    arr[0]=middle;
-                    arr[1]=middle;
-                      return arr;
                 }
             }
              middle=(end+start)/2;
@@ -33,4 +29,3 @@ class Solution {
         return arr;
     }
 }
-// Title: Find First and Last Position of Element in Sorted Array
