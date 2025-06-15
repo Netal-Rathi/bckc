@@ -1,7 +1,7 @@
 class Solution {
     public int specialTriplets(int[] nums) {
-      long count=0;
-int mod = 1_000_000_007;
+       int  count=0;
+          int mod = 1_000_000_007;
         HashMap<Integer,Integer> prefix= new HashMap<>();
         HashMap<Integer,Integer> suffix=new HashMap<>();
 
@@ -19,12 +19,10 @@ int mod = 1_000_000_007;
             }
             int left=prefix.getOrDefault(k*2,0);
             int right=suffix.getOrDefault(k*2,0);
-          count = (count + (1L * left * right)) % mod;
-
+            count+=left*right;
 
             prefix.put(k,prefix.getOrDefault(k,0)+1);
         }
-        return (int) count;
+        return count%mod;
     }
 }
-// Title: Count Special Triplets
