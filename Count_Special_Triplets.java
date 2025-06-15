@@ -27,3 +27,4 @@ int mod = 1_000_000_007;
         return (int) count;
     }
 }
+// Title: Count Special Triplets
