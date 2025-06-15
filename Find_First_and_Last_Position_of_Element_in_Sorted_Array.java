@@ -1,9 +1,8 @@
 class Solution {
     public int[] searchRange(int[] nums, int target) {
         int [] arr={-1,-1};
-        int n=nums.length-1;
 
-        int start=0,end=n;
+        int start=0,end=nums.length-1;
         int middle=(start  + end)/2;
         while(start<=end){
             
@@ -15,20 +14,22 @@ class Solution {
 
                     start=middle+1;
             }else{
-                int temp=middle;
-                while(temp!=0 && nums[temp-1]==target){
-                    temp--;
+                if(middle!=0 && nums[middle-1]==target){
+                    arr[0]=middle-1;
+                    arr[1]=middle;
+                    return arr;
+                }else if(middle != nums.length-1 && nums[middle+1]==target){
+                    arr[0]=middle;
+                    arr[1]=middle+1;
+                    return arr;
+                }else {
+                    arr[0]=middle;
+                    arr[1]=middle;
+                      return arr;
                 }
-                arr[0]=temp;
-                while(middle!=n && nums[middle+1]==target){
-                    middle++;
-                }
-                arr[1]=middle;
-                return arr;
             }
              middle=(end+start)/2;
         }
         return arr;
     }
 }
-// Title: Find First and Last Position of Element in Sorted Array
