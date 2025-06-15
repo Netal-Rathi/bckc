@@ -42,3 +42,5 @@ class Solution {
         return count % mod;
     }
 }
+
+// Title: Count Special Triplets
