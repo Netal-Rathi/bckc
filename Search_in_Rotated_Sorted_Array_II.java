@@ -8,16 +8,11 @@ while(start<=end){
             return true;
         }
 
-         if (nums[start] == nums[middle] && nums[middle] == nums[end]) {
-                start++;
-                end--;
-            }
-
-      else  if(nums[start]<=nums[middle]){
+        if(nums[start]<=nums[middle]){
             //left part
             //end=middle-1;
 
-            if(target>=nums[start] && target<=nums[middle]){
+            if(target>=nums[start] && target<=nums[middle-1]){
                end=middle-1;
             }else{
                 start=middle+1;
@@ -25,7 +20,7 @@ while(start<=end){
             }
         }else{
             //right part 
-             if(target>=nums[middle] && target<= nums[end]){
+             if(target>=nums[middle+1] && target<= nums[end]){
                start=middle+1;
             }else{
                 end=middle-1;
