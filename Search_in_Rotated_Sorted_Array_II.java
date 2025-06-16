@@ -8,13 +8,12 @@ while(start<=end){
             return true;
         }
 
-         if(nums[start]==nums[middle] && nums[middle]==nums[end]){
-            start++;
-            end--;
+         if (nums[start] == nums[middle] && nums[middle] == nums[end]) {
+                start++;
+                end--;
+            }
 
-         }
-
-      else  if(nums[start]<nums[middle]){
+      else  if(nums[start]<=nums[middle]){
             //left part
             //end=middle-1;
 
@@ -41,4 +40,3 @@ while(start<=end){
 
  
 }
-// Title: Search in Rotated Sorted Array II
