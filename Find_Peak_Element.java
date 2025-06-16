@@ -1,6 +1,5 @@
 class Solution {
     public int findPeakElement(int[] nums) {
-       // if(num)
         int n= nums.length-1;
         int start=0,end=n;
 
@@ -18,7 +17,6 @@ class Solution {
             }
 
         }
-        return 0;
+        return -1;
     }
 }
-// Title: Find Peak Element
