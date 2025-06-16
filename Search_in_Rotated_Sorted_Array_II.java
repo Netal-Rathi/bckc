@@ -14,7 +14,7 @@ while(start<=end){
 
          }
 
-      else  if(nums[start]<=nums[middle]){
+      else  if(nums[start]<nums[middle]){
             //left part
             //end=middle-1;
 
@@ -41,4 +41,3 @@ while(start<=end){
 
  
 }
-// Title: Search in Rotated Sorted Array II
