@@ -21,3 +21,4 @@ class Solution {
         return -1;
     }
 }
+// Title: Single Element in a Sorted Array
