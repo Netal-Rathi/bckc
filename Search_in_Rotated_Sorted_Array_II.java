@@ -8,7 +8,13 @@ while(start<=end){
             return true;
         }
 
-        if(nums[start]<=nums[middle]){
+         if(nums[start]==nums[middle] && nums[middle]==nums[end]){
+            start++;
+            end--;
+
+         }
+
+      else  if(nums[start]<=nums[middle]){
             //left part
             //end=middle-1;
 
