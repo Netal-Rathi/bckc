@@ -12,7 +12,7 @@ while(start<=end){
             //left part
             //end=middle-1;
 
-            if(target>=nums[start] && target<=nums[middle-1]){
+            if(target>=nums[start] && target<=nums[middle]){
                end=middle-1;
             }else{
                 start=middle+1;
@@ -20,7 +20,7 @@ while(start<=end){
             }
         }else{
             //right part 
-             if(target>=nums[middle+1] && target<= nums[end]){
+             if(target>=nums[middle] && target<= nums[end]){
                start=middle+1;
             }else{
                 end=middle-1;
@@ -35,4 +35,3 @@ while(start<=end){
 
  
 }
-// Title: Search in Rotated Sorted Array II
