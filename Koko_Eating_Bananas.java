@@ -27,3 +27,5 @@ class Solution {
         return totalHours <= h;
     }
 }
+
+// Title: Koko Eating Bananas
