@@ -2,7 +2,6 @@ class Solution {
     public int minEatingSpeed(int[] piles, int h) {
         int left=1;
         int right=Integer.MAX_VALUE;
-        System.out.println(right);
        int min=0;
 
         while(left<=right){
@@ -23,10 +22,8 @@ class Solution {
           for (int i=0;i<piles.length;i++){
             if(piles[i]<=mid){
                 count+=1;
-            }else if(piles[i]%mid!=0){
+            }else if(piles[i]!=0){
             count+= piles[i]/mid + 1; 
-            }else{
-                count+=piles[i]/mid;
             }
 
     }
@@ -34,4 +31,3 @@ System.out.println(count);
     return count<=h ? true : false;
 }
 }
-// Title: Koko Eating Bananas
