@@ -4,14 +4,11 @@ class Solution {
         if(m*k>bloomDay.length){
             return -1;
         }
-        // HashMap<Integer,Integer> map=new HashMap<>();
-        // for(int i=0;i<bloomDay.length;i++){
-        //     map.put(bloomDay[i],map.getOrDefault(bloomDay[i],0)+1);
-        // }
+        
         int start=1;
         int end=Arrays.stream(bloomDay).max().getAsInt();
-        int min=end;
-        while(start<end){
+        int min=-1;
+        while(start<=end){
             int middle=start+ (end-start)/2;
 
             if(check(bloomDay,m,k,middle)){
@@ -27,22 +24,27 @@ class Solution {
         
     }
 
-   public boolean check(int[] bloomDay, int m, int k, int mid) {
-    int bouquets = 0;
-    int flowers = 0;
-
-    for (int day : bloomDay) {
-        if (day <= mid) {
+    public boolean check(int arr[] ,int m ,int k,int mid){
+        int b=0;
+        int flowers=0;
+      //  Arrays.sort(arr);
+       
+        for(int i : arr){
+           if(i<=mid){
             flowers++;
-            if (flowers == k) {
-                bouquets++;
-                flowers = 0;
+            if(flowers==k){
+                b++;
+                flowers=0;
             }
-        } else {
-            flowers = 0; // reset since flowers must be adjacent
+           }else{
+            flowers=0;
+           }
+            
+            
         }
-    }
-    return bouquets >= m;
-}
+        
+        return b>=m;
 
+
+    }
 }
