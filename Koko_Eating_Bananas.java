@@ -1,33 +1,29 @@
+import java.util.Arrays;
+
 class Solution {
     public int minEatingSpeed(int[] piles, int h) {
-        int left=1;
-        int right=Integer.MAX_VALUE;
-       int min=0;
+        int left = 1;
+        int right = Integer.MAX_VALUE;
+        int minSpeed = right;
 
-        while(left<=right){
-            int middle=left + (right-left )/2;
-            if(check(piles,h,middle)){
-                min=middle;
-                right=middle-1;
-            }else{
-                left=middle +1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (canFinish(piles, h, mid)) {
+                minSpeed = mid;
+                right = mid - 1; // Try to find a smaller speed
+            } else {
+                left = mid + 1;
             }
         }
-        return min;
-        
+
+        return minSpeed;
     }
 
-    public Boolean check(int [] piles ,int h ,int mid){
-          int count =0;
-          for (int i=0;i<piles.length;i++){
-            if(piles[i]<=mid){
-                count+=1;
-            }else if(piles[i]!=0){
-            count+= piles[i]/mid + 1; 
-            }
-
+    private boolean canFinish(int[] piles, int h, int k) {
+        int totalHours = 0;
+        for (int pile : piles) {
+            totalHours += (pile + k - 1) / k; // ceiling without using Math.ceil
+        }
+        return totalHours <= h;
     }
-System.out.println(count);
-    return count<=h ? true : false;
-}
 }
