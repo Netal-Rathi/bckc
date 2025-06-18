@@ -1,14 +1,15 @@
 class Solution {
     public int shipWithinDays(int[] weights, int days) {
-        
-       
-        int start=Arrays.stream(weights).max().getAsInt();
-        int end=Arrays.stream(weights).sum();
+        int n=weights.length,sum=0;
+        for(int i=0;i<n;i++){
+            sum+=weights[i];
+        }
+        int start=1;
+        int end=sum;
         int min=end;
 
         while(start<=end){
             int middle=start+ (end-start)/2;
-            System.out.println(middle);
             if(check(weights,days,middle)){
                 min=middle;
                 end=middle-1;
@@ -37,7 +38,7 @@ class Solution {
                 continue;
             }
         }
-        if(sum<=middle){
+        if(sum<middle){
             count++;
         }
         return count<=days;
@@ -45,4 +46,3 @@ class Solution {
 
     }
 }
-// Title: Capacity To Ship Packages Within D Days
