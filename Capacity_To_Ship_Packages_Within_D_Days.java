@@ -37,7 +37,7 @@ class Solution {
                 continue;
             }
         }
-        if(sum!=0 && sum<middle){
+        if(sum<=middle){
             count++;
         }
         return count<=days;
@@ -45,4 +45,3 @@ class Solution {
 
     }
 }
-// Title: Capacity To Ship Packages Within D Days
