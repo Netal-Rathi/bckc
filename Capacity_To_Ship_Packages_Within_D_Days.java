@@ -1,11 +1,7 @@
 class Solution {
     public int shipWithinDays(int[] weights, int days) {
-        int n=weights.length,sum=0;
-        for(int i=0;i<n;i++){
-            sum+=weights[i];
-        }
         int start=1;
-        int end=sum;
+        int end=Integer.MAX_VALUE;
         int min=end;
 
         while(start<=end){
@@ -38,7 +34,7 @@ class Solution {
                 continue;
             }
         }
-        if(sum<middle){
+        if(sum<=middle){
             count++;
         }
         return count<=days;
