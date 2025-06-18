@@ -21,19 +21,27 @@ class Solution {
     }
 
     public boolean check(int nums[], int days,int middle ){
-        int count=1;
+        int count=0;
         int sum=0;
 
         for(int i : nums){
-            if(sum+ i > middle){
+            sum+=i;
+            if(sum==middle){
                 count++;
                 sum=0;
+            }else if (sum>middle){
+                count++;
+               
+                sum=i;
+            }else {
+                continue;
             }
-            sum+=i;
+        }
+        if(sum!=0 && sum<middle){
+            count++;
         }
         return count<=days;
 
 
     }
 }
-// Title: Capacity To Ship Packages Within D Days
