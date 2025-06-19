@@ -10,7 +10,7 @@ class Solution {
     int start=nums[0];
     int n=nums.length;
     int end=Arrays.stream(nums).sum();
-    int min=end;
+    int min=Integer.MAX_VALUE;
 
     while(start<=end){
         int middle =start + (end-start)/2;
@@ -32,7 +32,7 @@ return min;
         s=n-s;
         int i=n-1;
         int calcsum=0;
-        while(i>=s && calcsum<middle){
+        while(i>s && calcsum<middle){
             calcsum+=nums[i];
             i--;
 
@@ -48,4 +48,3 @@ return min;
 
     }
 }
-// Title: Split Array Largest Sum
