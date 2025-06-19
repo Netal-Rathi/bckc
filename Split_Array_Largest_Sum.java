@@ -11,9 +11,6 @@ class Solution {
     int n=nums.length;
     int end=Arrays.stream(nums).sum();
     int min=end;
-    if(k==1){
-        return end;
-    }
 
     while(start<=end){
         int middle =start + (end-start)/2;
@@ -51,4 +48,3 @@ return min;
 
     }
 }
-// Title: Split Array Largest Sum
