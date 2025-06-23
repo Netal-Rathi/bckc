@@ -9,8 +9,7 @@ int count=0;
                 i++;
                 count++;
             }else{
-                //break;
-                continue;
+                break;
             }
         }
         return count;
