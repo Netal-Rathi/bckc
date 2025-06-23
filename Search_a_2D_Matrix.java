@@ -5,15 +5,13 @@ class Solution {
         int i=0;
 
         while(i<m){
-            if(target<=matrix[i][n-1]){
+            if(target<matrix[i][n-1]){
                 break;
             }else{
                 i++;
             }
         }
-if(i==m){
-    return false;
-}
+
         int start =0;
       int  end=n-1;
 
