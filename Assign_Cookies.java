@@ -7,7 +7,6 @@ int count=0;
         while(j<s.length && i<g.length){
             if(  s[j]>=g[i]){
                 i++;
-                j++;
                 count++;
             }else{
                 //break;
