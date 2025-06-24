@@ -1,25 +1,37 @@
 class Solution {
     public int candy(int[] ratings) {
-        int n=ratings.length;
-        int[] arr=new int [n];
-        Arrays.fill(arr,1);
+        int count=0;
+        int var=1;
 
-        for(int i=1;i<n;i++){
-           if( ratings[i]>ratings[i-1]){
-                        arr[i]=arr[i-1]+1;
-            }
-        }
+        for(int i=0;i<ratings.length;i++){
 
-        for(int i= n-2;i>=0 ;i--){
-            if(ratings[i]>ratings[i+1]){
-                arr[i]=Math.max(arr[i],arr[i+1]+1);
+            if(i==0 ){
+                if(ratings[i]>ratings[i+1]){
+                var++;
+                count+=var;
+                }else{
+                    count+=1;
+                }
+            } else if(i==ratings.length-1){
+                if(ratings[i]>ratings[i-1]){
+                    var++;
+                    count+=var;
+
+                }else{
+                    count+=1;
+                    
+                }
+
+            }else if(ratings[i+1]<ratings[i] || ratings[i]>ratings[i-1]){
+                   var++;
+                count+=var;
+             
+            }else{
+                count+=1;
+                var=1;
             }
+
         }
-int total=0;
-        for(int i: arr){
-            total+=i;
-        }
-        return total;
-        
+        return count;
     }
 }
