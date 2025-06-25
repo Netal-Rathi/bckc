@@ -8,7 +8,7 @@ class Solution {
        
         int prev=intervals[0][1];
         while(i!=intervals.length){
-            if(prev==intervals[i][0]){
+            if(prev<=intervals[i][0]){
                 // if(j!=0 && j<i){
                 //     count+=i-j;
                 // }
