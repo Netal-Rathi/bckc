@@ -1,37 +1,33 @@
 class Solution {
-    int maximum = 0;
-
     public int longestPalindromeSubseq(String s) {
-        StringBuilder ans = new StringBuilder();
-        check(s, 0, ans);
-        return maximum;
-    }
-
-    public void check(String s, int i, StringBuilder current) {
-        if (i == s.length()) {
-            if (isPalindrome(current)) {
-                maximum = Math.max(maximum, current.length());
-            }
-            return;
+        int n = s.length();
+        String rev = new StringBuilder(s).reverse().toString();
+        int[][] dp = new int[n][n];
+        for (int[] arr : dp) {
+            Arrays.fill(arr, -1);
         }
 
-        current.append(s.charAt(i));
-        check(s, i + 1, current);
-        current.deleteCharAt(current.length() - 1); 
-
-
-        check(s, i + 1, current);
+        return check(0, 0, s, rev, dp);
     }
 
-    public boolean isPalindrome(StringBuilder sb) {
-        int i = 0, j = sb.length() - 1;
-        while (i < j) {
-            if (sb.charAt(i) != sb.charAt(j)) {
-                return false;
-            }
-            i++;
-            j--;
+    public int check(int idx1, int idx2, String s1, String s2, int[][] dp) {
+        if (idx1 == s1.length() || idx2 == s2.length()) {
+            return 0;
         }
-        return true;
+
+        if (dp[idx1][idx2] != -1) {
+            return dp[idx1][idx2];
+        }
+
+        if (s1.charAt(idx1) == s2.charAt(idx2)) {
+            dp[idx1][idx2] = 1 + check(idx1 + 1, idx2 + 1, s1, s2, dp);
+        } else {
+            dp[idx1][idx2] = Math.max(
+                check(idx1 + 1, idx2, s1, s2, dp),
+                check(idx1, idx2 + 1, s1, s2, dp)
+            );
+        }
+
+        return dp[idx1][idx2];
     }
 }
