@@ -22,7 +22,7 @@ class Solution {
             visited[node]=1;
         for(int i=0;i<connected[0].length;i++){
             if(connected[node][i]==1 && visited[i]==-1){
-                dfs(i,connected,visited);
+                dfs(connected[node][i],connected,visited);
             }
         }
 
@@ -33,4 +33,3 @@ class Solution {
 
 
 }
-// Title: Number of Provinces
