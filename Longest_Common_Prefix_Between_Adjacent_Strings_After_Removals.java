@@ -50,3 +50,5 @@ class Solution {
         return len;
     }
 }
+
+// Title: Longest Common Prefix Between Adjacent Strings After Removals
