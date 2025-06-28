@@ -1,36 +1,24 @@
 class Solution {
-    int count=0;
     public int findCircleNum(int[][] isConnected) {
-        
-        int visited[]=new int[isConnected.length];
-        Arrays.fill(visited,-1);
+        int n = isConnected.length;
+        int[] visited = new int[n];
+        int count = 0;
 
-        for(int i=0;i<isConnected.length;i++){
-            if(visited[i]==-1){
-                dfs(i,isConnected,visited);
-                   count++;
-
+        for (int i = 0; i < n; i++) {
+            if (visited[i] == 0) {
+                dfs(i, isConnected, visited);
+                count++;
             }
         }
         return count;
-
     }
 
-    public void dfs (int node,int[][] connected,int [] visited){
-       
-            //add
-            visited[node]=1;
-        for(int i=0;i<connected[0].length;i++){
-            if(connected[node][i]==1 && visited[i]==-1){
-                dfs(connected[node][i],connected,visited);
+    public void dfs(int node, int[][] graph, int[] visited) {
+        visited[node] = 1;
+        for (int j = 0; j < graph.length; j++) {
+            if (graph[node][j] == 1 && visited[j] == 0) {
+                dfs(j, graph, visited);
             }
         }
-
-      
-     
-
     }
-
-
 }
-// Title: Number of Provinces
