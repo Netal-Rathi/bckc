@@ -11,9 +11,8 @@ class Solution {
         Queue<int[]> q=new LinkedList<>();
         for(int i=0;i<m;i++){
             for (int j=0;j<n;j++){
-                if(board[i][j]=='O' && i!=0 && j !=0 && i!=m-1 && j!=n-1){
+                if(board[i][j]=='O'){
                     q.offer(new int []{i,j});
-                    board[i][j]='X';
                 }
             }
         }
@@ -36,16 +35,12 @@ class Solution {
                     if(x>=0 && x<m &&  y>=0 && y<n){
                        if(board[x][y]=='X'){
                         check=true;
-                       }else{
-                        break;
                        }
                     }
                 }
                 if(check){
                          board[i][j]='X';
 
-                }else{
-                    board[i][j]='O';
                 }
         }
         }
