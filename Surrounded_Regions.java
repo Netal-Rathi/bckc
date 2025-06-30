@@ -26,7 +26,7 @@ class Solution {
                 int i=arr[0];
                 int j=arr[1];
         boolean check;
-        if(i!=m-1 && j!=n-1 && i!=0 && j!=0){
+        if(i!=m-1 && j!=n-1){
                 for(int[] d: dir){
                     int x=i+d[0];
                     int y=j+d[1];
