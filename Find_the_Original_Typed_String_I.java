@@ -17,3 +17,4 @@ class Solution {
         return count;
     }
 }
+// Title: Find the Original Typed String I
