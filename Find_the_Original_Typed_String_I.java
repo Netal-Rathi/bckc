@@ -39,3 +39,4 @@ class Solution {
         return ans+count;
     }
 }
+// Title: Find the Original Typed String I
