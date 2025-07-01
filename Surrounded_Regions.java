@@ -1,50 +1,54 @@
-import java.util.*;
-
 class Solution {
     public void solve(char[][] board) {
-        int m = board.length;
-        int n = board[0].length;
-        Queue<int[]> q = new LinkedList<>();
+        // sare o queue mei
+        // maintain boolean check for all os 
+        // check if its not corner/edge value 
+            // if h toh break out of loop 
+        // else check for all if baju mei x yao h toh convert inplace to x 
 
- 
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if ((i == 0 || j == 0 || i == m - 1 || j == n - 1) && board[i][j] == 'O') {
-                    board[i][j] = 'E'; 
-                    q.offer(new int[]{i, j});
+        int m=board.length;
+        int n=board[0].length;
+        Queue<int[]> q=new LinkedList<>();
+        for(int i=0;i<m;i++){
+            for (int j=0;j<n;j++){
+                if(board[i][j]=='O' && i!=0 && j !=0 && i!=m-1 && j!=n-1){
+                    q.offer(new int []{i,j});
+                    board[i][j]='X';
                 }
             }
         }
 
-      
-        int[][] dir = new int[][]{{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
-        while (!q.isEmpty()) {
-            int[] cell = q.poll();
-            int x = cell[0];
-            int y = cell[1];
+        int dir[][]=new int[][]{{1,0},{0,1},{-1,0},{0,-1}};
 
-            for (int[] d : dir) {
-                int i = x + d[0];
-                int j = y + d[1];
 
-                if (i >= 0 && i < m && j >= 0 && j < n && board[i][j] == 'O') {
-                    board[i][j] = 'E';       
-                    q.offer(new int[]{i, j}); 
+        while(!q.isEmpty()){
+
+                int [] arr=q.poll();
+                int i=arr[0];
+                int j=arr[1];
+                 boolean check=false;
+        if(i!=m-1 && j!=n-1 && i!=0 && j!=0){
+          //  board[i][j]='X';
+                for(int[] d: dir){
+                    int x=i+d[0];
+                    int y=j+d[1];
+
+                    if(x>=0 && x<m &&  y>=0 && y<n){
+                       if(board[x][y]=='X'){
+                        check=true;
+                       }else{
+                        break;
+                       }
+                    }
                 }
-            }
-        }
+                if(check){
+                         board[i][j]='X';
 
-   
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (board[i][j] == 'O') {
-                    board[i][j] = 'X'; 
-                } else if (board[i][j] == 'E') {
-                    board[i][j] = 'O'; 
+                }else{
+                    board[i][j]='O';
                 }
-            }
         }
+        }
+      //  return board ;
     }
 }
-
-// Title: Surrounded Regions
