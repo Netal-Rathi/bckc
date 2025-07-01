@@ -29,7 +29,7 @@ class Solution {
 
                 if (i >= 0 && i < m && j >= 0 && j < n && board[i][j] == 'O') {
                     board[i][j] = 'E';       
-                   // q.offer(new int[]{i, j}); 
+                    q.offer(new int[]{i, j}); 
                 }
             }
         }
@@ -46,5 +46,3 @@ class Solution {
         }
     }
 }
-
-// Title: Surrounded Regions
