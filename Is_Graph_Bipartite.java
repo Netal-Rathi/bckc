@@ -28,3 +28,5 @@ class Solution {
         return true;
     }
 }
+
+// Title: Is Graph Bipartite?
