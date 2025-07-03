@@ -3,7 +3,6 @@ class Solution {
         //no cycle for answer 
         int [] indegree=new int[numCourses];
         int k=0;
-        int count=0;
         int [] ans=new int[numCourses];
         int [] visited=new int[numCourses];
         Arrays.fill(visited,-1);
@@ -22,7 +21,6 @@ class Solution {
               //  indegree[i]=list.get(i).size();
                 if(indegree[i]==0){
                     q.offer(i);
-                    count++;
                     visited[i]=1;
                     //ans.add[i];
                     ans[k]=i;
@@ -44,14 +42,13 @@ class Solution {
                         ans[k]=j;
                         k++;
                         visited[j]=1;
-                        count++;
                     }
                     }
                 }
 
             
             }
-            return count==numCourses ? ans : new int[0];
+            return ans;
         
     }
 }
