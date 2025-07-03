@@ -27,9 +27,7 @@ class Solution {
                     k++;
                 }
             }
-        if(q.isEmpty()){
-            return new int[0];
-        }
+
             while(!q.isEmpty()){
                 int i=q.poll();
               //  visited[i]=1;
@@ -52,4 +50,3 @@ class Solution {
         
     }
 }
-// Title: Course Schedule II
