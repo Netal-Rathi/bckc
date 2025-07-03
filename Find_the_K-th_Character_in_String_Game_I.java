@@ -13,4 +13,3 @@ class Solution {
         return sb.charAt(k-1);
     }
 }
-// Title: Find the K-th Character in String Game I
