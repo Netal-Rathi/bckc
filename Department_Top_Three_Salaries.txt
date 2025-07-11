@@ -9,7 +9,3 @@ WITH employee_department AS
     JOIN Employee e
     ON d.id = e.departmentId
     )
-SELECT Department, Employee, Salary
-FROM employee_department
-WHERE rnk <= 3
-// Title: Department Top Three Salaries
