@@ -13,3 +13,4 @@ AND (lat, lon) IN (
     GROUP BY lat, lon
     HAVING COUNT(*) = 1
 )
+// Title: Investments in 2016
