@@ -9,3 +9,4 @@ WITH employee_department AS
     JOIN Employee e
     ON d.id = e.departmentId
     )
+// Title: Department Top Three Salaries
