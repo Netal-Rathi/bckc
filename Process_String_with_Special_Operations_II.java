@@ -1,41 +1,25 @@
 class Solution {
     public char processStr(String s, long k) {
-        long len = 0;
+        List<Character> sb = new ArrayList<>();
 
-    
-        for (char ch : s.toCharArray()) {
-            if (Character.isLowerCase(ch)) {
-                len++;
-            } else if (ch == '*') {
-                if (len > 0) len--;
-            } else if (ch == '#') {
-                len *= 2;
-            }
-        }
-
-      
-        if (k >= len) return '.';
-
-       
-        for (int i = s.length() - 1; i >= 0; i--) {
+        for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
 
             if (ch == '#') {
-              
-                len /= 2;
-                if (k >= len) {
-                    k -= len;
-                }
+                if ((long)sb.size() * 2 > k + 1) break; // prevent MLE
+                List<Character> copy = new ArrayList<>(sb);
+                sb.addAll(copy);
             } else if (ch == '%') {
-                k = len - 1 - k;
+                Collections.reverse(sb);
             } else if (ch == '*') {
-                len++;
-            } else if (Character.isLowerCase(ch)) {
-                len--;
-                if (len == k) return ch;
+                if (!sb.isEmpty()) sb.remove(sb.size() - 1);
+            } else {
+                sb.add(ch);
             }
+
+            if (sb.size() > k) break;
         }
 
-        return '.';
+        return k < sb.size() ? sb.get((int)k) : '.';
     }
 }
