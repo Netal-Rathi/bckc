@@ -1,26 +1,41 @@
 class Solution {
     public char processStr(String s, long k) {
-      StringBuilder sb=new StringBuilder();
-        for(int i=0;i<s.length();i++){
-            if(s.charAt(i)=='#'){
-                sb.append(sb);
-                System.out.println(sb);
-            }else if(s.charAt(i)=='%'){
-              //  StringBuilder sk=new StringBuilder(sb);
-               // sb.append(sk.reverse());
-                sb.reverse();
-            }else if(s.charAt(i)=='*'){
-                if(sb.length()>0){
-                    sb.deleteCharAt(sb.length()-1);
+        long len=0;
+        for (char ch:s.toCharArray()){
+            if(Character.isLowerCase(ch) ){
+                len++;
+            }else if(ch=='*'){
+                if(len>0){
+                len--;
                 }
-            }else{
-                sb.append(s.charAt(i));
+            }else if(ch=='#'){
+                len+=len;
             }
-        }    
-       if(k>=sb.length()){
-           return '.';
-       }
-        return sb.charAt((int)k);
+        }
+
+        if(k>=len){
+            return '.';
+        }
+
+        for(int i=s.length()-1;i>=0;i--){
+            char ch=s.charAt(i);
+
+            if(ch=='#'){
+                len=len/2;
+                if(k>=len){
+                    k-=len;
+                }
+            }else if(ch=='%'){
+                k=len-1-k;
+            }else if(ch=='*'){
+                len++;
+            }else {
+                len--;
+                if(k==len){
+                    return ch;
+                }
+            }
+        }
+        return '.';
     }
 }
-// Title: Process String with Special Operations II
