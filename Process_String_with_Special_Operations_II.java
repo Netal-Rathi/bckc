@@ -22,16 +22,4 @@ class Solution {
        }
         return sb.charAt((int)k);
     }
-    public void reversestring(StringBuilder ok){
-        int i=0, j=ok.length()-1;
-        while(i<=j){
-            char temp=ok.charAt(i);
-            ok.setCharAt(i,ok.charAt(j));
-            ok.setCharAt(j,temp);
-            
-            // s.charAt(i)=s.charAt(j);
-            // s.charAt(j)=temp;
-        }  
-       //return s;
-    }
 }
