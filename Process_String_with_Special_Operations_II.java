@@ -1,13 +1,11 @@
 class Solution {
     public char processStr(String s, long k) {
-        long len=0;
+        int len=0;
         for (char ch:s.toCharArray()){
             if(Character.isLowerCase(ch) ){
                 len++;
             }else if(ch=='*'){
-                if(len>0){
                 len--;
-                }
             }else if(ch=='#'){
                 len+=len;
             }
@@ -39,4 +37,3 @@ class Solution {
         return '.';
     }
 }
-// Title: Process String with Special Operations II
