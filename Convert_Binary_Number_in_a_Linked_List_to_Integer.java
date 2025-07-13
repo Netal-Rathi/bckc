@@ -18,3 +18,4 @@ class Solution {
         return Integer.parseInt(sb.toString(),2);        
     }
 }
+// Title: Convert Binary Number in a Linked List to Integer
