@@ -2,35 +2,27 @@ class Solution {
     public int countTrapezoids(int[][] points) {
         int mod=1000000007;
          Map<Integer,Integer> map=new HashMap<>();
-      //  List<Integer> toremove=new ArrayList<>();
         List<Integer> list=new ArrayList<>();
         //count : 
         for(int [] arr : points ){
             map.put(arr[1],map.getOrDefault(arr[1],0)+1);
         }
 
-          // for(Map.Entry<Integer,Integer> entry : map.entrySet()){
-          //       int s=entry.getValue();
-          //      if(s==1){
-          //         // map.remove(s);
-          //          toremove.add(entry.getKey());
-          //      }
-          // }
         // replace by factorial : 
            for(Map.Entry<Integer,Integer> entry : map.entrySet()){
                
                int s=entry.getValue();
-               if(s>=2){
-               
+               if(s==1){
+                   map.remove(s);
+               }else{
                int dp[] =new int[s];
                Arrays.fill(dp,-1);
                map.put(entry.getKey(),factorial(s-1,dp));
                    list.add(entry.getValue());
          System.out.println(entry.getKey() + "  "  + entry.getValue());
-               }
                //    System.out.print(entry,getValue);
                    
-               
+               }
            }
         
 int count=0;
@@ -63,8 +55,7 @@ int k=list.size();
             return dp[n];
             
         }
-        dp[n]=Math.abs(n)+factorial(Math.abs(n-1),dp);
+        dp[n]=n+factorial(n-1,dp);
         return dp[n];
     }
 }
-// Title: Count Number of Trapezoids I
