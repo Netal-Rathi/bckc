@@ -17,12 +17,9 @@ class Solution {
             if (s == 2) {
                 list.add(1);
             } else if (s > 2) {
-                // int[] dp = new int[s];
-                // Arrays.fill(dp, -1);
-                // n(n+1)/2
-               //int n = s - 1;
-            list.add((int)((1L * s * (s - 1) / 2) % mod));
-
+                int[] dp = new int[s];
+                Arrays.fill(dp, -1);
+                list.add(sumUpToN(s - 1, dp));
             }
         }
 
@@ -39,12 +36,10 @@ class Solution {
     }
 
    
-    // public int sumUpToN(int n, int[] dp) {
-    //     if (n == 0 || n == 1) return n;
-    //     if (dp[n] != -1) return dp[n];
-    //     dp[n] = (n + sumUpToN(n - 1, dp)) % mod;
-    //     return dp[n];
-    // }
+    public int sumUpToN(int n, int[] dp) {
+        if (n == 0 || n == 1) return n;
+        if (dp[n] != -1) return dp[n];
+        dp[n] = (n + sumUpToN(n - 1, dp)) % mod;
+        return dp[n];
+    }
 }
-
-// Title: Count Number of Trapezoids I
