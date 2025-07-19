@@ -23,7 +23,7 @@ class Solution {
         }
 
        
-      int count=0;
+      
         int k = list.size();
         for (int i = 0; i < k - 1; i++) {
             for (int j = i + 1; j < k; j++) {
@@ -50,5 +50,3 @@ class Solution {
     //     return dp[n];
     // }
 }
-
-// Title: Count Number of Trapezoids I
